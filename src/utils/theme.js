@@ -1,4 +1,4 @@
-import { SM, MD, LG, XLG } from "./variables"
+import { SM, MD, LG, XLG, XXL } from "./variables"
 
 const Theme = {
   mediaQuery: {

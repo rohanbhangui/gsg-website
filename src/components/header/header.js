@@ -22,6 +22,8 @@ const Header = () => {
 
 const HeaderContainer = styled.header`
   height: 3rem;
+  z-index: 100;
+  position: relative;
 
   nav {
     justify-content: center;

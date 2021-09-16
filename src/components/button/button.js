@@ -6,17 +6,17 @@ import { Link as _Link } from "react-router-dom";
 const Button = ({
   linkto,
   onClick,
-  classes = "default",
+  className = "default",
   label
 }) => {
   if(linkto) {
     return (
-      <Link className={classes} to={linkto}>{label}</Link>
+      <Link className={className} to={linkto}>{label}</Link>
     )
   }
 
   return (
-    <Action className={classes} onClick={onClick}>
+    <Action className={className} onClick={onClick}>
       {label}
     </Action>
   )
@@ -39,6 +39,16 @@ const sharedStyle = css`
   &.default {
     color: white;
     background: black;
+  }
+
+  &.outline {
+    color: black;
+    border: 2px solid black;
+  }
+
+  &.outline-invert {
+    color: white;
+    border: 2px solid white;
   }
 `
 

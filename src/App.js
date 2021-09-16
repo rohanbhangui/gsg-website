@@ -22,10 +22,10 @@ const App = () => {
       <Router>
         <Header />
         <Switch>
-          <Route path="/brand-incubation">
+          <Route path="/incubated-properties">
             <Incubation />
           </Route>
-          <Route path="/investment">
+          <Route path="/investments">
             <Investments />
           </Route>
           <Route path="/contact">
