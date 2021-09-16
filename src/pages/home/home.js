@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import { XLG } from "../../utils/variables";
+import { XLG, XXL } from "../../utils/variables";
 
 import Logo from "../../assets/img/logo.png";
 import HeroImage from "../../assets/img/hero-image.svg";
@@ -129,18 +129,22 @@ const Home = () => {
       </Container>
       <Container className="projects">
         <h1>Explore Our Projects</h1>
-        <Grid xs={2} className="project-tiles">
+        <Grid xs={1} sm={2} className="project-tiles">
           <TileBlock to="/investments">
             <Tile background={InvestmentTile}>
               <div className="content">
-                <h2>Investments</h2><img src={ArrowGo} alt="" />
+                <div className="inner">
+                  <h2>Investments</h2><img src={ArrowGo} alt="" />
+                </div>
               </div>
             </Tile>
           </TileBlock>
           <TileBlock to="/incubated-properties">
             <Tile background={IncubationTile}>
               <div className="content">
-                <h2>Incubated Properties</h2><img src={ArrowGo} alt="" />
+                <div className="inner">
+                  <h2>Incubated Properties</h2><img src={ArrowGo} alt="" />
+                </div>
               </div>
             </Tile>
           </TileBlock>
@@ -172,6 +176,8 @@ const Container = styled.section`
   }
 
   &.projects {
+    max-width: ${XXL}px;
+
     h1 {
       text-align: center;
       color: white;
@@ -361,8 +367,12 @@ const Tile = styled.div`
   width: 100%;
   position: relative;
   border-radius: 2rem;
-  padding-top: 150%;
+  padding-top: 80%;
   overflow: hidden;
+
+  @media ${({ theme }) => theme.mediaQuery.small} {
+    padding-top: 135%;
+  }
 
   &:hover {
     .content {
@@ -382,12 +392,18 @@ const Tile = styled.div`
     align-items: flex-end;
     padding: 2rem;
 
+    .inner {
+      display: flex;
+      align-items: center;
+    }
+
     h2 {
       color: white;
       text-decoration: none;
       
       & + img {
         margin-left: 0.5rem;
+        width: 2rem;
       }
     }
   }
