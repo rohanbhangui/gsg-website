@@ -75,7 +75,7 @@ const Home = () => {
 
   const scrollBackground = (e) => {
     const html = document.querySelector("html");
-    html.style.setProperty('--background-position', `${100*window.scrollY/html.offsetHeight}%`);
+    html.style.setProperty('--background-position', `${100*window.scrollY/html.offsetHeight*0.66}%`);
   }
 
   useEffect(() => {
