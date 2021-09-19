@@ -494,18 +494,22 @@ const VennContent = styled.div`
   &.left {
     left: 50%;
     transform: translateX(-50%);
+    top: -3rem;
 
     @media ${({ theme }) => theme.mediaQuery.small} {
       left: 40%;
+      top: 0;
     }
   }
 
   &.right {
     left: 50%;
     transform: translateX(-50%);
+    top: 3rem;
 
     @media ${({ theme }) => theme.mediaQuery.small} {
       left: 60%;
+      top: 0;
     }
   }
 `

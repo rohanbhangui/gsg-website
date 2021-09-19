@@ -23,13 +23,19 @@ const Button = ({
 }
 
 const sharedStyle = css`
-  border-radius: 0.2rem;
-  padding: 0.5rem 1.25rem;
+  border-radius: 0.3rem;
+  padding: 0.8rem 1.5rem;
   display: inline-block;
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-top: 1.5rem;
   text-decoration: none;
+
+  @media ${({ theme }) => theme.mediaQuery.medium} {
+    font-size: 0.8rem;
+    border-radius: 0.2rem;
+    padding: 0.6rem 1.25rem;
+  }
 
   &:active {
     position: relative;
