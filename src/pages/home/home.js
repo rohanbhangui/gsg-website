@@ -535,6 +535,11 @@ const LightSide = styled.div`
     height: 100%;
     width: auto;
     margin-bottom: 1rem;
+    max-height: 5rem;
+
+    @media ${({ theme }) => theme.mediaQuery.large} {
+      max-height: none;
+    }
   }
 
   .inner {
@@ -570,6 +575,11 @@ const DarkSide = styled.div`
     height: 100%;
     width: auto;
     margin-bottom: 1rem;
+    max-height: 5rem;
+
+    @media ${({ theme }) => theme.mediaQuery.large} {
+      max-height: none;
+    }
   }
 
   .inner {
