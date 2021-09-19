@@ -32,7 +32,7 @@ const Header = () => {
 }
 
 const HeaderContainer = styled.header`
-  height: 3rem;
+  height: 4rem;
   z-index: 100;
   position: relative;
   margin: 0.5rem 0;
@@ -83,7 +83,7 @@ const HeaderContainer = styled.header`
     ion-icon {
       position: relative;
       z-index: 30;
-      font-size: 2rem;
+      font-size: 2.25rem;
       transition: 0.3s all ease;
 
       @media ${({ theme }) => theme.mediaQuery.medium} {
@@ -124,13 +124,13 @@ const HeaderContainer = styled.header`
 `
 
 const Logo = styled.img`
-  height: 2.75rem;
+  height: 3.25rem;
   width: auto;
   position: relative;
   top: 0.15rem;
 
   @media ${({ theme }) => theme.mediaQuery.medium} {
-    height: 2rem;
+    height: 2.25rem;
   }
 `
 

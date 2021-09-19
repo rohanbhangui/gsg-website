@@ -69,7 +69,7 @@ const Link = styled(_Link)`
   margin: 0 0.1rem;
   padding: 0.1rem;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.33);
   transition: 0.3s color ease;
   text-transform: normal;
   font-weight: 600;
@@ -84,7 +84,7 @@ const Copyright = styled.div`
   font-size: 12px;
   text-align: center;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.66);
+  color: rgba(255, 255, 255, 0.5);
 `
 
 export default Footer;

@@ -1,9 +1,15 @@
-const Typography = `
+import { css } from "styled-components";
+
+const Typography = css`
   p {
     font-weight: 500;
     margin-top: 0.75rem;
     line-height: 1.2rem;
-    font-size: 0.8rem;
+    font-size: 1rem;
+
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      font-size: 0.8rem;
+    }
   }
 
   h1, .h1 {

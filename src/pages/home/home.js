@@ -331,10 +331,11 @@ const Container = styled.section`
 
   &.trusted-by {
     max-width: none;
-    margin-top: 12rem;
+    margin-top: 0rem;
 
     @media ${({ theme }) => theme.mediaQuery.medium} {
       max-width: ${LG}px;
+      margin-top: 4rem;
     }
 
     h2 {
@@ -500,7 +501,7 @@ const VennContent = styled.div`
     max-width: 15rem;
   }
 
-  @media ${({ theme }) => theme.mediaQuery.medium} {
+  @media ${({ theme }) => theme.mediaQuery.large} {
     max-width: 20rem;
   }
   
