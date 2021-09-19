@@ -76,9 +76,8 @@ const Home = () => {
   const location = useLocation();
 
   const scrollBackground = (e) => {
-    console.log("DEBUG", window.scrollY);
-
-    document.querySelector("html").style.setProperty('--background-position', `${100*window.scrollY/document.querySelector("html").offsetHeight}%`);
+    const html = document.querySelector("html");
+    html.style.setProperty('--background-position', `${100*window.scrollY/html.offsetHeight}%`);
   }
 
   useEffect(() => {
