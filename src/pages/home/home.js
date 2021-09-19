@@ -120,8 +120,8 @@ const Home = () => {
         </Grid>
       </Container>
       <VennDiagram>
-        <img className="logo" src={Logo} alt="" />
         <Grid xs={1} sm={2}>
+          <img className="logo" src={Logo} alt="" />
           <LightSide>
             <VennContent className="left">
               <div className="inner">
@@ -415,14 +415,14 @@ const Content = styled.div`
 `
 
 const Hero = styled.img`
-  width: 120%;
+  width: 150%;
   height: auto;
   display: block;
   position: relative;
   left: 50%;
   margin-bottom: 2rem;
   z-index: 0;
-  margin-top: -60%;
+  margin-top: -80%;
   transform: translateX(-50%);
 
   @media ${({ theme }) => theme.mediaQuery.small} {
@@ -451,7 +451,7 @@ const VennDiagram = styled.div`
   .logo {
     position: absolute;
     left: 50%;
-    top: 41%;
+    top: 45%;
     transform: translateX(-50%) translateY(-50%);
     z-index: 20;
     max-width: 10rem;
@@ -459,11 +459,11 @@ const VennDiagram = styled.div`
     height: auto;
 
     @media ${({ theme }) => theme.mediaQuery.small} {
-      top: 45%;
+      top: 54%;
     }
 
     @media ${({ theme }) => theme.mediaQuery.medium} {
-      top: 49%;
+      top: 54%;
     }
 
     @media ${({ theme }) => theme.mediaQuery.xlarge} {

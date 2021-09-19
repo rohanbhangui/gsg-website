@@ -8,7 +8,6 @@ const Header = () => {
   const [isMobileOpen, setIsMobileOpen] = useState("close");
 
   const toggleOpen = (e) => {
-    console.log("FIRED");
     setIsMobileOpen(prev => {
       if(prev === "open") return "close";
 
@@ -20,7 +19,7 @@ const Header = () => {
     <HeaderContainer mobileopen={isMobileOpen}>
       <nav>
         <Link to="/"><Logo src={LogoImg} alt="" /></Link>
-        <ion-icon name="menu-outline" onClick={toggleOpen}></ion-icon>
+        <ion-icon name={isMobileOpen === "close" ? "menu-outline" : "close-outline"} onClick={toggleOpen}></ion-icon>
         <ul>
           <NavItem><NavLink onClick={toggleOpen} to="/incubated-properties" activeClassName="selected">Incubated Properties</NavLink></NavItem>
           <NavItem><NavLink onClick={toggleOpen} to="/investments" activeClassName="selected">Investments</NavLink></NavItem>
@@ -36,6 +35,16 @@ const HeaderContainer = styled.header`
   height: 3rem;
   z-index: 100;
   position: relative;
+  margin: 0.5rem 0;
+
+  @media ${({ theme }) => theme.mediaQuery.medium} {
+    margin: 0;
+  }
+
+  ${({ mobileopen }) => mobileopen === "open" && `
+    position: fixed;
+    width: 100%;
+  `}
 
   nav {
     justify-content: space-between;
@@ -138,7 +147,7 @@ const NavItem = styled.li`
 `
 
 const NavLink = styled(_NavLink)`
-  font-size: 1.6rem;
+  font-size: 2.2rem;
   color: white;
   font-weight: 600;
   text-decoration: none;
