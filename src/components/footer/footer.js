@@ -85,6 +85,7 @@ const Copyright = styled.div`
   text-align: center;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
+  margin-bottom: calc(.5rem + env(safe-area-inset-bottom));
 `
 
 export default Footer;
