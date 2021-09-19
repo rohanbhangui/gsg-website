@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import { XLG, XXL } from "../../utils/variables";
+import { XLG, XXL, LG } from "../../utils/variables";
 
 import Logo from "../../assets/img/logo.png";
 import HeroImage from "../../assets/img/hero-image.svg";
@@ -22,7 +22,21 @@ import InvestmentTile from "../../assets/img/investment-tile.png";
 import IncubationTile from "../../assets/img/incubation-tile.png";
 import ArrowGo from "../../assets/img/arrow-go.svg";
 
+//trusted by
+import BeatsLogo from "../../assets/img/beats-logo.png";
+import NikeLogo from "../../assets/img/nike-logo.png";
+import PostmatesLogo from "../../assets/img/postmates-logo.png";
+import NBALogo from "../../assets/img/nba-logo.png";
+import FootLockerLogo from "../../assets/img/footlocker-logo.png";
+import ShowtimeLogo from "../../assets/img/showtime-logo.png";
+import JordanLogo from "../../assets/img/jordan-logo.png";
+import WWELogo from "../../assets/img/wwe-logo.png";
+import CirocLogo from "../../assets/img/ciroc-logo.png";
+import FashionnovaLogo from "../../assets/img/fashionnova-logo.png";
+
 import Button from "../../components/button";
+import Footer from "../../components/footer";
+import Circle from "../../components/circles";
 import {Grid as _Grid} from "../../assets/styles/grid";
 
 const possibilities_blocks = [
@@ -43,10 +57,32 @@ const possibilities_blocks = [
   }
 ]
 
+const trusted_by = [
+  BeatsLogo,
+  NikeLogo,
+  PostmatesLogo,
+  NBALogo,
+  FootLockerLogo,
+  ShowtimeLogo,
+  JordanLogo,
+  WWELogo,
+  CirocLogo,
+  FashionnovaLogo
+]
+
 const Home = () => {
   return (
     <>
       <Container>
+        <Circle
+          color="#3c3c3c"
+          opacity={1}
+          blend="multiply"
+          y={{  
+            direction: "top",
+            dimension: "-10%"
+          }}
+        />
         <Grid xs={1} sm={2}>
           <Row>
             <div className="text-wrapper">
@@ -105,12 +141,13 @@ const Home = () => {
         </Grid>
       </VennDiagram>
       <Container className="creating-possibilities">
-        <h1>
-          Creating
-          Possibilities
-        </h1>
-        <p className="h3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
+        <Grid xs={1} className="intro-content">
+          <h1>
+            Creating
+            Possibilities
+          </h1>
+          <p className="h3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </Grid>
         <Grid xs={1} md={3} className="tri-blocks">
           { possibilities_blocks.map(item => (
             <Block>
@@ -126,9 +163,57 @@ const Home = () => {
             </Block>
           ))}
         </Grid>
+        <Circle
+          color="#eaeaea"
+          blend="lighten"
+          opacity={0.65}
+          y={{  
+            direction: "top",
+            dimension: "90%"
+          }}
+        />
+        <Circle
+          color="#555"
+          opacity={1}
+          size={30}
+          blend="multiply"
+          x={{  
+            direction: "left",
+            dimension: "100%"
+          }}
+          y={{  
+            direction: "top",
+            dimension: "50%"
+          }}
+        />
       </Container>
       <Container className="projects">
-        <h1>Explore Our Projects</h1>
+        <Circle
+          color="#000"
+          opacity={0.50}
+          size={10}
+          y={{  
+            direction: "top",
+            dimension: "30%"
+          }}
+        />
+        <Circle
+          color="#bababa"
+          blend="lighten"
+          opacity={0.66}
+          size={30}
+          x={{  
+            direction: "left",
+            dimension: "90%"
+          }}
+          y={{  
+            direction: "top",
+            dimension: "85%"
+          }}
+        />
+        <Grid xs={1}>
+          <h1>Explore Our Projects</h1>
+        </Grid>
         <Grid xs={1} sm={2} className="project-tiles">
           <TileBlock to="/investments">
             <Tile background={InvestmentTile}>
@@ -150,6 +235,22 @@ const Home = () => {
           </TileBlock>
         </Grid>
       </Container>
+      <Container className="trusted-by">
+        <h2>Trusted By</h2>
+        <Logos>
+          {
+            [...trusted_by].map(item => (
+              <li><img src={item} alt="" /></li>
+            ))
+          }
+          {
+            [...trusted_by,...trusted_by,...trusted_by].map(item => (
+              <li className="mobile-only"><img src={item} alt="" /></li>
+            ))
+          }
+        </Logos>
+      </Container>
+      <Footer />
     </>
   )
 }
@@ -159,23 +260,27 @@ const Container = styled.section`
   width: 100%;
   margin: 4rem auto 0;
   padding: 1rem;
+  position: relative;
 
   &.creating-possibilities {
-    > h1 {
-      color: white;
-    }
-
-    > p {
-      color: #3c3c3c;
-    }
-
-    > h1, > p {
-      max-width: 30rem;
-      margin-left: 2rem;
+    .intro-content {
+      > h1 {
+        color: white;
+      }
+  
+      > p {
+        color: #3c3c3c;
+      }
+  
+      > h1, > p {
+        max-width: 30rem;
+        margin-left: 2rem;
+      }
     }
   }
 
   &.projects {
+    margin-top: 12rem;
     max-width: ${XXL}px;
 
     h1 {
@@ -183,9 +288,27 @@ const Container = styled.section`
       color: white;
     }
   }
+
+  &.trusted-by {
+    max-width: none;
+    margin-top: 12rem;
+
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      max-width: ${LG}px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+  }
 `
 
 const Grid = styled(_Grid)`
+  position: relative;
+  z-index: 5;
+
   &.section-2 {
     justify-content: flex-end;
     
@@ -200,7 +323,7 @@ const Grid = styled(_Grid)`
 
   &.tri-blocks, &.project-tiles {
     grid-gap: 0.6rem;
-    margin-top: 3rem;
+    margin-top: 4rem;
   }
 `
 
@@ -405,6 +528,53 @@ const Tile = styled.div`
         margin-left: 0.5rem;
         width: 2rem;
       }
+    }
+  }
+`
+
+const Logos = styled.ul`
+  list-style: none;
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: nowrap;
+  animation: marquee 40s linear infinite;
+
+  @media ${({ theme }) => theme.mediaQuery.medium} {
+    animation none;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &:hover {
+    animation-play-state: paused;
+  }
+  
+  li {
+    display: inline-block;
+    width: 7rem;
+    height: 5rem;
+    padding: 0.5rem;
+    
+    &.filler {
+      height: 0;
+      display: none;
+
+      @media ${({ theme }) => theme.mediaQuery.medium} {
+        display: inline-block;
+      }
+    }
+
+    &.mobile-only {
+      @media ${({ theme }) => theme.mediaQuery.medium} {
+        display: none;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
   }
 `

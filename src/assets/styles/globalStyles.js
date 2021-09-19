@@ -19,7 +19,6 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: calc(60% + 0.8vmin);
-    overflow-x: hidden;
     background-image:url('${Speckles}');
     background-repeat: no-repeat;
     background-size: cover;
@@ -27,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    overflow-x: hidden;
     background: linear-gradient(to bottom, rgba(136, 136, 136, 0), rgba(0, 0, 0, 0.73));
   }
 
@@ -36,6 +36,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ${Typography}
+
+  @-webkit-keyframes marquee {
+    0% {transform: translateX(0%);}
+    100% {transform: translateX(-50%);}
+  }
 `;
  
 export default GlobalStyle;

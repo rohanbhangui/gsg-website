@@ -24,7 +24,7 @@ const Button = ({
 
 const sharedStyle = css`
   border-radius: 0.2rem;
-  padding: 0.75rem 1.25rem;
+  padding: 0.5rem 1.25rem;
   display: inline-block;
   font-weight: 600;
   font-size: 0.8rem;
