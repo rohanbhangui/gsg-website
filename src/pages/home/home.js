@@ -624,6 +624,11 @@ const Block = styled.div`
     justify-content: space-between;
 
     .flex-item {
+
+      &:first-child {
+        flex: 1 0 auto;
+      }
+
       img {
         height: 4rem;
         width: auto;

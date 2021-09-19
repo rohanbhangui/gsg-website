@@ -4,8 +4,6 @@ import Typography from './typography';
 import Speckles from "../img/speckles.png";
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;800&display=swap');
-
   * {
     margin: 0;
     padding: 0;
