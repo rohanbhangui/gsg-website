@@ -65,7 +65,7 @@ const HeaderContainer = styled.header`
         transform: none;
       }
 
-      ${({ mobileopen }) => mobileopen == "open" && `
+      ${({ mobileopen }) => mobileopen === "open" && `
         opacity: 1;
         pointer-events: auto;
       `}
@@ -80,7 +80,7 @@ const HeaderContainer = styled.header`
         transition: none;
       }
 
-      ${({ mobileopen }) => mobileopen == "open" && `
+      ${({ mobileopen }) => mobileopen === "open" && `
         color: white;
       `}
     }
@@ -99,7 +99,7 @@ const HeaderContainer = styled.header`
       -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
 
-      ${({ mobileopen }) => mobileopen == "open" && `
+      ${({ mobileopen }) => mobileopen === "open" && `
         opacity: 1;
         pointer-events: auto;
       `}

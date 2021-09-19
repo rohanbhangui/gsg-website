@@ -2,7 +2,6 @@ import React from 'react';
 import { Link as _Link } from 'react-router-dom';
 import styled from "styled-components";
 
-import { XLG } from "../../utils/variables";
 import Button from '../button';
 
 const socials = [
