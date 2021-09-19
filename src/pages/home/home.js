@@ -74,15 +74,18 @@ const trusted_by = [
 const Home = () => {
 
   const scrollBackground = (e) => {
-    const html = document.querySelector("html");
-    console.log("DEBUG", 50*window.scrollY/html.offsetHeight*0.66);
-    let offset = 50*window.scrollY/html.offsetHeight*0.66;
+    const html = document.querySelector(".background");
+    let offset = 10*window.scrollY/html.offsetHeight*0.66;
     if(offset < 0) offset = 0;
+    console.log("DEBUG", offset);
     html.style.setProperty('--background-position', `-${offset}vh`);
   }
 
   useEffect(() => {
     window.addEventListener('scroll', scrollBackground);
+
+    const html = document.querySelector(".background");
+    html.style.setProperty('--background-position', `0vh`);
 
     return () => {
       window.removeEventListener('scroll', scrollBackground);

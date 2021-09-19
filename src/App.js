@@ -15,33 +15,49 @@ import Investments from "./pages/investments";
 
 import Header from "./components/header";
 
+import Speckles from "./assets/img/speckles.png";
+
 const App = () => {
   return (
-    <Main>
-      <GlobalStyle />
-      <Router>
-        <Header />
-        <Switch>
-          <Route path="/incubated-properties">
-            <Incubation />
-          </Route>
-          <Route path="/investments">
-            <Investments />
-          </Route>
-          <Route path="/contact">
-            <Contact />
-          </Route>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-        </Switch>
-      </Router>
-    </Main>
+    <>
+      <Main>
+        <GlobalStyle />
+        <Router>
+          <Header />
+          <Switch>
+            <Route path="/incubated-properties">
+              <Incubation />
+            </Route>
+            <Route path="/investments">
+              <Investments />
+            </Route>
+            <Route path="/contact">
+              <Contact />
+            </Route>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
+      </Main>
+      <Background className="background" src={Speckles} />
+    </>
   );
 }
 
 const Main = styled.main`
   overflow-x: hidden;
+`
+
+const Background = styled.img`
+  position: fixed;
+  top: var(--background-position);
+  left: 0;
+  right: 0;
+  height: 150vh;
+  width: 100%;
+  object-fit: cover;
+
 `
 
 export default App;

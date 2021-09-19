@@ -16,15 +16,15 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: calc(60% + 0.8vmin);
-    background-image:url('${Speckles}');
-    background-repeat: no-repeat;
-    background-size: auto 150vh;
-    background-attachment: fixed;
-    background-position: center var(--background-position);
+    // background-image:url('${Speckles}');
+    // background-repeat: no-repeat;
+    // background-size: auto 150vh;
+    // background-attachment: fixed;
+    // background-position: center var(--background-position);
 
-    @media ${({ theme }) => theme.mediaQuery.medium} {
-      background-size: auto 150vh;
-    }
+    // @media ${({ theme }) => theme.mediaQuery.medium} {
+    //   background-size: auto 150vh;
+    // }
   }
 
   body {
