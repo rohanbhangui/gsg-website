@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { XLG, XXL, LG } from "../../utils/variables";
 
@@ -72,6 +73,21 @@ const trusted_by = [
 
 const Home = () => {
 
+  const location = useLocation();
+
+  const scrollBackground = (e) => {
+    console.log("DEBUG", window.scrollY);
+
+    document.querySelector("html").style.setProperty('--background-position', `${100*window.scrollY/document.querySelector("html").offsetHeight}%`);
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', scrollBackground);
+
+    return () => {
+      window.removeEventListener('scroll', scrollBackground);
+    }
+  }, []);
 
   return (
     <>
