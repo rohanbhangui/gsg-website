@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { XLG, XXL, LG } from "../../utils/variables";
 
@@ -72,8 +72,6 @@ const trusted_by = [
 ]
 
 const Home = () => {
-
-  const location = useLocation();
 
   const scrollBackground = (e) => {
     const html = document.querySelector("html");
