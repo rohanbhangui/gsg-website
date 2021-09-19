@@ -21,9 +21,13 @@ const GlobalStyle = createGlobalStyle`
     font-size: calc(60% + 0.8vmin);
     background-image:url('${Speckles}');
     background-repeat: no-repeat;
-    background-size: auto 150%;
+    background-size: auto 125%;
     background-attachment: fixed;
     background-position: center var(--background-position);
+
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      background-size: auto 150%;
+    }
   }
 
   body {

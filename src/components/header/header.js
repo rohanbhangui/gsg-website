@@ -81,6 +81,8 @@ const HeaderContainer = styled.header`
     }
 
     ion-icon {
+      position: relative;
+      z-index: 30;
       font-size: 2rem;
       transition: 0.3s all ease;
 
