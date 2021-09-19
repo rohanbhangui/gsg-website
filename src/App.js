@@ -5,6 +5,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import styled from "styled-components";
 
 import GlobalStyle from "./assets/styles/globalStyles";
 
@@ -17,7 +18,7 @@ import Header from "./components/header";
 
 const App = () => {
   return (
-    <>
+    <Main>
       <GlobalStyle />
       <Router>
         <Header />
@@ -36,8 +37,12 @@ const App = () => {
           </Route>
         </Switch>
       </Router>
-    </>
+    </Main>
   );
 }
+
+const Main = styled.main`
+  overflow-x: hidden;
+`
 
 export default App;

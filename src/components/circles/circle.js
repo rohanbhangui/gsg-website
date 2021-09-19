@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from "styled-components";
 
 const Circle = ({
+  className,
   color = "#000",
   blend = "normal",
   opacity = 0.5,
@@ -10,7 +11,7 @@ const Circle = ({
   y = { direction: "top", dimension: "0"},
 }) => {
   return (
-    <Container color={color} blend={blend} opacity={opacity} size={size} x={x} y={y} />
+    <Container className={className} color={color} blend={blend} opacity={opacity} size={size} x={x} y={y} />
   )
 }
 

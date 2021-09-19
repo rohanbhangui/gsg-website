@@ -26,8 +26,12 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    overflow-x: hidden;
     background: linear-gradient(to bottom, rgba(136, 136, 136, 0), rgba(0, 0, 0, 0.73));
+    background-size: cover;
+  }
+
+  #root {
+    width: 100%;
   }
 
   * {

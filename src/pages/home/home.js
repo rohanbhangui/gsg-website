@@ -71,10 +71,12 @@ const trusted_by = [
 ]
 
 const Home = () => {
+
+
   return (
     <>
       <Container>
-        <Circle
+        <FirstCircle
           color="#3c3c3c"
           opacity={1}
           blend="multiply"
@@ -84,7 +86,7 @@ const Home = () => {
           }}
         />
         <Grid xs={1} sm={2}>
-          <Row>
+          <Row className="hero-section-text">
             <div className="text-wrapper">
               <h1>
                 A culture focused
@@ -98,24 +100,28 @@ const Home = () => {
               <Button linkto="/contact" label="Contact Us" />
             </div>
           </Row>
-          <Row>
+          <Row className="hero-section-img">
             <Hero src={HeroImage} alt="" />
           </Row>
         </Grid>
-        <Grid xs={2} className="section-2">
-          <Row></Row>
+      </Container>
+      <Container className="pre-venn">
+        <Grid xs={1} lg={2} className="section-2">
+          <Row className="desktop-push"></Row>
           <Row>
+            <div className="text-wrapper">
               <h1>Finding Potential.</h1>
               <h1>Generating Value.</h1>
               <Content>
                 <p className="h3">We like to capitalize where potential is untapped. We generate value by focusing on the intersection of brand incubation and early stage value investing.</p>
               </Content>
+            </div>
           </Row>
         </Grid>
       </Container>
       <VennDiagram>
         <img className="logo" src={Logo} alt="" />
-        <Grid xs={3} sm={2}>
+        <Grid xs={1} sm={2}>
           <LightSide>
             <VennContent className="left">
               <div className="inner">
@@ -148,7 +154,7 @@ const Home = () => {
           </h1>
           <p className="h3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </Grid>
-        <Grid xs={1} md={3} className="tri-blocks">
+        <Grid xs={3} className="tri-blocks">
           { possibilities_blocks.map(item => (
             <Block>
               <div className="flex-container">
@@ -258,12 +264,33 @@ const Home = () => {
 const Container = styled.section`
   max-width: ${XLG}px;
   width: 100%;
-  margin: 4rem auto 0;
+  margin: 4rem auto 4rem;
   padding: 1rem;
   position: relative;
 
+  @media ${({ theme }) => theme.mediaQuery.medium} {
+    margin-bottom: 0;
+  }
+
+  &.pre-venn {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
   &.creating-possibilities {
+    padding: 0;
+
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      padding: 0 1rem;
+    }
+
     .intro-content {
+      padding: 0 1rem;
+
+      @media ${({ theme }) => theme.mediaQuery.medium} {
+        padding: 0;
+      }
+
       > h1 {
         color: white;
       }
@@ -311,6 +338,14 @@ const Grid = styled(_Grid)`
 
   &.section-2 {
     justify-content: flex-end;
+
+    .desktop-push {
+      display: none;
+
+      @media ${({ theme }) => theme.mediaQuery.large} {
+        display: block;
+      }
+    }
     
     h1 {
       color: #3c3c3c;
@@ -325,18 +360,54 @@ const Grid = styled(_Grid)`
     grid-gap: 0.6rem;
     margin-top: 4rem;
   }
+
+  &.tri-blocks {
+    overflow: auto;
+
+    padding: 0 1rem;
+
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      padding: 0;
+    }
+  }
 `
 
 const Row = styled.div`
   position: relative;
 
   .text-wrapper {
-    width: 80%;
+    width: 100%;
+
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      width: 80%;
+    }
+  }
+
+  &.hero-section-text {
+    order: 2;
+
+    @media ${({ theme }) => theme.mediaQuery.small} {
+      order: 1;
+    }
+  }
+
+  &.hero-section-img {
+    order: 1;
+
+    @media ${({ theme }) => theme.mediaQuery.small} {
+      order: 2;
+      margin-bottom: -10rem;
+    }
+
+    @media ${({ theme }) => theme.mediaQuery.large} {
+      order: 2;
+      margin-bottom: -10rem;
+    }
   }
 `
 
 const Content = styled.div`
-  margin-top: 2rem;
+  margin-top: 1rem;
 
   h1 {
     white-space: pre-line;
@@ -344,34 +415,59 @@ const Content = styled.div`
 `
 
 const Hero = styled.img`
-  width: 200%;
+  width: 120%;
   height: auto;
   display: block;
   position: relative;
-  left: 0;
-  top: 30%;
-  transform: translateY(-50%);
+  left: 50%;
+  margin-bottom: 2rem;
+  z-index: 0;
+  margin-top: -60%;
+  transform: translateX(-50%);
+
+  @media ${({ theme }) => theme.mediaQuery.small} {
+    transform: translateY(-50%);
+    width: 200%;
+    top: 30%;
+    left: auto;
+    z-index: 0;
+    max-width: none;
+    margin-top: 0;
+    
+  }
 `
 
 const VennDiagram = styled.div`
   max-width: 100rem;
   width: 100%;
   margin: 0 auto;
-  padding-bottom: 8rem;
+  padding-bottom: 0rem;
   position: relative;
+
+  @media ${({ theme }) => theme.mediaQuery.medium} {
+    padding-bottom: 8rem;
+  }
 
   .logo {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 41%;
     transform: translateX(-50%) translateY(-50%);
     z-index: 20;
-    max-width: 15rem;
+    max-width: 10rem;
     width: 100%;
     height: auto;
 
+    @media ${({ theme }) => theme.mediaQuery.small} {
+      top: 45%;
+    }
+
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      top: 49%;
+    }
+
     @media ${({ theme }) => theme.mediaQuery.xlarge} {
-      max-width: 10rem;
+      max-width: 15rem;
     }
   }
 `
@@ -386,15 +482,31 @@ const VennContent = styled.div`
   width: 100%;
   top: 0;
   bottom: 0;
+
+  @media ${({ theme }) => theme.mediaQuery.small} {
+    max-width: 15rem;
+  }
+
+  @media ${({ theme }) => theme.mediaQuery.medium} {
+    max-width: 20rem;
+  }
   
   &.left {
-    left: 40%;
+    left: 50%;
     transform: translateX(-50%);
+
+    @media ${({ theme }) => theme.mediaQuery.small} {
+      left: 40%;
+    }
   }
 
   &.right {
-    left: 60%;
+    left: 50%;
     transform: translateX(-50%);
+
+    @media ${({ theme }) => theme.mediaQuery.small} {
+      left: 60%;
+    }
   }
 `
 
@@ -421,12 +533,21 @@ const LightSide = styled.div`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    max-width: 40rem;
+
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      max-width: none;
+    }
   }
 `
 
 const DarkSide = styled.div`
   position: relative;
-  top: 10%;
+  top: -20%;
+
+  @media ${({ theme }) => theme.mediaQuery.small} {
+    top: 10%;
+  }
 
   img.icon {
     height: 100%;
@@ -449,6 +570,11 @@ const DarkSide = styled.div`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    max-width: 40rem;
+
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      max-width: none;
+    }
   }
 `
 
@@ -457,6 +583,11 @@ const Block = styled.div`
   background: #F2F2F2;
   border-radius: 2rem;
   min-height: 20rem;
+  min-width: 20rem;
+
+  @media ${({ theme }) => theme.mediaQuery.medium} {
+    min-width: auto;
+  }
 
   .flex-container {
     height: 100%;
@@ -576,6 +707,14 @@ const Logos = styled.ul`
       height: 100%;
       object-fit: contain;
     }
+  }
+`
+
+const FirstCircle = styled(Circle)`
+  display: none;
+
+  @media ${({ theme }) => theme.mediaQuery.medium} {
+    display: block;
   }
 `
 
