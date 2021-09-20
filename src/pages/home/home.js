@@ -75,7 +75,7 @@ const Home = () => {
 
   const scrollBackground = (e) => {
     const html = document.querySelector(".background");
-    let offset = 10*window.scrollY/html.offsetHeight*0.66;
+    let offset = 20*window.scrollY/html.offsetHeight*0.66;
     if(offset < 0) offset = 0;
     console.log("DEBUG", offset);
     html.style.setProperty('--background-position', `-${offset}vh`);

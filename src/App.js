@@ -47,6 +47,8 @@ const App = () => {
 
 const Main = styled.main`
   overflow-x: hidden;
+  position: relative;
+  z-index: 30;
 `
 
 const Background = styled.img`
@@ -57,7 +59,6 @@ const Background = styled.img`
   height: 150vh;
   width: 100%;
   object-fit: cover;
-
 `
 
 export default App;
