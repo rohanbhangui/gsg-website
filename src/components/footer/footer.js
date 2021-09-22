@@ -3,6 +3,8 @@ import { Link as _Link, useLocation } from 'react-router-dom';
 import styled from "styled-components";
 import { v4 as uuid } from "uuid";
 
+import { XLG } from '../../utils/variables';
+
 import Button from '../button';
 
 const socials = [
@@ -30,22 +32,29 @@ const Footer = () => {
 
   useEffect(() => {
     console.log("DEBUG", location);
-  }, [])
+    if(location.pathname === "/incubated-properties") {
+      setTitleCopy("Want to hear more? Reach out!");
+    } else if (location.pathname === "/investments") {
+      setTitleCopy("Have a business you want us to hear about? Reach out!");
+    }
+  }, [location.pathname])
   
   return (
     <FooterContainer>
-      <h1>Get In Touch</h1>
-      <Socials>
-        {
-          socials.map(({name, url}) => (
-            <li key={uuid()}>
-              <Link to={url} className="h2">
-                {name}
-              </Link>
-            </li>
-          ))
-        }
-      </Socials>
+      <h1>{titleCopy}</h1>
+      { titleCopy === "Get In Touch" && (
+        <Socials>
+          {
+            socials.map(({name, url}) => (
+              <li key={uuid()}>
+                <Link to={url} className="h2">
+                  {name}
+                </Link>
+              </li>
+            ))
+          }
+        </Socials>
+      )}
       <Button linkto="/contact" label="Contact us" />
       <Copyright>Grey Space Group &copy; Copyright 2021</Copyright>
     </FooterContainer>
@@ -58,6 +67,7 @@ const FooterContainer = styled.footer`
   padding: 1rem;
   position: relative;
   text-align: center;
+  max-width: ${XLG}px;
 
   h1 {
     color: white;
