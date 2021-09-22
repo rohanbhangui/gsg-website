@@ -10,6 +10,12 @@ const Button = ({
   label
 }) => {
   if(linkto) {
+    if(/(http(s?)):\/\//i.test(linkto)) {
+      return (
+        <ExternalLink className={className} href={linkto}>{label}</ExternalLink>
+      )
+    }
+
     return (
       <Link className={className} to={linkto}>{label}</Link>
     )
@@ -62,6 +68,9 @@ const Action = styled.button`
   ${sharedStyle}
 `
 const Link = styled(_Link)`
+  ${sharedStyle}
+`
+const ExternalLink = styled.a`
   ${sharedStyle}
 `
 
