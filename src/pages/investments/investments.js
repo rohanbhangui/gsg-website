@@ -36,13 +36,13 @@ const properties = [
     title: "Freck",
     subtitle: "Lorem Ipesum",
     logo: Freck,
-    description: `Koia understood the importance of having the right partner to represent their growth and prominence as a plant-based protein drink.
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
-    See how we helped Koia realize their potential when they linked up with NBA superstar Chris Paul. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     
     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`,
     link: {
-      url: "https://national-players-club.myshopify.com/",
+      url: "https://freckbeauty.com/",
       label: "Learn More",
     },
     masterImage: FRECK_HERO
@@ -52,13 +52,13 @@ const properties = [
     title: "Rowing Blazers",
     subtitle: "Lorem Ipesum",
     logo: RowingBlazers,
-    description: `Koia understood the importance of having the right partner to represent their growth and prominence as a plant-based protein drink.
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
-    See how we helped Koia realize their potential when they linked up with NBA superstar Chris Paul. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     
     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`,
     link: {
-      url: "https://drinkkoia.com/",
+      url: "https://rowingblazers.com/",
       label: "Learn More",
     },
     masterImage: ROWINGBLAZERS_HERO
@@ -68,13 +68,13 @@ const properties = [
     title: "Wilde Chips",
     subtitle: "Lorem Ipesum",
     logo: Wilde,
-    description: `Koia understood the importance of having the right partner to represent their growth and prominence as a plant-based protein drink.
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
-    See how we helped Koia realize their potential when they linked up with NBA superstar Chris Paul. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     
     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`,
     link: {
-      url: "https://national-players-club.myshopify.com/",
+      url: "https://www.wildebrands.com/",
       label: "Learn More",
     },
     masterImage: WILDE_HERO
