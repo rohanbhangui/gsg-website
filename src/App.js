@@ -67,7 +67,7 @@ const Background = styled.img`
   height: 150vh;
   width: 100%;
   object-fit: cover;
-  z-index: 1;
+  z-index: -1;
   transform: translateZ(-100px);
 `
 

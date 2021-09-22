@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { XXL } from "../../utils/variables";
 import {Grid as _Grid} from "../../assets/styles/grid";
@@ -95,10 +95,6 @@ const Incubation = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const clickTest = (e) => {
-    setCurrentItemIndex(1);
-  }
-
   return (
     <>
       <Container className="bigTitle">
@@ -107,8 +103,8 @@ const Incubation = () => {
           <p className="h3">Grey Space Group takes an individualized approach and curates organic GTM strategies, marketing campaigns, product distribution, and talent / brand partnerships to further each brand's growth.</p>
           <FlexContainer>
             { properties.map(property => (
-              <a href={`#${property.id}`}>
-                <PropertyImage key={property.id} src={property.logo} />
+              <a key={property.id} href={`#${property.id}`}>
+                <PropertyImage src={property.logo} />
               </a>
             ))}
           </FlexContainer>
@@ -118,12 +114,13 @@ const Incubation = () => {
         <Grid xs={1} md={2}>
           <div>
             <FloatingImageContainer>
-              <FloatingImage img={properties[currentItemIndex].masterImage} onClick={clickTest} />
+              <FloatingImage img={properties[currentItemIndex].masterImage} />
             </FloatingImageContainer>
           </div>
           <div>
             { properties.map(property => (
               <Block key={property.id} className="item-block" id={property.id}>
+                <BlockImage className="mobile" img={property.masterImage} />
                 <div className="content">
                   <img src={property.logo} alt="" className="logo" />
                   <h2>{property.title}</h2>
@@ -156,7 +153,7 @@ const Container = styled.section`
     p {
       width: 70%;
       margin: 0 auto;
-      color: white;
+      color: rgba(0, 0, 0, 0.5);
     }
   }
 `
@@ -187,7 +184,7 @@ const FloatingImageContainer = styled.div`
   }
 `
 
-const FloatingImage = styled.div`
+const PropertyImageStyles = css`
   width: 100%;
   height: 30vh;
   border-radius: 3rem;
@@ -215,14 +212,35 @@ const FloatingImage = styled.div`
   }
 `
 
+const FloatingImage = styled.div`
+  ${PropertyImageStyles}
+  
+  display: none;
+
+  @media ${({ theme }) => theme.mediaQuery.medium} {
+    display: block;
+  }
+`
+
+const BlockImage = styled.div`
+  ${PropertyImageStyles}
+
+  @media ${({ theme }) => theme.mediaQuery.medium} {
+    display: none;
+  }
+`
+
 const Block = styled.div`
-  padding: 3rem;
+  padding: 1rem;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 
   @media ${({ theme }) => theme.mediaQuery.medium} {
     min-height: 45vh;
     border-radius: 3rem;
+    flex-wrap: nowrap
+    padding: 3rem;
   }
 
   @media ${({ theme }) => theme.mediaQuery.large} {
@@ -236,6 +254,12 @@ const Block = styled.div`
   }
 
   .content {
+    padding: 2rem;
+
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      padding: 0;
+    }
+
     .logo {
       height: 3rem;
       width: auto;

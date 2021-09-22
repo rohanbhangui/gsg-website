@@ -1,10 +1,12 @@
-import { useState } from 'react';
-import { NavLink as _NavLink, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { NavLink as _NavLink, Link, useLocation } from 'react-router-dom';
 import styled from "styled-components";
 
 import LogoImg from "../../assets/img/logo.png";
 
 const Header = () => {
+  const { pathname } = useLocation();
+
   const [isMobileOpen, setIsMobileOpen] = useState("close");
 
   const toggleOpen = (e) => {
@@ -14,17 +16,21 @@ const Header = () => {
       return "open";
     })
   }
+
+  useEffect(() => {
+    setIsMobileOpen("close");
+  }, [pathname]);
   
   return (
     <HeaderContainer mobileopen={isMobileOpen}>
       <nav>
-        <Link to="/" onClick={toggleOpen}><Logo src={LogoImg} alt="" /></Link>
-        <ion-icon name={isMobileOpen === "close" ? "menu-outline" : "close-outline"} onClick={toggleOpen}></ion-icon>
+        <Link to="/"><Logo src={LogoImg} alt="" /></Link>
+        <ion-icon name={isMobileOpen === "close" ? "menu-outline" : "close-outline"}></ion-icon>
         <ul>
-          <NavItem><NavLink onClick={toggleOpen} to="/incubated-properties" activeClassName="selected">Incubated Properties</NavLink></NavItem>
-          <NavItem><NavLink onClick={toggleOpen} to="/investments" activeClassName="selected">Investments</NavLink></NavItem>
-          <NavItem><NavLink onClick={toggleOpen} to="/" activeClassName="selected">About</NavLink></NavItem>
-          <NavItem><NavLink onClick={toggleOpen} to="/contact" activeClassName="selected">Contact</NavLink></NavItem>
+          <NavItem><NavLink to="/incubated-properties" activeClassName="selected">Incubated Properties</NavLink></NavItem>
+          <NavItem><NavLink to="/investments" activeClassName="selected">Investments</NavLink></NavItem>
+          <NavItem><NavLink to="/" activeClassName="selected">About</NavLink></NavItem>
+          <NavItem><NavLink to="/contact" activeClassName="selected">Contact</NavLink></NavItem>
         </ul>
       </nav>
     </HeaderContainer>

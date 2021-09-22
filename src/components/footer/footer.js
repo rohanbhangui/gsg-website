@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link as _Link } from 'react-router-dom';
 import styled from "styled-components";
+import { v4 as uuid } from "uuid";
 
 import Button from '../button';
 
@@ -30,7 +31,7 @@ const Footer = () => {
       <Socials>
         {
           socials.map(({name, url}) => (
-            <li>
+            <li key={uuid()}>
               <Link to={url} className="h2">
                 {name}
               </Link>
