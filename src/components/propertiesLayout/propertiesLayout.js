@@ -82,7 +82,8 @@ const PropertiesLayout = ({
           </div>
           <div>
             { properties.map(property => (
-              <Block key={property.id} className="item-block" id={property.id}>
+              <Block key={property.id} className="item-block">
+                <Marker id={property.id} />
                 <BlockImage className="mobile" img={property.masterImage} />
                 <div className="content">
                   <img src={property.logo} alt="" className="logo" />
@@ -234,6 +235,7 @@ const Block = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  position: relative;
 
   @media ${({ theme }) => theme.mediaQuery.medium} {
     min-height: 45vh;
@@ -285,6 +287,15 @@ const Block = styled.div`
     p {
       white-space: pre-line;
     }
+  }
+`
+
+const Marker = styled.div`
+  position: absolute;
+  top: 0;
+  
+  @media ${({ theme }) => theme.mediaQuery.medium} {
+    top: -15vh;
   }
 `
 
