@@ -14,10 +14,12 @@ import Incubation from "./pages/incubation";
 import Investments from "./pages/investments";
 
 import Header from "./components/header";
+import Footer from "./components/footer";
 
 import Speckles from "./assets/img/speckles.png";
 
 const App = () => {
+  
   return (
     <>
       <Main>
@@ -38,6 +40,7 @@ const App = () => {
               <Home />
             </Route>
           </Switch>
+          <Footer />
         </Router>
       </Main>
       <Background className="background" src={Speckles} />
@@ -47,8 +50,11 @@ const App = () => {
 
 const Main = styled.main`
   overflow-x: hidden;
-  position: relative;
-  z-index: 30;
+
+
+  &.overflow-open {
+    overflow-x: visible;
+  }
 `
 
 const Background = styled.img`
@@ -59,6 +65,8 @@ const Background = styled.img`
   height: 150vh;
   width: 100%;
   object-fit: cover;
+  z-index: -1;
+  transform: translateZ(-100px);
 `
 
 export default App;

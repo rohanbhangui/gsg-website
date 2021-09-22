@@ -17,6 +17,23 @@ const Typography = css`
     font-size: 2.5rem;
     line-height: 1.1;
     text-transform: uppercase;
+
+    &.big {
+      font-size: 4rem;
+      line-height: 1;
+
+      @media ${({ theme }) => theme.mediaQuery.medium} {
+        font-size: 5rem;
+      }
+
+      @media ${({ theme }) => theme.mediaQuery.large} {
+        font-size: 6rem;
+      }
+
+      @media ${({ theme }) => theme.mediaQuery.xlarge} {
+        font-size: 7rem;
+      }
+    }
   }
 
   h2, .h2 {

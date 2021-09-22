@@ -36,7 +36,6 @@ import CirocLogo from "../../assets/img/ciroc-logo.png";
 import FashionnovaLogo from "../../assets/img/fashionnova-logo.png";
 
 import Button from "../../components/button";
-import Footer from "../../components/footer";
 import Circle from "../../components/circles";
 import {Grid as _Grid} from "../../assets/styles/grid";
 
@@ -77,7 +76,7 @@ const Home = () => {
     const html = document.querySelector(".background");
     let offset = 20*window.scrollY/html.offsetHeight*0.66;
     if(offset < 0) offset = 0;
-    console.log("DEBUG", offset);
+
     html.style.setProperty('--background-position', `-${offset}vh`);
   }
 
@@ -86,6 +85,9 @@ const Home = () => {
 
     const html = document.querySelector(".background");
     html.style.setProperty('--background-position', `0vh`);
+
+    //remove overflow hidden
+    document.querySelector("main").classList.remove("overflow-open");
 
     return () => {
       window.removeEventListener('scroll', scrollBackground);
@@ -125,16 +127,13 @@ const Home = () => {
         </Grid>
       </Container>
       <Container className="pre-venn">
-        <Grid xs={1} lg={2} className="section-2">
-          <Row className="desktop-push"></Row>
+        <Grid xs={1} lg={1} className="section-2">
           <Row>
-            <div className="text-wrapper">
-              <h1>Finding Potential.</h1>
-              <h1>Generating Value.</h1>
-              <Content>
-                <p className="h3">We like to capitalize where potential is untapped. We generate value by focusing on the intersection of brand incubation and early stage value investing.</p>
-              </Content>
-            </div>
+            <h1>Finding Potential.</h1>
+            <h1>Generating Value.</h1>
+            <Content>
+              <p className="h3">We like to capitalize where potential is untapped. We generate value by focusing on the intersection of brand incubation and early stage value investing.</p>
+            </Content>
           </Row>
         </Grid>
       </Container>
@@ -275,7 +274,6 @@ const Home = () => {
           }
         </Logos>
       </Container>
-      <Footer />
     </>
   )
 }
@@ -359,12 +357,9 @@ const Grid = styled(_Grid)`
   &.section-2 {
     justify-content: flex-end;
 
-    .desktop-push {
-      display: none;
-
-      @media ${({ theme }) => theme.mediaQuery.large} {
-        display: block;
-      }
+    > div {
+      width: 60%;
+      margin-left: auto;
     }
     
     h1 {

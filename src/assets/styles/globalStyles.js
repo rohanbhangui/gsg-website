@@ -16,20 +16,13 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: calc(60% + 0.8vmin);
-    // background-image:url('${Speckles}');
-    // background-repeat: no-repeat;
-    // background-size: auto 150vh;
-    // background-attachment: fixed;
-    // background-position: center var(--background-position);
-
-    // @media ${({ theme }) => theme.mediaQuery.medium} {
-    //   background-size: auto 150vh;
-    // }
+    scroll-behavior: smooth;
   }
 
   body {
     background: linear-gradient(to bottom, rgba(136, 136, 136, 0), rgba(0, 0, 0, 0.73));
     background-size: cover;
+    background-repeat: no-repeat;
   }
 
   #root {

@@ -1,5 +1,3 @@
-const Incubation = () => {
-  return <>this is Incubation</>
-}
+import Incubation from "./incubation";
 
 export default Incubation;
