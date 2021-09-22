@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link as _Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link as _Link, useLocation } from 'react-router-dom';
 import styled from "styled-components";
 import { v4 as uuid } from "uuid";
 
@@ -25,6 +25,13 @@ const socials = [
 ]
 
 const Footer = () => {
+  const location = useLocation();
+  const [ titleCopy, setTitleCopy ] = useState("Get In Touch");
+
+  useEffect(() => {
+    console.log("DEBUG", location);
+  }, [])
+  
   return (
     <FooterContainer>
       <h1>Get In Touch</h1>

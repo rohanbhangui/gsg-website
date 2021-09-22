@@ -61,7 +61,9 @@ const PropertiesLayout = ({
     <>
       <Container className="bigTitle">
         <Grid xs={1}>
-          { children }
+          <div className="content">
+            { children }
+          </div>
           <FlexContainer>
             { properties.map(property => (
               <a key={property.id} href={`#${property.id}`}>
@@ -109,18 +111,23 @@ const Container = styled.section`
 
   &.bigTitle {
     text-align: center;
+    padding: 0;
 
-    h1 {
-      margin-bottom: 1.5rem;
-    }
-
-    p {
-      width: 100%;
-      margin: 0 auto;
-      color: rgba(0, 0, 0, 0.5);
-
-      @media ${({ theme }) => theme.mediaQuery.medium} {
-        width: 70%;
+    .content {
+      padding: 1rem;
+      
+      h1 {
+        margin-bottom: 1.5rem;
+      }
+  
+      p {
+        width: 100%;
+        margin: 0 auto;
+        color: rgba(0, 0, 0, 0.5);
+  
+        @media ${({ theme }) => theme.mediaQuery.medium} {
+          width: 70%;
+        }
       }
     }
   }
@@ -143,10 +150,13 @@ const Grid = styled(_Grid)`
 const FlexContainer = styled.div`
   display: flex;
   margin-top: 1.5rem;
-  justify-content: center;
   align-items: center;
   overflow-y: auto;
   width: 100%;
+
+  @media ${({ theme }) => theme.mediaQuery.small} {
+    justify-content: center;
+  }
 
   a {
     margin: 0 1rem;
