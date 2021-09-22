@@ -358,8 +358,14 @@ const Grid = styled(_Grid)`
     justify-content: flex-end;
 
     > div {
-      width: 60%;
+      width: 100%;
+      text-align: center;
       margin-left: auto;
+
+      @media ${({ theme }) => theme.mediaQuery.medium} {
+        width: 80%;
+        text-align: left;
+      }
     }
     
     h1 {
