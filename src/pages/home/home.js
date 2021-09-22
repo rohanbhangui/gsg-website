@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -72,6 +72,9 @@ const trusted_by = [
 
 const Home = () => {
 
+  const vennDiagramRef = useRef(null);
+  const vennDigramAnimationMarker = useRef(null);
+
   const scrollBackground = (e) => {
     const html = document.querySelector(".background");
     let offset = 20*window.scrollY/html.offsetHeight*0.66;
@@ -80,8 +83,40 @@ const Home = () => {
     html.style.setProperty('--background-position', `-${offset}vh`);
   }
 
+  const vennDiagramEntrance = (e) => {
+
+    const transitionMarker = vennDigramAnimationMarker && vennDigramAnimationMarker.current;
+    const transitionMarkerBounds = transitionMarker.getBoundingClientRect();
+
+    const element = vennDiagramRef && vennDiagramRef.current;
+    const elementBounds = element.getBoundingClientRect();
+
+    if(window.innerHeight / 2.5 >= transitionMarkerBounds.y) {
+      if(!element.querySelector(".logo").classList.contains("active")) {
+        element.querySelector(".logo").classList.add("active");
+      }
+      
+      [...element.querySelectorAll(".venn-circle")].map(item => {
+        if(!item.classList.contains("active")) {
+          item.classList.add("active");
+        }
+      });
+
+      [...element.querySelectorAll(".inner")].map(item => {
+        if(!item.classList.contains("active")) {
+          item.classList.add("active");
+        }
+      });
+    }
+  }
+
+  const scroll = (e) => {
+    scrollBackground(e);
+    vennDiagramEntrance(e);
+  }
+
   useEffect(() => {
-    window.addEventListener('scroll', scrollBackground);
+    window.addEventListener('scroll', scroll);
 
     const html = document.querySelector(".background");
     html.style.setProperty('--background-position', `0vh`);
@@ -90,7 +125,7 @@ const Home = () => {
     document.querySelector("main").classList.remove("overflow-open");
 
     return () => {
-      window.removeEventListener('scroll', scrollBackground);
+      window.removeEventListener('scroll', scroll);
     }
   }, []);
 
@@ -126,7 +161,7 @@ const Home = () => {
           </Row>
         </Grid>
       </Container>
-      <Container className="pre-venn">
+      <Container className="pre-venn" ref={vennDigramAnimationMarker}>
         <Grid xs={1} lg={1} className="section-2">
           <Row>
             <h1>Finding Potential.</h1>
@@ -137,7 +172,7 @@ const Home = () => {
           </Row>
         </Grid>
       </Container>
-      <VennDiagram>
+      <VennDiagram ref={vennDiagramRef}>
         <Grid xs={1} sm={2}>
           <img className="logo" src={Logo} alt="" />
           <LightSide>
@@ -478,13 +513,18 @@ const VennDiagram = styled.div`
     max-width: 10rem;
     width: 100%;
     height: auto;
+    transition: opacity 1s cubic-bezier(.77, 0, .175, 1),transform 1s cubic-bezier(.77, 0, .175, 1);
 
-    @media ${({ theme }) => theme.mediaQuery.small} {
-      top: 54%;
-    }
+    opacity: 0;
+    top: 0;
 
-    @media ${({ theme }) => theme.mediaQuery.medium} {
-      top: 54%;
+    &.active {
+      top: 45%;
+      opacity: 1;
+
+      @media ${({ theme }) => theme.mediaQuery.small} {
+        top: 54%;
+      }
     }
 
     @media ${({ theme }) => theme.mediaQuery.xlarge} {
@@ -551,6 +591,15 @@ const LightSide = styled.div`
   }
 
   .inner {
+    transition: opacity 1s 1s cubic-bezier(.77, 0, .175, 1),transform 1s 1s cubic-bezier(.77, 0, .175, 1);
+    opacity: 0;
+    transform: translateY(3rem);
+
+    &.active {
+      opacity: 1;
+      transform: translateY(0rem);
+    }
+
     p {
       opacity: 0.5;
     }
@@ -562,11 +611,18 @@ const LightSide = styled.div`
     mix-blend-mode: screen;
     position: relative;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-100%);
     max-width: 40rem;
+    opacity: 0;
+    transition: opacity 1s 0.6s cubic-bezier(.77, 0, .175, 1),transform 1s 0.6s cubic-bezier(.77, 0, .175, 1);
 
     @media ${({ theme }) => theme.mediaQuery.medium} {
       max-width: none;
+    }
+
+    &.active {
+      transform: translateX(-50%);
+      opacity: 1;
     }
   }
 `
@@ -592,6 +648,14 @@ const DarkSide = styled.div`
 
   .inner {
     color: white;
+    transition: opacity 1s 1.3s cubic-bezier(.77, 0, .175, 1),transform 1s 1.3s cubic-bezier(.77, 0, .175, 1);
+    opacity: 0;
+    transform: translateY(3rem);
+
+    &.active {
+      opacity: 1;
+      transform: translateY(0rem);
+    }
 
     p {
       opacity: 0.5;
@@ -604,11 +668,18 @@ const DarkSide = styled.div`
     mix-blend-mode: multiply;
     position: relative;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(0%);
     max-width: 40rem;
+    opacity: 0;
+    transition: opacity 1s 0.9s cubic-bezier(.77, 0, .175, 1),transform 1s 0.9s cubic-bezier(.77, 0, .175, 1);
 
     @media ${({ theme }) => theme.mediaQuery.medium} {
       max-width: none;
+    }
+
+    &.active {
+      transform: translateX(-50%);
+      opacity: 1;
     }
   }
 `
