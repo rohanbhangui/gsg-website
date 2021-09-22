@@ -73,12 +73,6 @@ const Incubation = () => {
         break;
       }
     }
-
-    // .map(item => {
-    //   console.log("DEBUG", item.getBoundingClientRect());
-
-    //   return item;
-    // })
   }
 
   const scroll = (e) => {
@@ -98,6 +92,7 @@ const Incubation = () => {
     return () => {
       window.removeEventListener('scroll', scroll);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const clickTest = (e) => {

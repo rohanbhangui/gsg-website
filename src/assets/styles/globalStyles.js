@@ -1,8 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import Typography from './typography';
 
-import Speckles from "../img/speckles.png";
-
 const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
