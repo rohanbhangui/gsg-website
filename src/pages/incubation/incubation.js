@@ -248,7 +248,7 @@ const Block = styled.div`
   @media ${({ theme }) => theme.mediaQuery.medium} {
     min-height: 45vh;
     border-radius: 3rem;
-    flex-wrap: nowrap
+    flex-wrap: nowrap;
     padding: 3rem;
   }
 
