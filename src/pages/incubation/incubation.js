@@ -110,7 +110,7 @@ const Incubation = () => {
           </FlexContainer>
         </Grid>
       </Container>
-      <Container>
+      <Container className="properties">
         <Grid xs={1} md={2}>
           <div>
             <FloatingImageContainer>
@@ -151,10 +151,18 @@ const Container = styled.section`
     }
 
     p {
-      width: 70%;
+      width: 100%;
       margin: 0 auto;
       color: rgba(0, 0, 0, 0.5);
+
+      @media ${({ theme }) => theme.mediaQuery.medium} {
+        width: 70%;
+      }
     }
+  }
+
+  &.properties {
+    padding: 0.5rem;
   }
 `
 
@@ -231,7 +239,7 @@ const BlockImage = styled.div`
 `
 
 const Block = styled.div`
-  padding: 1rem;
+  padding: 0.5rem;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -261,8 +269,12 @@ const Block = styled.div`
     }
 
     .logo {
-      height: 3rem;
+      height: 5rem;
       width: auto;
+
+      @media ${({ theme }) => theme.mediaQuery.medium} {
+        height: 3rem;
+      }
     }
   
     h3 {
