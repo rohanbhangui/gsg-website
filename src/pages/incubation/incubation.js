@@ -1,5 +1,3 @@
-import {Grid as _Grid} from "../../assets/styles/grid";
-
 import PropertiesLayout from "../../components/propertiesLayout";
 
 // property logos

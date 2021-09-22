@@ -1,5 +1,3 @@
-import {Grid as _Grid} from "../../assets/styles/grid";
-
 // property logos
 import Koia from "../../assets/img/koia.png";
 import Freck from "../../assets/img/freck.png";

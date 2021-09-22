@@ -37,7 +37,8 @@ const Footer = () => {
     } else if (location.pathname === "/investments") {
       setTitleCopy("Have a business you want us to hear about? Reach out!");
     }
-  }, [location.pathname])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname]);
   
   return (
     <FooterContainer>
