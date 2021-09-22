@@ -10,7 +10,7 @@ import NPC from "../../assets/img/npc.png";
 
 // hero images
 import TCL_HERO from "../../assets/img/tcl-masterImage.png";
-import NPC_HERO from "../../assets/img/npc_masterImage.png";
+import NPC_HERO from "../../assets/img/npc-masterImage.png";
 
 const properties = [
   {

@@ -41,9 +41,11 @@ const HeaderContainer = styled.header`
     margin: 0;
   }
 
-  ${({ mobileopen }) => mobileopen === "open" && `
-    position: fixed;
-    width: 100%;
+  ${({ mobileopen, theme }) => mobileopen === "open" && `
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      position: fixed;
+      width: 100%;
+    }
   `}
 
   nav {
