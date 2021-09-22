@@ -15,6 +15,7 @@ import Investments from "./pages/investments";
 
 import Header from "./components/header";
 import Footer from "./components/footer";
+import ScrollToTop from "./components/scrollToTop";
 
 import Speckles from "./assets/img/speckles.png";
 
@@ -25,6 +26,7 @@ const App = () => {
       <Main>
         <GlobalStyle />
         <Router>
+          <ScrollToTop />
           <Header />
           <Switch>
             <Route path="/incubated-properties">
