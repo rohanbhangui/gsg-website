@@ -19,7 +19,7 @@ const Typography = css`
     text-transform: uppercase;
 
     &.big {
-      font-size: 4rem;
+      font-size: 3.4rem;
       line-height: 1;
 
       @media ${({ theme }) => theme.mediaQuery.medium} {

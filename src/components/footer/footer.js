@@ -64,6 +64,7 @@ const Socials = styled.ul`
   list-style: none;
   text-align: center;
   justify-content: center;
+  flex-wrap: wrap;
 `
 
 const Link = styled(_Link)`
