@@ -23,6 +23,7 @@ const App = () => {
   
   return (
     <>
+      <Background className="background" src={Speckles} />
       <Main>
         <GlobalStyle />
         <Router>
@@ -45,14 +46,13 @@ const App = () => {
           <Footer />
         </Router>
       </Main>
-      <Background className="background" src={Speckles} />
     </>
   );
 }
 
 const Main = styled.main`
   overflow-x: hidden;
-
+  transform: translateZ(100px);
 
   &.overflow-open {
     overflow-x: visible;
@@ -67,8 +67,8 @@ const Background = styled.img`
   height: 150vh;
   width: 100%;
   object-fit: cover;
-  z-index: -1;
-  transform: translateZ(-100px);
+  z-index: unset;
+  transform: translateZ(-200px);
 `
 
 export default App;
