@@ -25,7 +25,7 @@ const Header = () => {
     <HeaderContainer mobileopen={isMobileOpen}>
       <nav>
         <Link to="/"><Logo src={LogoImg} alt="" /></Link>
-        <ion-icon name={isMobileOpen === "close" ? "menu-outline" : "close-outline"}></ion-icon>
+        <ion-icon name={isMobileOpen === "close" ? "menu-outline" : "close-outline"} onClick={toggleOpen}></ion-icon>
         <ul>
           <NavItem><NavLink to="/incubated-properties" activeClassName="selected">Incubated Properties</NavLink></NavItem>
           <NavItem><NavLink to="/investments" activeClassName="selected">Investments</NavLink></NavItem>
