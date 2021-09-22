@@ -200,6 +200,7 @@ const PropertyImageStyles = css`
   position: relative;
   background: url(${({ img }) => img});
   background-size: cover;
+  background-position: center center;
   transition: 0.3s all ease;
 
   @media ${({ theme }) => theme.mediaQuery.medium} {
