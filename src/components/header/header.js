@@ -23,10 +23,10 @@ const Header = () => {
 
   useEffect(() => {
     if(isMobileOpen === "open") {
-      document.querySelector("html").classList.add("mobile-open");
+      document.querySelector("body").classList.add("mobile-open");
     }
     else if(isMobileOpen === "close") {
-      document.querySelector("html").classList.remove("mobile-open");
+      document.querySelector("body").classList.remove("mobile-open");
     }
   }, [isMobileOpen]);
   
