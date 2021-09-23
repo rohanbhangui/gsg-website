@@ -86,11 +86,11 @@ const Home = () => {
   const vennDiagramEntrance = (e) => {
 
     const transitionMarker = vennDigramAnimationMarker && vennDigramAnimationMarker.current;
-    const transitionMarkerBounds = transitionMarker.getBoundingClientRect();
+    const transitionMarkerBounds = transitionMarker?.getBoundingClientRect();
 
     const element = vennDiagramRef && vennDiagramRef.current;
 
-    if(window.innerHeight / 2.5 >= transitionMarkerBounds.y) {
+    if(transitionMarkerBounds && window.innerHeight / 2.5 >= transitionMarkerBounds.y) {
       if(!element.querySelector(".logo").classList.contains("active")) {
         element.querySelector(".logo").classList.add("active");
       }

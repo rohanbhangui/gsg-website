@@ -7,7 +7,7 @@ import Wilde from "../../assets/img/wilde.png";
 // hero images
 import WILDE_HERO from "../../assets/img/wilde-masterImage.png";
 import ROWINGBLAZERS_HERO from "../../assets/img/rowingBlazers-masterImage.png";
-import KOIA_HERO from "../../assets/img/investment-tile.png";
+import KOIA_HERO from "../../assets/img/koia-masterImage.png";
 import FRECK_HERO from "../../assets/img/freck-masterImage.png";
 
 import PropertiesLayout from "../../components/propertiesLayout";
