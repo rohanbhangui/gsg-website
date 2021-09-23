@@ -20,6 +20,15 @@ const Header = () => {
   useEffect(() => {
     setIsMobileOpen("close");
   }, [pathname]);
+
+  useEffect(() => {
+    if(isMobileOpen === "open") {
+      document.querySelector("html").classList.add("mobile-open");
+    }
+    else if(isMobileOpen === "close") {
+      document.querySelector("html").classList.remove("mobile-open");
+    }
+  }, [isMobileOpen]);
   
   return (
     <HeaderContainer mobileopen={isMobileOpen}>
@@ -69,7 +78,7 @@ const HeaderContainer = styled.header`
       opacity: 0;
       pointer-events: none;
       position: fixed;
-      top: 50%;
+      top: 50vh;
       transform: translateY(-50%);
       transition: 0.3s all ease;
 
@@ -117,6 +126,7 @@ const HeaderContainer = styled.header`
       transition: 0.3s all ease;
       -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
+      height: 100vh;
 
       ${({ mobileopen }) => mobileopen === "open" && `
         opacity: 1;

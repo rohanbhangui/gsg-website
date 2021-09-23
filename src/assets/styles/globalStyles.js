@@ -14,6 +14,10 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: calc(60% + 0.8vmin);
+
+    &.mobile-open {
+      overflow: hidden;
+    }
   }
 
   body {
