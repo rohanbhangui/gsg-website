@@ -83,14 +83,15 @@ const Home = () => {
     html.style.setProperty('--background-position', `-${offset}vh`);
   }
 
+  // for allowing the venn diagram entrance
   const vennDiagramEntrance = (e) => {
-
+    
     const transitionMarker = vennDigramAnimationMarker && vennDigramAnimationMarker.current;
     const transitionMarkerBounds = transitionMarker?.getBoundingClientRect();
 
     const element = vennDiagramRef && vennDiagramRef.current;
 
-    if(transitionMarkerBounds && window.innerHeight / 2.5 >= transitionMarkerBounds.y) {
+    if(transitionMarkerBounds && window.innerHeight*2/3 >= transitionMarkerBounds.y) {
       if(!element.querySelector(".logo").classList.contains("active")) {
         element.querySelector(".logo").classList.add("active");
       }
@@ -596,7 +597,7 @@ const LightSide = styled.div`
   }
 
   .inner {
-    transition: opacity 1s 1s cubic-bezier(.77, 0, .175, 1),transform 1s 1s cubic-bezier(.77, 0, .175, 1);
+    transition: opacity 1s 0.8s cubic-bezier(.77, 0, .175, 1),transform 1s 0.8s cubic-bezier(.77, 0, .175, 1);
     opacity: 0;
     transform: translateY(3rem);
 
@@ -619,7 +620,7 @@ const LightSide = styled.div`
     transform: translateX(-100%);
     max-width: 40rem;
     opacity: 0;
-    transition: opacity 1s 0.6s cubic-bezier(.77, 0, .175, 1),transform 1s 0.6s cubic-bezier(.77, 0, .175, 1);
+    transition: opacity 1s 0.3s cubic-bezier(.77, 0, .175, 1),transform 1s 0.3s cubic-bezier(.77, 0, .175, 1);
 
     @media ${({ theme }) => theme.mediaQuery.medium} {
       max-width: none;
@@ -653,7 +654,7 @@ const DarkSide = styled.div`
 
   .inner {
     color: white;
-    transition: opacity 1s 1.3s cubic-bezier(.77, 0, .175, 1),transform 1s 1.3s cubic-bezier(.77, 0, .175, 1);
+    transition: opacity 1s 1.1s cubic-bezier(.77, 0, .175, 1),transform 1s 1.1s cubic-bezier(.77, 0, .175, 1);
     opacity: 0;
     transform: translateY(3rem);
 
@@ -676,7 +677,7 @@ const DarkSide = styled.div`
     transform: translateX(0%);
     max-width: 40rem;
     opacity: 0;
-    transition: opacity 1s 0.9s cubic-bezier(.77, 0, .175, 1),transform 1s 0.9s cubic-bezier(.77, 0, .175, 1);
+    transition: opacity 1s 0.6s cubic-bezier(.77, 0, .175, 1),transform 1s 0.6s cubic-bezier(.77, 0, .175, 1);
 
     @media ${({ theme }) => theme.mediaQuery.medium} {
       max-width: none;
