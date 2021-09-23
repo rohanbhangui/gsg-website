@@ -54,7 +54,7 @@ const PropertiesLayout = ({
     // to preload images
     properties.map(item => item.masterImage).forEach((picture) => {
       const img = new Image();
-      img.src = picture.fileName;
+      img.src = picture;
     });
 
     return () => {

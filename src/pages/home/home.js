@@ -742,7 +742,11 @@ const Tile = styled.div`
   overflow: hidden;
 
   @media ${({ theme }) => theme.mediaQuery.small} {
-    padding-top: 135%;
+    padding-top: 60vh;
+  }
+
+  @media ${({ theme }) => theme.mediaQuery.large} {
+    padding-top: 90vh;
   }
 
   &:hover {
