@@ -89,7 +89,6 @@ const Home = () => {
     const transitionMarkerBounds = transitionMarker.getBoundingClientRect();
 
     const element = vennDiagramRef && vennDiagramRef.current;
-    const elementBounds = element.getBoundingClientRect();
 
     if(window.innerHeight / 2.5 >= transitionMarkerBounds.y) {
       if(!element.querySelector(".logo").classList.contains("active")) {
@@ -100,12 +99,16 @@ const Home = () => {
         if(!item.classList.contains("active")) {
           item.classList.add("active");
         }
+
+        return item;
       });
 
       [...element.querySelectorAll(".inner")].map(item => {
         if(!item.classList.contains("active")) {
           item.classList.add("active");
         }
+
+        return item;
       });
     }
   }
@@ -127,6 +130,8 @@ const Home = () => {
     return () => {
       window.removeEventListener('scroll', scroll);
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
