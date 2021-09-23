@@ -81,6 +81,7 @@ const HeaderContainer = styled.header`
       top: 50vh;
       transform: translateY(-50%);
       transition: 0.3s all ease;
+      z-index: 30;
 
       @media ${({ theme }) => theme.mediaQuery.medium} {
         transition: none;
@@ -113,7 +114,7 @@ const HeaderContainer = styled.header`
       `}
     }
 
-    &:before {
+    &:after {
       content: '';
       position: fixed;
       left: 0;
@@ -146,6 +147,7 @@ const Logo = styled.img`
   width: auto;
   position: relative;
   top: 0.15rem;
+  z-index: 30;
 
   @media ${({ theme }) => theme.mediaQuery.medium} {
     height: 2.25rem;
