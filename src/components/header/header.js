@@ -20,20 +20,11 @@ const Header = () => {
   useEffect(() => {
     setIsMobileOpen("close");
   }, [pathname]);
-
-  useEffect(() => {
-    if(isMobileOpen === "open") {
-      document.querySelector("body").classList.add("mobile-open");
-    }
-    else if(isMobileOpen === "close") {
-      document.querySelector("body").classList.remove("mobile-open");
-    }
-  }, [isMobileOpen]);
   
   return (
     <HeaderContainer mobileopen={isMobileOpen}>
       <nav>
-        <Link to="/"><Logo src={LogoImg} alt="" /></Link>
+        <Link to="/" className="logo-link"><Logo src={LogoImg} alt="" /></Link>
         <ion-icon name={isMobileOpen === "close" ? "menu-outline" : "close-outline"} onClick={toggleOpen}></ion-icon>
         <ul>
           <NavItem><NavLink to="/incubated-properties" activeClassName="selected">Incubated Properties</NavLink></NavItem>
@@ -50,7 +41,7 @@ const HeaderContainer = styled.header`
   height: 4rem;
   z-index: 100;
   position: relative;
-  padding: 0.5rem 0;
+  margin: 0.5rem 0;
 
   @media ${({ theme }) => theme.mediaQuery.medium} {
     margin: 0;
@@ -74,6 +65,12 @@ const HeaderContainer = styled.header`
       justify-content: center;
     }
 
+    .logo-link {
+      ${({ mobileopen }) => mobileopen === "open" && `
+        position: fixed;
+      `}
+    }
+
     ul {
       opacity: 0;
       pointer-events: none;
@@ -81,7 +78,6 @@ const HeaderContainer = styled.header`
       top: 50vh;
       transform: translateY(-50%);
       transition: 0.3s all ease;
-      z-index: 30;
 
       @media ${({ theme }) => theme.mediaQuery.medium} {
         transition: none;
@@ -111,10 +107,12 @@ const HeaderContainer = styled.header`
 
       ${({ mobileopen }) => mobileopen === "open" && `
         color: white;
+        position: fixed;
+        right: 0.5rem;
       `}
     }
 
-    &:after {
+    &:before {
       content: '';
       position: fixed;
       left: 0;
@@ -147,7 +145,6 @@ const Logo = styled.img`
   width: auto;
   position: relative;
   top: 0.15rem;
-  z-index: 30;
 
   @media ${({ theme }) => theme.mediaQuery.medium} {
     height: 2.25rem;

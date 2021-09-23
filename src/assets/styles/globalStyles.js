@@ -8,26 +8,23 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html, body {
+  html, body, #root {
     width: 100%;
+
+    &.mobile-open {
+      overflow: hidden;
+      pointer-events: none;
+    }
   }
 
   html {
     font-size: calc(60% + 0.8vmin);
-
-    &.mobile-open {
-      overflow: hidden;
-    }
   }
 
   body {
     background: linear-gradient(to bottom, rgba(136, 136, 136, 0), rgba(0, 0, 0, 0.73));
     background-size: cover;
     background-repeat: no-repeat;
-
-    &.mobile-open {
-      overflow: hidden;
-    }
   }
 
   #root {

@@ -52,7 +52,7 @@ const App = () => {
 
 const Main = styled.main`
   overflow-x: hidden;
-  transform: translateZ(100px);
+  // transform: translateZ(100px);
 
   &.overflow-open {
     overflow-x: visible;
