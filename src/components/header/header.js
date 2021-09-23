@@ -50,7 +50,7 @@ const HeaderContainer = styled.header`
   height: 4rem;
   z-index: 100;
   position: relative;
-  margin: 0.5rem 0;
+  padding: 0.5rem 0;
 
   @media ${({ theme }) => theme.mediaQuery.medium} {
     margin: 0;
