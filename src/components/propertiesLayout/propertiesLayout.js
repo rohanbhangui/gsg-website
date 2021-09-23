@@ -51,6 +51,12 @@ const PropertiesLayout = ({
     //remove overflow hidden
     document.querySelector("main").classList.add("overflow-open");
 
+    // to preload images
+    properties.map(item => item.masterImage).forEach((picture) => {
+      const img = new Image();
+      img.src = picture.fileName;
+    });
+
     return () => {
       window.removeEventListener('scroll', scroll);
     }
