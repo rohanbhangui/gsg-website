@@ -10,15 +10,15 @@ import Button from '../button';
 const socials = [
   {
     name: "Twitter",
-    url: "twitter.com"
-},
+    url: "https://twitter.com/jordanstern3?lang=en"
+  },
   {
     name: "Facebook",
-    url: "facebook.com"
+    url: "facebook.com/GreySpaceGroup/"
   },
   {
     name: "Instagram",
-    url: "instagram.com"
+    url: "https://www.instagram.com/greyspacegroup/?hl=en"
   },
   {
     name: "Youtube",
