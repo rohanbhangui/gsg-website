@@ -11,7 +11,7 @@ const socials = [
   {
     name: "Twitter",
     url: "twitter.com"
-  },
+},
   {
     name: "Facebook",
     url: "facebook.com"
@@ -29,6 +29,7 @@ const socials = [
 const Footer = () => {
   const location = useLocation();
   const [ titleCopy, setTitleCopy ] = useState("Get In Touch");
+  const [ isContactPage, setIsContactPage ] = useState(false);
 
   useEffect(() => {
     console.log("DEBUG", location);
@@ -37,28 +38,35 @@ const Footer = () => {
     } else if (location.pathname === "/investments") {
       setTitleCopy("Have a business you want us to hear about? Reach out!");
     }
+
+    setIsContactPage(location.pathname === "/contact");
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
   
   return (
-    <FooterContainer>
-      <h1>{titleCopy}</h1>
-      { titleCopy === "Get In Touch" && (
-        <Socials>
-          {
-            socials.map(({name, url}) => (
-              <li key={uuid()}>
-                <Link to={url} className="h2">
-                  {name}
-                </Link>
-              </li>
-            ))
-          }
-        </Socials>
+    <>
+      { !isContactPage && (
+        <FooterContainer>
+          <h1>{titleCopy}</h1>
+          { titleCopy === "Get In Touch" && (
+            <Socials>
+              {
+                socials.map(({name, url}) => (
+                  <li key={uuid()}>
+                    <Link to={url} className="h2">
+                      {name}
+                    </Link>
+                  </li>
+                ))
+              }
+            </Socials>
+          )}
+          <Button linkto="/contact" label="Contact us" />
+          <Copyright>Grey Space Group &copy; Copyright {new Date().getFullYear()}</Copyright>
+        </FooterContainer>
       )}
-      <Button linkto="/contact" label="Contact us" />
-      <Copyright>Grey Space Group &copy; Copyright 2021</Copyright>
-    </FooterContainer>
+    </>
   )
 }
 

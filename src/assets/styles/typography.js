@@ -49,6 +49,15 @@ const Typography = css`
     line-height: 1.5rem;
     font-size: 1rem;
   }
+
+  h4, .h4 {
+    font-weight: 600;
+    margin-top: 0.75rem;
+    line-height: 1rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.02rem;
+    text-transform: uppercase;
+  }
 `;
 
 export default Typography;

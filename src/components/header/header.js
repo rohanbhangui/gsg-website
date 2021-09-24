@@ -37,8 +37,10 @@ const Header = () => {
   )
 }
 
+export const HeaderHeight = "4rem";
+
 const HeaderContainer = styled.header`
-  height: 4rem;
+  height: ${HeaderHeight};
   z-index: 100;
   position: relative;
   margin: 0.5rem 0;
