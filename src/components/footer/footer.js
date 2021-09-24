@@ -1,28 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { Link as _Link, useLocation } from 'react-router-dom';
 import styled from "styled-components";
+import { useLocation } from 'react-router-dom';
 import { v4 as uuid } from "uuid";
 
 import { XLG } from '../../utils/variables';
-
 import Button from '../button';
 
-const socials = [
+export const socials = [
   {
-    name: "Twitter",
-    url: "https://twitter.com/jordanstern3?lang=en"
+    label: "Twitter",
+    url: "https://twitter.com/jordanstern3?lang=en",
+    icon: "logo-twitter"
   },
   {
-    name: "Facebook",
-    url: "facebook.com/GreySpaceGroup/"
+    label: "Facebook",
+    url: "https://facebook.com/GreySpaceGroup/",
+    icon: "logo-facebook"
   },
   {
-    name: "Instagram",
-    url: "https://www.instagram.com/greyspacegroup/?hl=en"
+    label: "Instagram",
+    url: "https://www.instagram.com/greyspacegroup/?hl=en",
+    icon: "logo-instagram"
   },
   {
-    name: "Youtube",
-    url: "youtube.com"
+    label: "Youtube",
+    url: "https://youtube.com",
+    icon: "logo-youtube"
   }
 ]
 
@@ -32,7 +35,6 @@ const Footer = () => {
   const [ isContactPage, setIsContactPage ] = useState(false);
 
   useEffect(() => {
-    console.log("DEBUG", location);
     if(location.pathname === "/incubated-properties") {
       setTitleCopy("Want to hear more? Reach out!");
     } else if (location.pathname === "/investments") {
@@ -52,10 +54,10 @@ const Footer = () => {
           { titleCopy === "Get In Touch" && (
             <Socials>
               {
-                socials.map(({name, url}) => (
+                socials.map(({label, url}) => (
                   <li key={uuid()}>
-                    <Link to={url} className="h2">
-                      {name}
+                    <Link href={url} className="h2">
+                      {label}
                     </Link>
                   </li>
                 ))
@@ -93,7 +95,7 @@ const Socials = styled.ul`
   flex-wrap: wrap;
 `
 
-const Link = styled(_Link)`
+const Link = styled.a`
   margin: 0 0.1rem;
   padding: 0.1rem;
   text-decoration: none;

@@ -1,33 +1,13 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 import { Grid as _Grid } from "../../assets/styles/grid";
 import { MD, XLG } from "../../utils/variables";
+
 import { HeaderHeight } from "../../components/header";
-import { useState } from "react";
+import { socials } from "../../components/footer";
 import Circle from "../../components/circles";
 
-const socials = [
-  {
-    url: "#",
-    label: "Twitter",
-    icon: "logo-twitter"
-  },
-  {
-    url: "#",
-    label: "Instagram",
-    icon: "logo-instagram"
-  },
-  {
-    url: "#",
-    label: "Facebook",
-    icon: "logo-facebook"
-  },
-  {
-    url: "#",
-    label: "Youtube",
-    icon: "logo-youtube"
-  }
-]
 const Contact = () => {
   const [ hoveredLabel, setHoveredLabel ] = useState(" ");
 
