@@ -66,18 +66,6 @@ const Contact = () => {
                   <ion-icon name={social.icon}></ion-icon>
                 </Link>
               ))}
-              {/* <Link href="https://twitter.com/naiimsounds" onMouseEnter={() => this.someHandler} onMouseLeave={() => this.someOtherHandler}>
-                <ion-icon name="logo-twitter"></ion-icon>
-              </Link>
-              <Link href="https://instagram.com/naiimsounds">
-                <ion-icon name="logo-instagram"></ion-icon>
-              </Link>
-              <Link href="https://facebook.com/NAIIM-106363534661417">
-                <ion-icon name="logo-facebook"></ion-icon>
-              </Link>
-              <Link href="https://www.youtube.com/channel/UCk-03O6KqGediKMpYhnMYPA/featured">
-                <ion-icon name="logo-youtube"></ion-icon>
-              </Link> */}
             </LinkGroup>
             <SocialHandlePreview>{hoveredLabel}</SocialHandlePreview>
           </Row>

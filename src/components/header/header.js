@@ -29,7 +29,7 @@ const Header = () => {
         <ul>
           <NavItem><NavLink to="/incubated-properties" activeClassName="selected">Incubated Properties</NavLink></NavItem>
           <NavItem><NavLink to="/investments" activeClassName="selected">Investments</NavLink></NavItem>
-          <NavItem><NavLink to="#" activeClassName="selected">About</NavLink></NavItem>
+          <NavItem><NavLink to="/#" activeClassName="selected">About</NavLink></NavItem>
           <NavItem><NavLink to="/contact" activeClassName="selected">Contact</NavLink></NavItem>
         </ul>
       </nav>

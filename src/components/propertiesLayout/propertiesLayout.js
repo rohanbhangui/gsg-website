@@ -57,8 +57,11 @@ const PropertiesLayout = ({
       img.src = picture;
     });
 
+    document.querySelector("html").classList.add("smooth-scroll");
+
     return () => {
       window.removeEventListener('scroll', scroll);
+      document.querySelector("html").classList.remove("smooth-scroll");
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
