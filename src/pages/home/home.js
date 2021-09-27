@@ -84,39 +84,79 @@ const Home = () => {
   }
 
   // for allowing the venn diagram entrance
-  const vennDiagramEntrance = (e) => {
+  // const vennDiagramEntrance = (e) => {
     
-    const transitionMarker = vennDigramAnimationMarker && vennDigramAnimationMarker.current;
-    const transitionMarkerBounds = transitionMarker?.getBoundingClientRect();
+  //   const transitionMarker = vennDigramAnimationMarker && vennDigramAnimationMarker.current;
+  //   const transitionMarkerBounds = transitionMarker?.getBoundingClientRect();
 
+  //   const element = vennDiagramRef && vennDiagramRef.current;
+
+  //   if(transitionMarkerBounds && window.innerHeight*2/3 >= transitionMarkerBounds.y) {
+  //     if(!element.querySelector(".logo").classList.contains("active")) {
+  //       element.querySelector(".logo").classList.add("active");
+  //     }
+      
+  //     [...element.querySelectorAll(".venn-circle")].map(item => {
+  //       if(!item.classList.contains("active")) {
+  //         item.classList.add("active");
+  //       }
+
+  //       return item;
+  //     });
+
+  //     [...element.querySelectorAll(".inner")].map(item => {
+  //       if(!item.classList.contains("active")) {
+  //         item.classList.add("active");
+  //       }
+
+  //       return item;
+  //     });
+  //   }
+  // }
+  
+  // alternate that uses the observer api
+  const vennDiagramEntrance = () => {
     const element = vennDiagramRef && vennDiagramRef.current;
 
-    if(transitionMarkerBounds && window.innerHeight*2/3 >= transitionMarkerBounds.y) {
-      if(!element.querySelector(".logo").classList.contains("active")) {
-        element.querySelector(".logo").classList.add("active");
-      }
-      
-      [...element.querySelectorAll(".venn-circle")].map(item => {
-        if(!item.classList.contains("active")) {
-          item.classList.add("active");
-        }
-
-        return item;
-      });
-
-      [...element.querySelectorAll(".inner")].map(item => {
-        if(!item.classList.contains("active")) {
-          item.classList.add("active");
-        }
-
-        return item;
-      });
+    let options = {
+      threshold: 0.1
     }
+    
+    let callback = (entries) => {
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+          if(!element.querySelector(".logo").classList.contains("active")) {
+            element.querySelector(".logo").classList.add("active");
+          }
+          
+          [...element.querySelectorAll(".venn-circle")].map(item => {
+            if(!item.classList.contains("active")) {
+              item.classList.add("active");
+            }
+    
+            return item;
+          });
+    
+          [...element.querySelectorAll(".inner")].map(item => {
+            if(!item.classList.contains("active")) {
+              item.classList.add("active");
+            }
+    
+            return item;
+          });
+        }
+      });
+    };
+
+    let observer = new IntersectionObserver(callback, options);
+
+    observer.observe(element);
   }
 
   const scroll = (e) => {
     scrollBackground(e);
-    vennDiagramEntrance(e);
+    // vennDiagramEntrance(e);
   }
 
   useEffect(() => {
@@ -128,9 +168,12 @@ const Home = () => {
     //remove overflow hidden
     document.querySelector("main").classList.remove("overflow-open");
 
+    vennDiagramEntrance();
+
     return () => {
       window.removeEventListener('scroll', scroll);
     }
+    
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
