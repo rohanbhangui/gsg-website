@@ -70,6 +70,7 @@ const HeaderContainer = styled.header`
     .logo-link {
       ${({ mobileopen }) => mobileopen === "open" && `
         position: fixed;
+        top: 0.7rem;
       `}
     }
 
@@ -110,6 +111,7 @@ const HeaderContainer = styled.header`
       ${({ mobileopen }) => mobileopen === "open" && `
         color: white;
         position: fixed;
+        top: 1.4rem;
         right: 0.5rem;
       `}
     }
