@@ -28,7 +28,6 @@ import FashionnovaLogo from "../../assets/img/fashionnova-logo.png"
 import BoxyCharmLogo from "../../assets/img/boxy-charm-logo.png"
 import MisguidedLogo from "../../assets/img/misguided-logo.svg"
 
-import Button from "../../components/button";
 import Circle from "../../components/circles";
 import {Grid as _Grid} from "../../assets/styles/grid";
 
@@ -421,10 +420,19 @@ const Grid = styled(_Grid)`
     .content-column {
       display: flex;
       align-items: center;
-      justify-content: center;
+
+      @media ${({ theme }) => theme.mediaQuery.medium} {
+        justify-content: center;
+      }
 
       .inner {
-        max-width: 23rem;
+        
+        margin-top: 2rem;
+        padding-left: 2rem;
+
+        @media ${({ theme }) => theme.mediaQuery.medium} {
+          max-width: 25rem;
+        }  
       }
     }
   }

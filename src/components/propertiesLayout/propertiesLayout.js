@@ -119,6 +119,10 @@ const Container = styled.section`
   padding: 1rem;
   position: relative;
 
+  @media ${({ theme }) => theme.mediaQuery.medium} {
+    margin: 4rem auto 16rem;
+  }
+
   &.bigTitle {
     text-align: center;
     padding: 0;

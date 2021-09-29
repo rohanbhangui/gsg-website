@@ -31,7 +31,7 @@ const Header = () => {
           <NavItem><NavLink to="/" activeClassName="selected">Home</NavLink></NavItem>
           <NavItem><NavLink to="/incubated-properties" activeClassName="selected">Incubated Properties</NavLink></NavItem>
           <NavItem><NavLink to="/investments" activeClassName="selected">Investments</NavLink></NavItem>
-          <NavItem><NavHashLink smooth to="/#contact" activeClassName="selected">Contact</NavHashLink></NavItem>
+          <NavItem><NavHashLink smooth to="/#contact">Contact</NavHashLink></NavItem>
         </ul>
       </nav>
     </HeaderContainer>

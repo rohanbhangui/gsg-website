@@ -47,18 +47,12 @@ const slim_contact = [
   }
 ]
 
-const Footer = () => {
+const Footer = ({ id }) => {
   const location = useLocation();
   const [ titleCopy, setTitleCopy ] = useState("Get In Touch");
   const [ isHomePage, setIsHomePage ] = useState(false);
 
   useEffect(() => {
-    if(location.pathname === "/incubated-properties") {
-      setTitleCopy("Want to hear more? Reach out!");
-    } else if (location.pathname === "/investments") {
-      setTitleCopy("Have a business you want us to hear about? Reach out!");
-    }
-
     setIsHomePage(location.pathname === "/");
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -67,7 +61,7 @@ const Footer = () => {
   return (
     <>
       { isHomePage && (
-        <FooterContainer>
+        <FooterContainer id={id}>
           { titleCopy === "Get In Touch" && (
             <Socials>
               {
