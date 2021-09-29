@@ -23,7 +23,7 @@ const properties = [
       url: "https://thecrewleague.com/",
       label: "Learn More",
     },
-    masterImage: TCL_HERO
+    masterImage: TCL_HERO,
   },
   {
     id: "national-players-club",
@@ -39,17 +39,21 @@ const properties = [
       url: "https://national-players-club.myshopify.com/",
       label: "Learn More",
     },
-    masterImage: NPC_HERO
-  }
-]
+    masterImage: NPC_HERO,
+  },
+];
 
 const Incubation = () => {
   return (
     <PropertiesLayout properties={properties}>
       <h1 className="big">Incubated Properties</h1>
-      <p className="h3">Grey Space Group takes an individualized approach and curates organic GTM strategies, marketing campaigns, product distribution, and talent / brand partnerships to further each brand's growth.</p>
+      <p className="h3">
+        Grey Space Group takes an individualized approach and curates organic
+        GTM strategies, marketing campaigns, product distribution, and talent /
+        brand partnerships to further each brand's growth.
+      </p>
     </PropertiesLayout>
-  )
-}
+  );
+};
 
-export default Incubation
+export default Incubation;

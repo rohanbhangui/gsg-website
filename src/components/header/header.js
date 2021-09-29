@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { NavLink as _NavLink, Link, useLocation } from 'react-router-dom';
-import { HashLink } from 'react-router-hash-link';
+import { useEffect, useState } from "react";
+import { NavLink as _NavLink, Link, useLocation } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import styled, { css } from "styled-components";
 
 // import LogoImg from "../../assets/img/logo.png";
@@ -11,32 +11,51 @@ const Header = () => {
   const [isMobileOpen, setIsMobileOpen] = useState("close");
 
   const toggleOpen = (e) => {
-    setIsMobileOpen(prev => {
-      if(prev === "open") return "close";
+    setIsMobileOpen((prev) => {
+      if (prev === "open") return "close";
 
       return "open";
-    })
-  }
+    });
+  };
 
   useEffect(() => {
     setIsMobileOpen("close");
   }, [pathname]);
-  
+
   return (
     <HeaderContainer mobileopen={isMobileOpen}>
       <nav>
         {/* <Link to="/" className="logo-link"><Logo src={LogoImg} alt="" /></Link> */}
-        <ion-icon name={isMobileOpen === "close" ? "menu-outline" : "close-outline"} onClick={toggleOpen}></ion-icon>
+        <ion-icon
+          name={isMobileOpen === "close" ? "menu-outline" : "close-outline"}
+          onClick={toggleOpen}
+        ></ion-icon>
         <ul>
-          <NavItem><NavLink to="/" activeClassName="selected">Home</NavLink></NavItem>
-          <NavItem><NavLink to="/incubated-properties" activeClassName="selected">Incubated Properties</NavLink></NavItem>
-          <NavItem><NavLink to="/investments" activeClassName="selected">Investments</NavLink></NavItem>
-          <NavItem><NavHashLink smooth to="/#contact">Contact</NavHashLink></NavItem>
+          <NavItem>
+            <NavLink to="/" activeClassName="selected">
+              Home
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/incubated-properties" activeClassName="selected">
+              Incubated Properties
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/investments" activeClassName="selected">
+              Investments
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavHashLink smooth to="/#contact">
+              Contact
+            </NavHashLink>
+          </NavItem>
         </ul>
       </nav>
     </HeaderContainer>
-  )
-}
+  );
+};
 
 export const HeaderHeight = "4rem";
 
@@ -50,7 +69,9 @@ const HeaderContainer = styled.header`
     margin: 0;
   }
 
-  ${({ mobileopen, theme }) => mobileopen === "open" && `
+  ${({ mobileopen, theme }) =>
+    mobileopen === "open" &&
+    `
     @media ${({ theme }) => theme.mediaQuery.medium} {
       position: fixed;
       width: 100%;
@@ -69,7 +90,9 @@ const HeaderContainer = styled.header`
     }
 
     .logo-link {
-      ${({ mobileopen }) => mobileopen === "open" && `
+      ${({ mobileopen }) =>
+        mobileopen === "open" &&
+        `
         position: fixed;
         top: 0.7rem;
       `}
@@ -92,7 +115,9 @@ const HeaderContainer = styled.header`
         transform: none;
       }
 
-      ${({ mobileopen }) => mobileopen === "open" && `
+      ${({ mobileopen }) =>
+        mobileopen === "open" &&
+        `
         opacity: 1;
         pointer-events: auto;
       `}
@@ -109,7 +134,9 @@ const HeaderContainer = styled.header`
         transition: none;
       }
 
-      ${({ mobileopen }) => mobileopen === "open" && `
+      ${({ mobileopen }) =>
+        mobileopen === "open" &&
+        `
         color: white;
         position: fixed;
         top: 1.4rem;
@@ -118,7 +145,7 @@ const HeaderContainer = styled.header`
     }
 
     &:before {
-      content: '';
+      content: "";
       position: fixed;
       left: 0;
       right: 0;
@@ -132,7 +159,9 @@ const HeaderContainer = styled.header`
       backdrop-filter: blur(10px);
       height: 100vh;
 
-      ${({ mobileopen }) => mobileopen === "open" && `
+      ${({ mobileopen }) =>
+        mobileopen === "open" &&
+        `
         opacity: 1;
         pointer-events: auto;
       `}
@@ -143,7 +172,7 @@ const HeaderContainer = styled.header`
       }
     }
   }
-`
+`;
 
 const Logo = styled.img`
   height: 3.25rem;
@@ -154,7 +183,7 @@ const Logo = styled.img`
   @media ${({ theme }) => theme.mediaQuery.medium} {
     height: 2.25rem;
   }
-`
+`;
 
 const NavItem = styled.li`
   display: block;
@@ -168,7 +197,7 @@ const NavItem = styled.li`
   a {
     display: block;
   }
-`
+`;
 
 const NavLinkStyles = css`
   font-size: 2.2rem;
@@ -182,21 +211,22 @@ const NavLinkStyles = css`
     font-size: 0.8rem;
   }
 
-  &:visited, &:active {
+  &:visited,
+  &:active {
     color: white;
 
     @media ${({ theme }) => theme.mediaQuery.medium} {
       color: black;
     }
   }
-`
+`;
 
 const NavLink = styled(_NavLink)`
   ${NavLinkStyles}
-`
+`;
 
 const NavHashLink = styled(HashLink)`
   ${NavLinkStyles}
-`
+`;
 
 export default Header;

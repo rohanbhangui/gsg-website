@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import Typography from './typography';
+import { createGlobalStyle } from "styled-components";
+import Typography from "./typography";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -47,5 +47,5 @@ const GlobalStyle = createGlobalStyle`
     100% {transform: translateX(-50%);}
   }
 `;
- 
+
 export default GlobalStyle;

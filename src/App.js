@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 
 import GlobalStyle from "./assets/styles/globalStyles";
@@ -20,7 +16,6 @@ import ScrollToTop from "./components/scrollToTop";
 import Speckles from "./assets/img/speckles.png";
 
 const App = () => {
-  
   return (
     <>
       <Background className="background" src={Speckles} />
@@ -45,7 +40,7 @@ const App = () => {
       </Main>
     </>
   );
-}
+};
 
 const Main = styled.main`
   overflow-x: hidden;
@@ -54,7 +49,7 @@ const Main = styled.main`
   &.overflow-open {
     overflow-x: visible;
   }
-`
+`;
 
 const Background = styled.img`
   position: fixed;
@@ -66,6 +61,6 @@ const Background = styled.img`
   object-fit: cover;
   z-index: unset;
   transform: translateZ(-200px);
-`
+`;
 
 export default App;

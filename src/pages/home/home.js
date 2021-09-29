@@ -17,37 +17,37 @@ import IncubationTile from "../../assets/img/incubation-tile.png";
 import ArrowGo from "../../assets/img/arrow-go.svg";
 
 //trusted by
-import BeatsLogo from "../../assets/img/beats-logo.png"
-import NikeLogo from "../../assets/img/nike-logo.png"
-import PostmatesLogo from "../../assets/img/postmates-logo.png"
-import NBALogo from "../../assets/img/nba-logo.png"
-import FootLockerLogo from "../../assets/img/footlocker-logo.png"
-import WWELogo from "../../assets/img/wwe-logo.png"
-import CirocLogo from "../../assets/img/ciroc-logo.png"
-import FashionnovaLogo from "../../assets/img/fashionnova-logo.png"
-import BoxyCharmLogo from "../../assets/img/boxy-charm-logo.png"
-import MisguidedLogo from "../../assets/img/misguided-logo.svg"
+import BeatsLogo from "../../assets/img/beats-logo.png";
+import NikeLogo from "../../assets/img/nike-logo.png";
+import PostmatesLogo from "../../assets/img/postmates-logo.png";
+import NBALogo from "../../assets/img/nba-logo.png";
+import FootLockerLogo from "../../assets/img/footlocker-logo.png";
+import WWELogo from "../../assets/img/wwe-logo.png";
+import CirocLogo from "../../assets/img/ciroc-logo.png";
+import FashionnovaLogo from "../../assets/img/fashionnova-logo.png";
+import BoxyCharmLogo from "../../assets/img/boxy-charm-logo.png";
+import MisguidedLogo from "../../assets/img/misguided-logo.svg";
 
 import Circle from "../../components/circles";
-import {Grid as _Grid} from "../../assets/styles/grid";
+import { Grid as _Grid } from "../../assets/styles/grid";
 
 const possibilities_blocks = [
   {
     img: UntapPotential,
     title: "Untapping Potential",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
     img: CreatingValue,
     title: "Creating Value",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
     img: FosteringGrowth,
     title: "Fostering Growth",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-  }
-]
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+];
 
 const trusted_by = [
   NikeLogo,
@@ -59,8 +59,8 @@ const trusted_by = [
   MisguidedLogo,
   CirocLogo,
   BeatsLogo,
-  FashionnovaLogo
-]
+  FashionnovaLogo,
+];
 
 const Home = () => {
   const location = useLocation();
@@ -70,63 +70,65 @@ const Home = () => {
 
   const scrollBackground = (e) => {
     const html = document.querySelector(".background");
-    let offset = 20*window.scrollY/html.offsetHeight*0.66;
-    if(offset < 0) offset = 0;
+    let offset = ((20 * window.scrollY) / html.offsetHeight) * 0.66;
+    if (offset < 0) offset = 0;
 
-    html.style.setProperty('--background-position', `-${offset}vh`);
-  }
+    html.style.setProperty("--background-position", `-${offset}vh`);
+  };
 
   // for allowing the venn diagram entrance
   const vennDiagramEntrance = (e) => {
-    
-    const transitionMarker = vennDigramAnimationMarker && vennDigramAnimationMarker.current;
+    const transitionMarker =
+      vennDigramAnimationMarker && vennDigramAnimationMarker.current;
     const transitionMarkerBounds = transitionMarker?.getBoundingClientRect();
 
     const element = vennDiagramRef && vennDiagramRef.current;
 
-    if(transitionMarkerBounds && window.innerHeight*2/3 >= transitionMarkerBounds.y) {
-      if(!element.querySelector(".logo").classList.contains("active")) {
+    if (
+      transitionMarkerBounds &&
+      (window.innerHeight * 2) / 3 >= transitionMarkerBounds.y
+    ) {
+      if (!element.querySelector(".logo").classList.contains("active")) {
         element.querySelector(".logo").classList.add("active");
       }
-      
-      [...element.querySelectorAll(".venn-circle")].map(item => {
-        if(!item.classList.contains("active")) {
+
+      [...element.querySelectorAll(".venn-circle")].map((item) => {
+        if (!item.classList.contains("active")) {
           item.classList.add("active");
         }
 
         return item;
       });
 
-      [...element.querySelectorAll(".inner")].map(item => {
-        if(!item.classList.contains("active")) {
+      [...element.querySelectorAll(".inner")].map((item) => {
+        if (!item.classList.contains("active")) {
           item.classList.add("active");
         }
 
         return item;
       });
     }
-  }
+  };
 
   const scroll = (e) => {
     scrollBackground(e);
     vennDiagramEntrance(e);
-  }
+  };
 
   useEffect(() => {
-    window.addEventListener('scroll', scroll);
+    window.addEventListener("scroll", scroll);
 
     const html = document.querySelector(".background");
-    html.style.setProperty('--background-position', `0vh`);
+    html.style.setProperty("--background-position", `0vh`);
 
     //remove overflow hidden
     document.querySelector("main").classList.remove("overflow-open");
 
-    console.log(location)
+    console.log(location);
 
     return () => {
-      window.removeEventListener('scroll', scroll);
-    }
-    
+      window.removeEventListener("scroll", scroll);
+    };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -138,22 +140,26 @@ const Home = () => {
           color="#3c3c3c"
           opacity={1}
           blend="multiply"
-          y={{  
+          y={{
             direction: "top",
-            dimension: "-10%"
+            dimension: "-10%",
           }}
         />
         <Grid xs={1} sm={2}>
           <Row className="hero-section-text">
             <div className="text-wrapper">
-              <h1>
-                A culture focused
-                venture studio
-                for a social world.
-              </h1>
+              <h1>A culture focused venture studio for a social world.</h1>
               <Content>
-                <p className="h3">We have the ability to see patterns, develop new solutions and build new paradigms that allow us to turn ideas and partnerships into reality.</p>
-                <p className="h3">Our goal is to generate long term value for brands and investors by investing in and adding value to early as well as growth stage CPG, Lifestyle &amp; Tech companies.</p>
+                <p className="h3">
+                  We have the ability to see patterns, develop new solutions and
+                  build new paradigms that allow us to turn ideas and
+                  partnerships into reality.
+                </p>
+                <p className="h3">
+                  Our goal is to generate long term value for brands and
+                  investors by investing in and adding value to early as well as
+                  growth stage CPG, Lifestyle &amp; Tech companies.
+                </p>
               </Content>
             </div>
           </Row>
@@ -165,25 +171,25 @@ const Home = () => {
       <Container className="projects">
         <Circle
           color="#000"
-          opacity={0.50}
+          opacity={0.5}
           size={10}
-          y={{  
+          y={{
             direction: "top",
-            dimension: "30%"
+            dimension: "30%",
           }}
         />
         <Circle
-          color="#bababa"
+          color="#ffffff"
           blend="lighten"
           opacity={0.66}
           size={30}
-          x={{  
+          x={{
             direction: "left",
-            dimension: "90%"
+            dimension: "90%",
           }}
-          y={{  
+          y={{
             direction: "top",
-            dimension: "85%"
+            dimension: "50%",
           }}
         />
         <Grid xs={1} sm={2} className="project-tiles">
@@ -191,7 +197,8 @@ const Home = () => {
             <Tile background={IncubationTile}>
               <div className="content">
                 <div className="inner">
-                  <h2>Incubated Properties</h2><img src={ArrowGo} alt="" />
+                  <h2>Incubated Properties</h2>
+                  <img src={ArrowGo} alt="" />
                 </div>
               </div>
             </Tile>
@@ -199,7 +206,10 @@ const Home = () => {
           <Row className="content-column">
             <div className="inner">
               <h2 className="h1">Incubated Properties</h2>
-              <p className="h3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p className="h3">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
             </div>
           </Row>
         </Grid>
@@ -208,7 +218,8 @@ const Home = () => {
             <Tile background={InvestmentTile}>
               <div className="content">
                 <div className="inner">
-                  <h2>Investments</h2><img src={ArrowGo} alt="" />
+                  <h2>Investments</h2>
+                  <img src={ArrowGo} alt="" />
                 </div>
               </div>
             </Tile>
@@ -216,21 +227,24 @@ const Home = () => {
           <Row className="content-column">
             <div className="inner">
               <h2 className="h1">Early Stage Value Investing</h2>
-              <p className="h3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p className="h3">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
             </div>
           </Row>
         </Grid>
       </Container>
       <Container className="creating-possibilities">
         <Grid xs={1} className="intro-content">
-          <h1>
-            Creating
-            Possibilities
-          </h1>
-          <p className="h3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <h1>Creating Possibilities</h1>
+          <p className="h3">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
         </Grid>
         <Grid xs={3} className="tri-blocks">
-          { possibilities_blocks.map(item => (
+          {possibilities_blocks.map((item) => (
             <Block>
               <div className="flex-container">
                 <div className="flex-item">
@@ -245,9 +259,9 @@ const Home = () => {
           color="#eaeaea"
           blend="lighten"
           opacity={0.65}
-          y={{  
+          y={{
             direction: "top",
-            dimension: "90%"
+            dimension: "90%",
           }}
         />
         <Circle
@@ -255,34 +269,34 @@ const Home = () => {
           opacity={1}
           size={30}
           blend="multiply"
-          x={{  
+          x={{
             direction: "left",
-            dimension: "100%"
+            dimension: "100%",
           }}
-          y={{  
+          y={{
             direction: "top",
-            dimension: "50%"
+            dimension: "50%",
           }}
         />
       </Container>
       <Container className="trusted-by">
         <h2>Trusted By</h2>
         <Logos>
-          {
-            [...trusted_by].map(item => (
-              <li><img src={item} alt="" /></li>
-            ))
-          }
-          {
-            [...trusted_by,...trusted_by,...trusted_by].map(item => (
-              <li className="mobile-only"><img src={item} alt="" /></li>
-            ))
-          }
+          {[...trusted_by].map((item) => (
+            <li>
+              <img src={item} alt="" />
+            </li>
+          ))}
+          {[...trusted_by, ...trusted_by, ...trusted_by].map((item) => (
+            <li className="mobile-only">
+              <img src={item} alt="" />
+            </li>
+          ))}
         </Logos>
       </Container>
     </>
-  )
-}
+  );
+};
 
 const Container = styled.section`
   max-width: ${XLG}px;
@@ -317,12 +331,13 @@ const Container = styled.section`
       > h1 {
         color: white;
       }
-  
+
       > p {
         color: #3c3c3c;
       }
-  
-      > h1, > p {
+
+      > h1,
+      > p {
         max-width: 30rem;
         margin-left: 2rem;
       }
@@ -354,7 +369,7 @@ const Container = styled.section`
       color: white;
     }
   }
-`
+`;
 
 const Grid = styled(_Grid)`
   position: relative;
@@ -373,7 +388,7 @@ const Grid = styled(_Grid)`
         text-align: left;
       }
     }
-    
+
     h1 {
       color: #3c3c3c;
     }
@@ -383,7 +398,8 @@ const Grid = styled(_Grid)`
     }
   }
 
-  &.tri-blocks, &.project-tiles {
+  &.tri-blocks,
+  &.project-tiles {
     grid-gap: 0.6rem;
     margin-top: 4rem;
   }
@@ -426,17 +442,16 @@ const Grid = styled(_Grid)`
       }
 
       .inner {
-        
         margin-top: 2rem;
         padding-left: 2rem;
 
         @media ${({ theme }) => theme.mediaQuery.medium} {
           max-width: 25rem;
-        }  
+        }
       }
     }
   }
-`
+`;
 
 const Row = styled.div`
   position: relative;
@@ -470,7 +485,7 @@ const Row = styled.div`
       margin-bottom: -10rem;
     }
   }
-`
+`;
 
 const Content = styled.div`
   margin-top: 1rem;
@@ -478,7 +493,7 @@ const Content = styled.div`
   h1 {
     white-space: pre-line;
   }
-`
+`;
 
 const Hero = styled.img`
   width: 100%;
@@ -493,7 +508,7 @@ const Hero = styled.img`
     max-width: none;
     margin-top: 0;
   }
-`
+`;
 
 const VennDiagram = styled.div`
   max-width: 100rem;
@@ -515,7 +530,8 @@ const VennDiagram = styled.div`
     max-width: 10rem;
     width: 100%;
     height: auto;
-    transition: opacity 1s cubic-bezier(.77, 0, .175, 1),transform 1s cubic-bezier(.77, 0, .175, 1);
+    transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1),
+      transform 1s cubic-bezier(0.77, 0, 0.175, 1);
 
     opacity: 0;
     top: 0;
@@ -533,7 +549,7 @@ const VennDiagram = styled.div`
       max-width: 15rem;
     }
   }
-`
+`;
 
 const VennContent = styled.div`
   z-index: 15;
@@ -553,7 +569,7 @@ const VennContent = styled.div`
   @media ${({ theme }) => theme.mediaQuery.large} {
     max-width: 20rem;
   }
-  
+
   &.left {
     left: 50%;
     transform: translateX(-50%);
@@ -575,7 +591,7 @@ const VennContent = styled.div`
       top: 0;
     }
   }
-`
+`;
 
 const LightSide = styled.div`
   position: relative;
@@ -593,7 +609,8 @@ const LightSide = styled.div`
   }
 
   .inner {
-    transition: opacity 1s 0.8s cubic-bezier(.77, 0, .175, 1),transform 1s 0.8s cubic-bezier(.77, 0, .175, 1);
+    transition: opacity 1s 0.8s cubic-bezier(0.77, 0, 0.175, 1),
+      transform 1s 0.8s cubic-bezier(0.77, 0, 0.175, 1);
     opacity: 0;
     transform: translateY(3rem);
 
@@ -616,7 +633,8 @@ const LightSide = styled.div`
     transform: translateX(-100%);
     max-width: 40rem;
     opacity: 0;
-    transition: opacity 1s 0.3s cubic-bezier(.77, 0, .175, 1),transform 1s 0.3s cubic-bezier(.77, 0, .175, 1);
+    transition: opacity 1s 0.3s cubic-bezier(0.77, 0, 0.175, 1),
+      transform 1s 0.3s cubic-bezier(0.77, 0, 0.175, 1);
 
     @media ${({ theme }) => theme.mediaQuery.medium} {
       max-width: none;
@@ -627,7 +645,7 @@ const LightSide = styled.div`
       opacity: 1;
     }
   }
-`
+`;
 
 const DarkSide = styled.div`
   position: relative;
@@ -650,7 +668,8 @@ const DarkSide = styled.div`
 
   .inner {
     color: white;
-    transition: opacity 1s 1.1s cubic-bezier(.77, 0, .175, 1),transform 1s 1.1s cubic-bezier(.77, 0, .175, 1);
+    transition: opacity 1s 1.1s cubic-bezier(0.77, 0, 0.175, 1),
+      transform 1s 1.1s cubic-bezier(0.77, 0, 0.175, 1);
     opacity: 0;
     transform: translateY(3rem);
 
@@ -673,7 +692,8 @@ const DarkSide = styled.div`
     transform: translateX(0%);
     max-width: 40rem;
     opacity: 0;
-    transition: opacity 1s 0.6s cubic-bezier(.77, 0, .175, 1),transform 1s 0.6s cubic-bezier(.77, 0, .175, 1);
+    transition: opacity 1s 0.6s cubic-bezier(0.77, 0, 0.175, 1),
+      transform 1s 0.6s cubic-bezier(0.77, 0, 0.175, 1);
 
     @media ${({ theme }) => theme.mediaQuery.medium} {
       max-width: none;
@@ -684,11 +704,11 @@ const DarkSide = styled.div`
       opacity: 1;
     }
   }
-`
+`;
 
 const Block = styled.div`
-  padding: 2rem; 
-  background: #F2F2F2;
+  padding: 2rem;
+  background: #f2f2f2;
   border-radius: 2rem;
   // min-height: 20rem;
   min-width: 20rem;
@@ -704,7 +724,6 @@ const Block = styled.div`
     justify-content: space-between;
 
     .flex-item {
-
       // &:first-child {
       //   flex: 1 0 auto;
       //   height: 100%;
@@ -719,18 +738,16 @@ const Block = styled.div`
       p {
         opacity: 0.5;
       }
-
     }
   }
-`
+`;
 
 const TileBlock = styled(Link)`
   text-decoration: none;
-`
+`;
 
 const Tile = styled.div`
-
-  ${({ background }) => background && `background: url(${background});` }
+  ${({ background }) => background && `background: url(${background});`}
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -773,14 +790,14 @@ const Tile = styled.div`
     h2 {
       color: white;
       text-decoration: none;
-      
+
       & + img {
         margin-left: 0.5rem;
         width: 2rem;
       }
     }
   }
-`
+`;
 
 const Logos = styled.ul`
   list-style: none;
@@ -827,7 +844,7 @@ const Logos = styled.ul`
       object-fit: contain;
     }
   }
-`
+`;
 
 const FirstCircle = styled(Circle)`
   display: none;
@@ -835,6 +852,6 @@ const FirstCircle = styled(Circle)`
   @media ${({ theme }) => theme.mediaQuery.medium} {
     display: block;
   }
-`
+`;
 
 export default Home;

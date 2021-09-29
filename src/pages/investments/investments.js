@@ -29,7 +29,7 @@ const properties = [
       url: "https://drinkkoia.com/",
       label: "Learn More",
     },
-    masterImage: KOIA_HERO
+    masterImage: KOIA_HERO,
   },
   {
     id: "freck",
@@ -45,7 +45,7 @@ const properties = [
       url: "https://freckbeauty.com/",
       label: "Learn More",
     },
-    masterImage: FRECK_HERO
+    masterImage: FRECK_HERO,
   },
   {
     id: "rowing-blazers",
@@ -61,7 +61,7 @@ const properties = [
       url: "https://rowingblazers.com/",
       label: "Learn More",
     },
-    masterImage: ROWINGBLAZERS_HERO
+    masterImage: ROWINGBLAZERS_HERO,
   },
   {
     id: "wilde-chips",
@@ -77,7 +77,7 @@ const properties = [
       url: "https://www.wildebrands.com/",
       label: "Learn More",
     },
-    masterImage: WILDE_HERO
+    masterImage: WILDE_HERO,
   },
   {
     id: "generaize",
@@ -93,18 +93,21 @@ const properties = [
       url: "https://www.generaize.com/",
       label: "Learn More",
     },
-    masterImage: GENERAIZE_HERO
-  }
-]
+    masterImage: GENERAIZE_HERO,
+  },
+];
 
 const Investments = () => {
-
   return (
     <PropertiesLayout properties={properties}>
       <h1 className="big">Investments</h1>
-      <p className="h3">Grey Space Group takes an individualized approach and curates organic GTM strategies, marketing campaigns, product distribution, and talent / brand partnerships to further each brand's growth.</p>
+      <p className="h3">
+        Grey Space Group takes an individualized approach and curates organic
+        GTM strategies, marketing campaigns, product distribution, and talent /
+        brand partnerships to further each brand's growth.
+      </p>
     </PropertiesLayout>
-  )
-}
+  );
+};
 
-export default Investments
+export default Investments;

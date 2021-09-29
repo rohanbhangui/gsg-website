@@ -9,17 +9,17 @@ import { socials } from "../../components/footer";
 import Circle from "../../components/circles";
 
 const Contact = () => {
-  const [ hoveredLabel, setHoveredLabel ] = useState(" ");
+  const [hoveredLabel, setHoveredLabel] = useState(" ");
 
   const handleMouseEnter = (label) => {
     return () => {
       setHoveredLabel(label);
-    }
-  }
+    };
+  };
 
   const handleMouseLeave = () => {
     setHoveredLabel(" ");
-  }
+  };
 
   return (
     <Wrapper>
@@ -33,18 +33,26 @@ const Contact = () => {
               <h2>Inquiries</h2>
               <ContactBlock>
                 <h4>Email Us</h4>
-                <a href="mailto:business@greyspacegroup.com" className="h3">business@greyspacegroup.com</a>
+                <a href="mailto:business@greyspacegroup.com" className="h3">
+                  business@greyspacegroup.com
+                </a>
               </ContactBlock>
               <ContactBlock>
                 <h4>Phone Us</h4>
-                <a href="tel:310-916-8502" className="h3">310-916-8502</a>
+                <a href="tel:310-916-8502" className="h3">
+                  310-916-8502
+                </a>
               </ContactBlock>
             </Row>
             <Row>
               <h2>Connect with us</h2>
               <LinkGroup>
-                { socials.map(social => (
-                  <Link href={social.url} onMouseEnter={handleMouseEnter(social.label)} onMouseLeave={handleMouseLeave}>
+                {socials.map((social) => (
+                  <Link
+                    href={social.url}
+                    onMouseEnter={handleMouseEnter(social.label)}
+                    onMouseLeave={handleMouseLeave}
+                  >
                     <ion-icon name={social.icon}></ion-icon>
                   </Link>
                 ))}
@@ -58,13 +66,13 @@ const Contact = () => {
           opacity={0.8}
           size={10}
           blend="multiply"
-          y={{  
+          y={{
             direction: "top",
-            dimension: "45%"
+            dimension: "45%",
           }}
-          x={{  
+          x={{
             direction: "left",
-            dimension: "10%"
+            dimension: "10%",
           }}
         />
         <Circle
@@ -72,13 +80,13 @@ const Contact = () => {
           blend="lighten"
           opacity={0.66}
           size={40}
-          x={{  
+          x={{
             direction: "left",
-            dimension: "110%"
+            dimension: "110%",
           }}
-          y={{  
+          y={{
             direction: "top",
-            dimension: "90%"
+            dimension: "90%",
           }}
         />
         <SecondCircle
@@ -86,19 +94,19 @@ const Contact = () => {
           opacity={0.66}
           size={30}
           blend="lighten"
-          y={{  
+          y={{
             direction: "top",
-            dimension: "25%"
+            dimension: "25%",
           }}
-          x={{  
+          x={{
             direction: "left",
-            dimension: "85%"
+            dimension: "85%",
           }}
         />
       </Container>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.div`
   overflow: hidden;
@@ -107,7 +115,7 @@ const Wrapper = styled.div`
   @media ${({ theme }) => theme.mediaQuery.medium} {
     margin-top: -${HeaderHeight};
   }
-`
+`;
 
 const Container = styled.div`
   max-width: ${XLG}px;
@@ -116,7 +124,7 @@ const Container = styled.div`
   min-height: calc(100vh - ${HeaderHeight});
   position: relative;
   font-size: 1.4rem;
-  
+
   @media ${({ theme }) => theme.mediaQuery.medium} {
     display: flex;
     align-items: center;
@@ -124,7 +132,7 @@ const Container = styled.div`
     min-height: calc(100vh);
     margin-top: 0;
   }
-`
+`;
 
 const Grid = styled(_Grid)`
   align-items: center;
@@ -142,7 +150,7 @@ const Grid = styled(_Grid)`
       margin-bottom: 3rem;
     }
   }
-`
+`;
 
 const Row = styled.div`
   padding-top: 4rem;
@@ -159,7 +167,7 @@ const Row = styled.div`
       font-size: 1.5rem;
     }
   }
-`
+`;
 
 const ContactBlock = styled.div`
   margin-top: 1.5rem;
@@ -194,7 +202,7 @@ const ContactBlock = styled.div`
       color: rgba(0, 0, 0, 1);
     }
   }
-`
+`;
 
 const LinkGroup = styled.div`
   margin-top: 1rem;
@@ -206,7 +214,7 @@ const LinkGroup = styled.div`
     flex: 0 1 auto;
     margin-top: 0rem;
   }
-`
+`;
 
 const Link = styled.a`
   color: black;
@@ -214,7 +222,8 @@ const Link = styled.a`
   margin: 0 0.5rem;
   opacity: 0.5;
   display: inline-block;
-  transition: opacity 0.3s cubic-bezier(0.77, 0, 0.175, 1), transform 0.3s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: opacity 0.3s cubic-bezier(0.77, 0, 0.175, 1),
+    transform 0.3s cubic-bezier(0.77, 0, 0.175, 1);
   transform: translateY(0);
 
   &:hover {
@@ -229,7 +238,7 @@ const Link = styled.a`
       font-size: 1.5rem;
     }
   }
-`
+`;
 
 const SocialHandlePreview = styled.h4`
   text-align: center;
@@ -241,7 +250,7 @@ const SocialHandlePreview = styled.h4`
   @media ${({ theme }) => theme.mediaQuery.medium} {
     font-size: 0.6rem;
   }
-`
+`;
 
 const SecondCircle = styled(Circle)`
   opacity: 0.5;
@@ -255,6 +264,6 @@ const SecondCircle = styled(Circle)`
     height: 40rem;
     top: 5%;
   }
-`
+`;
 
 export default Contact;

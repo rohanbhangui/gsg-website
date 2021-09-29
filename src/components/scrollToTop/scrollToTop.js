@@ -6,13 +6,13 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     console.log("DEBUG", location);
-    if(!location.hash) {
+    if (!location.hash) {
       window.scrollTo(0, 0);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
   return null;
-}
+};
 
 export default ScrollToTop;
