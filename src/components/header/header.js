@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { NavLink as _NavLink, Link, useLocation } from 'react-router-dom';
-import styled from "styled-components";
+import { HashLink } from 'react-router-hash-link';
+import styled, { css } from "styled-components";
 
-import LogoImg from "../../assets/img/logo.png";
+// import LogoImg from "../../assets/img/logo.png";
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -24,13 +25,13 @@ const Header = () => {
   return (
     <HeaderContainer mobileopen={isMobileOpen}>
       <nav>
-        <Link to="/" className="logo-link"><Logo src={LogoImg} alt="" /></Link>
+        {/* <Link to="/" className="logo-link"><Logo src={LogoImg} alt="" /></Link> */}
         <ion-icon name={isMobileOpen === "close" ? "menu-outline" : "close-outline"} onClick={toggleOpen}></ion-icon>
         <ul>
+          <NavItem><NavLink to="/" activeClassName="selected">Home</NavLink></NavItem>
           <NavItem><NavLink to="/incubated-properties" activeClassName="selected">Incubated Properties</NavLink></NavItem>
           <NavItem><NavLink to="/investments" activeClassName="selected">Investments</NavLink></NavItem>
-          <NavItem><NavLink to="/#" activeClassName="selected">About</NavLink></NavItem>
-          <NavItem><NavLink to="/contact" activeClassName="selected">Contact</NavLink></NavItem>
+          <NavItem><NavHashLink smooth to="/#contact" activeClassName="selected">Contact</NavHashLink></NavItem>
         </ul>
       </nav>
     </HeaderContainer>
@@ -169,7 +170,7 @@ const NavItem = styled.li`
   }
 `
 
-const NavLink = styled(_NavLink)`
+const NavLinkStyles = css`
   font-size: 2.2rem;
   color: white;
   font-weight: 600;
@@ -188,6 +189,14 @@ const NavLink = styled(_NavLink)`
       color: black;
     }
   }
+`
+
+const NavLink = styled(_NavLink)`
+  ${NavLinkStyles}
+`
+
+const NavHashLink = styled(HashLink)`
+  ${NavLinkStyles}
 `
 
 export default Header;

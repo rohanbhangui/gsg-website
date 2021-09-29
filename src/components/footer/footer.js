@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useLocation } from 'react-router-dom';
 import { v4 as uuid } from "uuid";
 
@@ -29,10 +29,28 @@ export const socials = [
   }
 ]
 
+const slim_contact = [
+  {
+    label: "business@greyspacegroup.com",
+    url: "mailto:business@greyspacegroup.com",
+    icon: "logo-instagram"
+  },
+  {
+    label: " | ",
+    url: "",
+    icon: ""
+  },
+  {
+    label: "Instagram",
+    url: "https://www.instagram.com/greyspacegroup/?hl=en",
+    icon: "logo-instagram"
+  }
+]
+
 const Footer = () => {
   const location = useLocation();
   const [ titleCopy, setTitleCopy ] = useState("Get In Touch");
-  const [ isContactPage, setIsContactPage ] = useState(false);
+  const [ isHomePage, setIsHomePage ] = useState(false);
 
   useEffect(() => {
     if(location.pathname === "/incubated-properties") {
@@ -41,30 +59,35 @@ const Footer = () => {
       setTitleCopy("Have a business you want us to hear about? Reach out!");
     }
 
-    setIsContactPage(location.pathname === "/contact");
+    setIsHomePage(location.pathname === "/");
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
   
   return (
     <>
-      { !isContactPage && (
+      { isHomePage && (
         <FooterContainer>
-          <h1>{titleCopy}</h1>
           { titleCopy === "Get In Touch" && (
             <Socials>
               {
-                socials.map(({label, url}) => (
+                slim_contact.map(({label, url}) => (
                   <li key={uuid()}>
-                    <Link href={url} className="h2">
-                      {label}
-                    </Link>
+                    {url && (
+                      <Link href={url} className="h2">
+                        {label}
+                      </Link>
+                    )}
+                    {!url && (
+                      <Text className="h2">
+                        {label}
+                      </Text>
+                    )}
                   </li>
                 ))
               }
             </Socials>
           )}
-          <Button linkto="/contact" label="Contact us" />
           <Copyright>Grey Space Group &copy; Copyright {new Date().getFullYear()}</Copyright>
         </FooterContainer>
       )}
@@ -93,9 +116,10 @@ const Socials = styled.ul`
   text-align: center;
   justify-content: center;
   flex-wrap: wrap;
+  align-items: center;
 `
 
-const Link = styled.a`
+const LinkStyles = css`
   margin: 0 0.1rem;
   padding: 0.1rem;
   text-decoration: none;
@@ -103,10 +127,21 @@ const Link = styled.a`
   transition: 0.3s color ease;
   text-transform: normal;
   font-weight: 600;
+  text-transform: initial !important;
+`
+
+const Link = styled.a`
+  ${LinkStyles}
 
   &:hover {
     color: white;
   }
+`
+
+const Text = styled.div`
+  ${LinkStyles}
+  font-size: 3rem !important;
+  font-weight: 200;
 `
 
 const Copyright = styled.div`

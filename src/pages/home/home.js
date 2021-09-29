@@ -1,17 +1,10 @@
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { XLG, XXL, LG } from "../../utils/variables";
 
-import Logo from "../../assets/img/logo.png";
-import HeroImage from "../../assets/img/hero-image.svg";
-
-//Venn Diagram
-import DarkCircle from "../../assets/img/dark-circle.svg";
-import LightCircle from "../../assets/img/light-circle.svg";
-import IncubationIcon from "../../assets/img/incubation-icon.svg";
-import InvestingIcon from "../../assets/img/investing-icon.svg";
+import Logo from "../../assets/img/gsg-logo.svg";
 
 //createing possibilities tri panel
 import CreatingValue from "../../assets/img/creating-value.svg";
@@ -24,16 +17,16 @@ import IncubationTile from "../../assets/img/incubation-tile.png";
 import ArrowGo from "../../assets/img/arrow-go.svg";
 
 //trusted by
-import BeatsLogo from "../../assets/img/beats-logo.png";
-import NikeLogo from "../../assets/img/nike-logo.png";
-import PostmatesLogo from "../../assets/img/postmates-logo.png";
-import NBALogo from "../../assets/img/nba-logo.png";
-import FootLockerLogo from "../../assets/img/footlocker-logo.png";
-import ShowtimeLogo from "../../assets/img/showtime-logo.png";
-import JordanLogo from "../../assets/img/jordan-logo.png";
-import WWELogo from "../../assets/img/wwe-logo.png";
-import CirocLogo from "../../assets/img/ciroc-logo.png";
-import FashionnovaLogo from "../../assets/img/fashionnova-logo.png";
+import BeatsLogo from "../../assets/img/beats-logo.png"
+import NikeLogo from "../../assets/img/nike-logo.png"
+import PostmatesLogo from "../../assets/img/postmates-logo.png"
+import NBALogo from "../../assets/img/nba-logo.png"
+import FootLockerLogo from "../../assets/img/footlocker-logo.png"
+import WWELogo from "../../assets/img/wwe-logo.png"
+import CirocLogo from "../../assets/img/ciroc-logo.png"
+import FashionnovaLogo from "../../assets/img/fashionnova-logo.png"
+import BoxyCharmLogo from "../../assets/img/boxy-charm-logo.png"
+import MisguidedLogo from "../../assets/img/misguided-logo.svg"
 
 import Button from "../../components/button";
 import Circle from "../../components/circles";
@@ -58,19 +51,20 @@ const possibilities_blocks = [
 ]
 
 const trusted_by = [
-  BeatsLogo,
   NikeLogo,
-  PostmatesLogo,
+  BoxyCharmLogo,
   NBALogo,
+  PostmatesLogo,
   FootLockerLogo,
-  ShowtimeLogo,
-  JordanLogo,
   WWELogo,
+  MisguidedLogo,
   CirocLogo,
+  BeatsLogo,
   FashionnovaLogo
 ]
 
 const Home = () => {
+  const location = useLocation();
 
   const vennDiagramRef = useRef(null);
   const vennDigramAnimationMarker = useRef(null);
@@ -113,50 +107,6 @@ const Home = () => {
       });
     }
   }
-  
-  // alternate that uses the observer api
-  // const vennDiagramEntrance = () => {
-  //   const element = vennDiagramRef && vennDiagramRef.current;
-
-  //   let options = {
-  //     threshold: 0.1
-  //   }
-    
-  //   let callback = (entries) => {
-  //     entries.forEach(entry => {
-
-  //       console.log("DEBUG", entry)
-
-  //       if (entry.isVisible) {
-
-          
-  //         if(!element.querySelector(".logo").classList.contains("active")) {
-  //           element.querySelector(".logo").classList.add("active");
-  //         }
-          
-  //         [...element.querySelectorAll(".venn-circle")].map(item => {
-  //           if(!item.classList.contains("active")) {
-  //             item.classList.add("active");
-  //           }
-    
-  //           return item;
-  //         });
-    
-  //         [...element.querySelectorAll(".inner")].map(item => {
-  //           if(!item.classList.contains("active")) {
-  //             item.classList.add("active");
-  //           }
-    
-  //           return item;
-  //         });
-  //       }
-  //     });
-  //   };
-
-  //   let observer = new IntersectionObserver(callback, options);
-
-  //   observer.observe(element);
-  // }
 
   const scroll = (e) => {
     scrollBackground(e);
@@ -172,7 +122,7 @@ const Home = () => {
     //remove overflow hidden
     document.querySelector("main").classList.remove("overflow-open");
 
-    vennDiagramEntrance();
+    console.log(location)
 
     return () => {
       window.removeEventListener('scroll', scroll);
@@ -206,52 +156,72 @@ const Home = () => {
                 <p className="h3">We have the ability to see patterns, develop new solutions and build new paradigms that allow us to turn ideas and partnerships into reality.</p>
                 <p className="h3">Our goal is to generate long term value for brands and investors by investing in and adding value to early as well as growth stage CPG, Lifestyle &amp; Tech companies.</p>
               </Content>
-              <Button linkto="/contact" label="Contact Us" />
             </div>
           </Row>
           <Row className="hero-section-img">
-            <Hero src={HeroImage} alt="" />
+            <Hero src={Logo} alt="" />
           </Row>
         </Grid>
       </Container>
-      <Container className="pre-venn" ref={vennDigramAnimationMarker}>
-        <Grid xs={1} lg={1} className="section-2">
-          <Row>
-            <h1>Finding Potential.</h1>
-            <h1>Generating Value.</h1>
-            <Content>
-              <p className="h3">We like to capitalize where potential is untapped. We generate value by focusing on the intersection of brand incubation and early stage value investing.</p>
-            </Content>
+      <Container className="projects">
+        <Circle
+          color="#000"
+          opacity={0.50}
+          size={10}
+          y={{  
+            direction: "top",
+            dimension: "30%"
+          }}
+        />
+        <Circle
+          color="#bababa"
+          blend="lighten"
+          opacity={0.66}
+          size={30}
+          x={{  
+            direction: "left",
+            dimension: "90%"
+          }}
+          y={{  
+            direction: "top",
+            dimension: "85%"
+          }}
+        />
+        <Grid xs={1} sm={2} className="project-tiles">
+          <TileBlock to="/incubated-properties">
+            <Tile background={IncubationTile}>
+              <div className="content">
+                <div className="inner">
+                  <h2>Incubated Properties</h2><img src={ArrowGo} alt="" />
+                </div>
+              </div>
+            </Tile>
+          </TileBlock>
+          <Row className="content-column">
+            <div className="inner">
+              <h2 className="h1">Incubated Properties</h2>
+              <p className="h3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </Row>
+        </Grid>
+        <Grid xs={1} sm={2} className="project-tiles second-group">
+          <TileBlock to="/investments" className="image-column">
+            <Tile background={InvestmentTile}>
+              <div className="content">
+                <div className="inner">
+                  <h2>Investments</h2><img src={ArrowGo} alt="" />
+                </div>
+              </div>
+            </Tile>
+          </TileBlock>
+          <Row className="content-column">
+            <div className="inner">
+              <h2 className="h1">Early Stage Value Investing</h2>
+              <p className="h3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
           </Row>
         </Grid>
       </Container>
-      <VennDiagram ref={vennDiagramRef}>
-        <Grid xs={1} sm={2}>
-          <img className="logo" src={Logo} alt="" />
-          <LightSide>
-            <VennContent className="left">
-              <div className="inner">
-                <img className="icon" src={InvestingIcon} alt="" />
-                <h2>Early Stage Value Investing</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <Button linkto="/investments" className="outline" label="Learn More" />
-              </div>
-            </VennContent>
-            <img className="venn-circle" src={LightCircle} alt="" />
-          </LightSide>
-          <DarkSide>
-            <VennContent className="right">
-              <div className="inner">
-                <img className="icon" src={IncubationIcon} alt="" />
-                <h2>Incubated Properties</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <Button linkto="/incubated-properties" className="outline-invert" label="Learn More" />
-              </div>
-            </VennContent>
-            <img className="venn-circle" src={DarkCircle} alt="" />
-          </DarkSide>
-        </Grid>
-      </VennDiagram>
       <Container className="creating-possibilities">
         <Grid xs={1} className="intro-content">
           <h1>
@@ -264,9 +234,6 @@ const Home = () => {
           { possibilities_blocks.map(item => (
             <Block>
               <div className="flex-container">
-                <div className="flex-item">
-                  <img src={item.img} alt="" />
-                </div>
                 <div className="flex-item">
                   <h2>{item.title}</h2>
                   <p>{item.text}</p>
@@ -298,54 +265,6 @@ const Home = () => {
             dimension: "50%"
           }}
         />
-      </Container>
-      <Container className="projects">
-        <Circle
-          color="#000"
-          opacity={0.50}
-          size={10}
-          y={{  
-            direction: "top",
-            dimension: "30%"
-          }}
-        />
-        <Circle
-          color="#bababa"
-          blend="lighten"
-          opacity={0.66}
-          size={30}
-          x={{  
-            direction: "left",
-            dimension: "90%"
-          }}
-          y={{  
-            direction: "top",
-            dimension: "85%"
-          }}
-        />
-        <Grid xs={1}>
-          <h1>Explore Our Projects</h1>
-        </Grid>
-        <Grid xs={1} sm={2} className="project-tiles">
-          <TileBlock to="/investments">
-            <Tile background={InvestmentTile}>
-              <div className="content">
-                <div className="inner">
-                  <h2>Investments</h2><img src={ArrowGo} alt="" />
-                </div>
-              </div>
-            </Tile>
-          </TileBlock>
-          <TileBlock to="/incubated-properties">
-            <Tile background={IncubationTile}>
-              <div className="content">
-                <div className="inner">
-                  <h2>Incubated Properties</h2><img src={ArrowGo} alt="" />
-                </div>
-              </div>
-            </Tile>
-          </TileBlock>
-        </Grid>
       </Container>
       <Container className="trusted-by">
         <h2>Trusted By</h2>
@@ -412,7 +331,7 @@ const Container = styled.section`
   }
 
   &.projects {
-    margin-top: 12rem;
+    margin-top: 5rem;
     max-width: ${XXL}px;
 
     h1 {
@@ -479,6 +398,36 @@ const Grid = styled(_Grid)`
       padding: 0;
     }
   }
+
+  &.project-tiles.second-group {
+    .image-column {
+      order: 1;
+
+      @media ${({ theme }) => theme.mediaQuery.medium} {
+        order: 2;
+      }
+    }
+
+    .content-column {
+      order: 2;
+
+      @media ${({ theme }) => theme.mediaQuery.medium} {
+        order: 1;
+      }
+    }
+  }
+
+  &.project-tiles {
+    .content-column {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .inner {
+        max-width: 23rem;
+      }
+    }
+  }
 `
 
 const Row = styled.div`
@@ -524,25 +473,17 @@ const Content = styled.div`
 `
 
 const Hero = styled.img`
-  width: 150%;
+  width: 100%;
   height: auto;
   display: block;
   position: relative;
-  left: 50%;
-  margin-bottom: 2rem;
   z-index: 0;
-  margin-top: -80%;
-  transform: translateX(-50%);
 
   @media ${({ theme }) => theme.mediaQuery.small} {
-    transform: translateY(-50%);
-    width: 200%;
-    top: 30%;
     left: auto;
     z-index: 0;
     max-width: none;
     margin-top: 0;
-    
   }
 `
 
@@ -741,7 +682,7 @@ const Block = styled.div`
   padding: 2rem; 
   background: #F2F2F2;
   border-radius: 2rem;
-  min-height: 20rem;
+  // min-height: 20rem;
   min-width: 20rem;
 
   @media ${({ theme }) => theme.mediaQuery.medium} {
@@ -756,9 +697,11 @@ const Block = styled.div`
 
     .flex-item {
 
-      &:first-child {
-        flex: 1 0 auto;
-      }
+      // &:first-child {
+      //   flex: 1 0 auto;
+      //   height: 100%;
+      //   max-height: 4rem;
+      // }
 
       img {
         height: 4rem;
@@ -793,7 +736,7 @@ const Tile = styled.div`
   }
 
   @media ${({ theme }) => theme.mediaQuery.large} {
-    padding-top: min(90vh, 135%);
+    padding-top: min(90vh, 100%);
   }
 
   &:hover {

@@ -27,7 +27,7 @@ const App = () => {
       <Main>
         <GlobalStyle />
         <Router>
-          <ScrollToTop />
+          {/* <ScrollToTop /> */}
           <Header />
           <Switch>
             <Route path="/incubated-properties">
@@ -36,14 +36,11 @@ const App = () => {
             <Route path="/investments">
               <Investments />
             </Route>
-            <Route path="/contact">
-              <Contact />
-            </Route>
             <Route path="/" exact>
               <Home />
             </Route>
           </Switch>
-          <Footer />
+          <Footer id="contact" />
         </Router>
       </Main>
     </>
