@@ -5,7 +5,6 @@ const ScrollToTop = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log("DEBUG", location);
     if (!location.hash) {
       window.scrollTo(0, 0);
     }

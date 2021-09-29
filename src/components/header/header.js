@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { NavLink as _NavLink, Link, useLocation } from "react-router-dom";
+import { NavLink as _NavLink, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import styled, { css } from "styled-components";
-
-// import LogoImg from "../../assets/img/logo.png";
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -171,17 +169,6 @@ const HeaderContainer = styled.header`
         display: none;
       }
     }
-  }
-`;
-
-const Logo = styled.img`
-  height: 3.25rem;
-  width: auto;
-  position: relative;
-  top: 0.15rem;
-
-  @media ${({ theme }) => theme.mediaQuery.medium} {
-    height: 2.25rem;
   }
 `;
 

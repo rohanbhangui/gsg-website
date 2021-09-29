@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
 import { XLG } from "../../utils/variables";
-import Button from "../button";
 
 export const socials = [
   {
@@ -49,6 +48,7 @@ const slim_contact = [
 
 const Footer = ({ id }) => {
   const location = useLocation();
+  // eslint-disable-next-line no-unused-vars
   const [titleCopy, setTitleCopy] = useState("Get In Touch");
   const [isHomePage, setIsHomePage] = useState(false);
 

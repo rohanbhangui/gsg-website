@@ -5,7 +5,6 @@ import styled from "styled-components";
 import GlobalStyle from "./assets/styles/globalStyles";
 
 import Home from "./pages/home";
-import Contact from "./pages/contact";
 import Incubation from "./pages/incubation";
 import Investments from "./pages/investments";
 
@@ -22,7 +21,7 @@ const App = () => {
       <Main>
         <GlobalStyle />
         <Router>
-          {/* <ScrollToTop /> */}
+          <ScrollToTop />
           <Header />
           <Switch>
             <Route path="/incubated-properties">
