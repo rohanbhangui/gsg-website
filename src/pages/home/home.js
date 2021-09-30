@@ -76,7 +76,6 @@ const Home = () => {
 
   //projects come into view
   useEffect(() => {
-    console.log("DEBUG", projectsEntry, prevProjectsEntry);
     if(projectsInView && prevProjectsEntry && projectsRef) {
       projectsEntry.target.querySelectorAll(':scope > a').forEach((val, ind, arr) => {
         setTimeout(() => {
