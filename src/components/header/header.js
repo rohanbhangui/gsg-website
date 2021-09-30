@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { NavLink as _NavLink, useLocation } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
 import styled, { css } from "styled-components";
 
 const Header = () => {
@@ -35,19 +34,14 @@ const Header = () => {
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/incubated-properties" activeClassName="selected">
-              Incubated Properties
+            <NavLink to="/properties" activeClassName="selected">
+              Properties
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink to="/investments" activeClassName="selected">
               Investments
             </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavHashLink smooth to="/#contact">
-              Contact
-            </NavHashLink>
           </NavItem>
         </ul>
       </nav>
@@ -209,10 +203,6 @@ const NavLinkStyles = css`
 `;
 
 const NavLink = styled(_NavLink)`
-  ${NavLinkStyles}
-`;
-
-const NavHashLink = styled(HashLink)`
   ${NavLinkStyles}
 `;
 

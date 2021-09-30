@@ -28,23 +28,23 @@ export const socials = [
   },
 ];
 
-const slim_contact = [
-  {
-    label: "business@greyspacegroup.com",
-    url: "mailto:business@greyspacegroup.com",
-    icon: "logo-instagram",
-  },
-  {
-    label: " | ",
-    url: "",
-    icon: "",
-  },
-  {
-    label: "Instagram",
-    url: "https://www.instagram.com/greyspacegroup/?hl=en",
-    icon: "logo-instagram",
-  },
-];
+// const slim_contact = [
+//   {
+//     label: "business@greyspacegroup.com",
+//     url: "mailto:business@greyspacegroup.com",
+//     icon: "logo-instagram",
+//   },
+//   {
+//     label: " | ",
+//     url: "",
+//     icon: "",
+//   },
+//   {
+//     label: "Instagram",
+//     url: "https://www.instagram.com/greyspacegroup/?hl=en",
+//     icon: "logo-instagram",
+//   },
+// ];
 
 const Footer = ({ id }) => {
   const location = useLocation();
@@ -64,11 +64,11 @@ const Footer = ({ id }) => {
         <FooterContainer id={id}>
           {titleCopy === "Get In Touch" && (
             <Socials>
-              {slim_contact.map(({ label, url }) => (
+              {socials.map(({ label, url, icon }) => (
                 <li key={uuid()}>
                   {url && (
                     <Link href={url} className="h2">
-                      {label}
+                      <ion-icon name={icon}></ion-icon>
                     </Link>
                   )}
                   {!url && <Text className="h2">{label}</Text>}
@@ -113,18 +113,23 @@ const LinkStyles = css`
   margin: 0 0.1rem;
   padding: 0.1rem;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.33);
+  color: rgba(0, 0, 0, 0.33);
   transition: 0.3s color ease;
   text-transform: normal;
   font-weight: 600;
   text-transform: initial !important;
+
+  ion-icon {
+    font-size: 2.4rem;
+    margin: 0 0.3rem;
+  }
 `;
 
 const Link = styled.a`
   ${LinkStyles}
 
   &:hover {
-    color: white;
+    color: black;
   }
 `;
 

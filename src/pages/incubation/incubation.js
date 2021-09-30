@@ -46,7 +46,7 @@ const properties = [
 const Incubation = () => {
   return (
     <PropertiesLayout properties={properties}>
-      <h1 className="big">Incubated Properties</h1>
+      <h1 className="big">Properties</h1>
       <p className="h3">
         Grey Space Group takes an individualized approach and curates organic
         GTM strategies, marketing campaigns, product distribution, and talent /

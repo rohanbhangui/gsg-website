@@ -9,13 +9,6 @@ import Button from "../../components/button";
 const PropertiesLayout = ({ properties, children }) => {
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
 
-  const scrollBackground = (e) => {
-    const html = document.querySelector(".background");
-    let offset = ((20 * window.scrollY) / html.offsetHeight) * 0.66;
-    if (offset < 0) offset = 0;
-    html.style.setProperty("--background-position", `-${offset}vh`);
-  };
-
   const scrollToPropertyBackground = (e) => {
     const elements = [...document.querySelectorAll(".item-block")];
 
@@ -38,15 +31,11 @@ const PropertiesLayout = ({ properties, children }) => {
   };
 
   const scroll = (e) => {
-    scrollBackground(e);
     scrollToPropertyBackground(e);
   };
 
   useEffect(() => {
     window.addEventListener("scroll", scroll);
-
-    const html = document.querySelector(".background");
-    html.style.setProperty("--background-position", `0vh`);
 
     //remove overflow hidden
     document.querySelector("main").classList.add("overflow-open");

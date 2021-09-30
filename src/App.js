@@ -12,19 +12,16 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import ScrollToTop from "./components/scrollToTop";
 
-import Speckles from "./assets/img/speckles.png";
-
 const App = () => {
   return (
     <>
-      <Background className="background" src={Speckles} />
       <Main>
         <GlobalStyle />
         <Router>
           <ScrollToTop />
           <Header />
           <Switch>
-            <Route path="/incubated-properties">
+            <Route path="/properties">
               <Incubation />
             </Route>
             <Route path="/investments">
@@ -48,18 +45,6 @@ const Main = styled.main`
   &.overflow-open {
     overflow-x: visible;
   }
-`;
-
-const Background = styled.img`
-  position: fixed;
-  top: var(--background-position);
-  left: 0;
-  right: 0;
-  height: 150vh;
-  width: 100%;
-  object-fit: cover;
-  z-index: unset;
-  transform: translateZ(-200px);
 `;
 
 export default App;

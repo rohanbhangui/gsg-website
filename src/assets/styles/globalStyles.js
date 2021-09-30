@@ -26,9 +26,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: linear-gradient(to bottom, rgba(136, 136, 136, 0), rgba(0, 0, 0, 0.73));
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: #f0f0f0;
   }
 
   #root {

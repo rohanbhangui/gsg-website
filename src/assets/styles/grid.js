@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Grid = styled.div`
   display: grid;
-  grid-gap: 0.1rem;
+  grid-gap: 0.7rem;
 
   ${({ xs }) =>
     xs &&

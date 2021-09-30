@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useInView } from 'react-intersection-observer';
 
 import { XLG, XXL, LG } from "../../utils/variables";
 
@@ -28,7 +29,6 @@ import FashionnovaLogo from "../../assets/img/fashionnova-logo.png";
 import BoxyCharmLogo from "../../assets/img/boxy-charm-logo.png";
 import MisguidedLogo from "../../assets/img/misguided-logo.svg";
 
-import Circle from "../../components/circles";
 import { Grid as _Grid } from "../../assets/styles/grid";
 
 const possibilities_blocks = [
@@ -63,71 +63,52 @@ const trusted_by = [
 ];
 
 const Home = () => {
-  const location = useLocation();
 
-  const vennDiagramRef = useRef(null);
-  const vennDigramAnimationMarker = useRef(null);
+  const [ loaded, setLoaded ] = useState(false);
 
-  const scrollBackground = (e) => {
-    const html = document.querySelector(".background");
-    let offset = ((20 * window.scrollY) / html.offsetHeight) * 0.66;
-    if (offset < 0) offset = 0;
+  // for the project tiles
+  const { ref: projectsRef, inView: projectsInView, entry: projectsEntry } = useInView({
+    /* Optional options */
+    threshold: 0.2,
+  });
 
-    html.style.setProperty("--background-position", `-${offset}vh`);
-  };
-
-  // for allowing the venn diagram entrance
-  const vennDiagramEntrance = (e) => {
-    const transitionMarker =
-      vennDigramAnimationMarker && vennDigramAnimationMarker.current;
-    const transitionMarkerBounds = transitionMarker?.getBoundingClientRect();
-
-    const element = vennDiagramRef && vennDiagramRef.current;
-
-    if (
-      transitionMarkerBounds &&
-      (window.innerHeight * 2) / 3 >= transitionMarkerBounds.y
-    ) {
-      if (!element.querySelector(".logo").classList.contains("active")) {
-        element.querySelector(".logo").classList.add("active");
-      }
-
-      [...element.querySelectorAll(".venn-circle")].map((item) => {
-        if (!item.classList.contains("active")) {
-          item.classList.add("active");
-        }
-
-        return item;
-      });
-
-      [...element.querySelectorAll(".inner")].map((item) => {
-        if (!item.classList.contains("active")) {
-          item.classList.add("active");
-        }
-
-        return item;
+  //projects come into view
+  useEffect(() => {
+    console.log("DEBUG", projectsEntry);
+    if(projectsEntry && projectsInView && loaded) {
+      projectsEntry.target.querySelectorAll(':scope > a').forEach((val, ind, arr) => {
+        setTimeout(() => {
+          val.classList.add("active");
+        }, ind*100)
       });
     }
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [projectsInView])
 
-  const scroll = (e) => {
-    scrollBackground(e);
-    vennDiagramEntrance(e);
-  };
 
   useEffect(() => {
-    window.addEventListener("scroll", scroll);
-
-    const html = document.querySelector(".background");
-    html.style.setProperty("--background-position", `0vh`);
 
     //remove overflow hidden
     document.querySelector("main").classList.remove("overflow-open");
 
-    console.log(location);
+    document.querySelector(".hero-logo").classList.add("active");
+    
+    setTimeout(() => {
+      document.querySelector(".hero-section-text h1").classList.add("active");
+      
+      setTimeout(() => {
+        document.querySelector(".hero-section-text .hero-section-text-content").classList.add("active");
+      }, 250);
+    }, 500);
+
+    //hacky way when doc is ready so that observers dont fire early
+    window.addEventListener('DOMContentLoaded', (event) => {
+      console.log('DOM fully loaded and parsed');
+      setLoaded(true);
+    });
+    
 
     return () => {
-      window.removeEventListener("scroll", scroll);
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -136,20 +117,16 @@ const Home = () => {
   return (
     <>
       <Container>
-        <FirstCircle
-          color="#3c3c3c"
-          opacity={1}
-          blend="multiply"
-          y={{
-            direction: "top",
-            dimension: "-10%",
-          }}
-        />
-        <Grid xs={1} sm={2}>
+        <Grid>
+          <Row className="hero-section-img">
+            <Hero className="hero-logo" src={Logo} alt="" />
+          </Row>
+        </Grid>
+        <Grid xs={1} sm={1}>
           <Row className="hero-section-text">
-            <div className="text-wrapper">
+            <Grid xs={1} md={2}>
               <h1>A culture focused venture studio for a social world.</h1>
-              <Content>
+              <Content className="hero-section-text-content">
                 <p className="h3">
                   We have the ability to see patterns, develop new solutions and
                   build new paradigms that allow us to turn ideas and
@@ -161,39 +138,13 @@ const Home = () => {
                   growth stage CPG, Lifestyle &amp; Tech companies.
                 </p>
               </Content>
-            </div>
-          </Row>
-          <Row className="hero-section-img">
-            <Hero src={Logo} alt="" />
+            </Grid>
           </Row>
         </Grid>
       </Container>
       <Container className="projects">
-        <Circle
-          color="#000"
-          opacity={0.5}
-          size={10}
-          y={{
-            direction: "top",
-            dimension: "30%",
-          }}
-        />
-        <Circle
-          color="#ffffff"
-          blend="lighten"
-          opacity={0.66}
-          size={30}
-          x={{
-            direction: "left",
-            dimension: "90%",
-          }}
-          y={{
-            direction: "top",
-            dimension: "50%",
-          }}
-        />
-        <Grid xs={1} sm={2} className="project-tiles">
-          <TileBlock to="/incubated-properties">
+        <Grid xs={1} sm={2} className="project-tiles" ref={projectsRef}>
+          <TileBlock to="/properties">
             <Tile background={IncubationTile}>
               <div className="content">
                 <div className="inner">
@@ -203,18 +154,7 @@ const Home = () => {
               </div>
             </Tile>
           </TileBlock>
-          <Row className="content-column">
-            <div className="inner">
-              <h2 className="h1">Incubated Properties</h2>
-              <p className="h3">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-            </div>
-          </Row>
-        </Grid>
-        <Grid xs={1} sm={2} className="project-tiles second-group">
-          <TileBlock to="/investments" className="image-column">
+          <TileBlock to="/investments">
             <Tile background={InvestmentTile}>
               <div className="content">
                 <div className="inner">
@@ -224,6 +164,18 @@ const Home = () => {
               </div>
             </Tile>
           </TileBlock>
+        </Grid>
+        <Grid xs={1} sm={2} className="project-tiles second-group">
+          
+        <Row className="content-column">
+            <div className="inner">
+              <h2 className="h1">Incubated Properties</h2>
+              <p className="h3">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+          </Row>
           <Row className="content-column">
             <div className="inner">
               <h2 className="h1">Early Stage Value Investing</h2>
@@ -255,29 +207,6 @@ const Home = () => {
             </Block>
           ))}
         </Grid>
-        <Circle
-          color="#eaeaea"
-          blend="lighten"
-          opacity={0.65}
-          y={{
-            direction: "top",
-            dimension: "90%",
-          }}
-        />
-        <Circle
-          color="#555"
-          opacity={1}
-          size={30}
-          blend="multiply"
-          x={{
-            direction: "left",
-            dimension: "100%",
-          }}
-          y={{
-            direction: "top",
-            dimension: "50%",
-          }}
-        />
       </Container>
       <Container className="trusted-by">
         <h2>Trusted By</h2>
@@ -459,7 +388,7 @@ const Row = styled.div`
   .text-wrapper {
     width: 100%;
 
-    @media ${({ theme }) => theme.mediaQuery.medium} {
+    @media ${({ theme }) => theme.mediaQuery.small} {
       width: 80%;
     }
   }
@@ -470,6 +399,43 @@ const Row = styled.div`
     @media ${({ theme }) => theme.mediaQuery.small} {
       order: 1;
     }
+
+    h1 {
+      opacity: 0;
+      transform: translateY(5rem);
+      transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1),
+        transform 1s 0.1s cubic-bezier(0.77, 0, 0.175, 1);
+
+      &.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media ${({ theme }) => theme.mediaQuery.medium} {
+        text-align: right;
+      }
+      
+    }
+
+    .hero-section-text-content {
+      opacity: 0;
+      transform: translateY(5rem);
+      transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1),
+        transform 1s 0.1s cubic-bezier(0.77, 0, 0.175, 1);
+
+      &.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      p.h3 {
+        &:first-child {
+          @media ${({ theme }) => theme.mediaQuery.small} {
+            margin-top: 0;
+          }
+        }
+      }
+    }
   }
 
   &.hero-section-img {
@@ -477,18 +443,16 @@ const Row = styled.div`
 
     @media ${({ theme }) => theme.mediaQuery.small} {
       order: 2;
-      margin-bottom: -10rem;
+      margin-bottom: 4rem;
     }
 
     @media ${({ theme }) => theme.mediaQuery.large} {
       order: 2;
-      margin-bottom: -10rem;
     }
   }
 `;
 
 const Content = styled.div`
-  margin-top: 1rem;
 
   h1 {
     white-space: pre-line;
@@ -497,16 +461,25 @@ const Content = styled.div`
 
 const Hero = styled.img`
   width: 100%;
+  max-width: 40rem;
   height: auto;
   display: block;
   position: relative;
   z-index: 0;
+  opacity: 0;
+  transform: translateY(5rem);
+  transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1),
+    transform 1s 0.1s cubic-bezier(0.77, 0, 0.175, 1);
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   @media ${({ theme }) => theme.mediaQuery.small} {
     left: auto;
     z-index: 0;
-    max-width: none;
-    margin-top: 0;
+    margin: 0 auto;
   }
 `;
 
@@ -548,6 +521,16 @@ const Block = styled.div`
 
 const TileBlock = styled(Link)`
   text-decoration: none;
+
+  opacity: 0;
+  transform: translateY(5rem);
+  transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1),
+    transform 1s 0.1s cubic-bezier(0.77, 0, 0.175, 1);
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
 `;
 
 const Tile = styled.div`
@@ -647,14 +630,6 @@ const Logos = styled.ul`
       height: 100%;
       object-fit: contain;
     }
-  }
-`;
-
-const FirstCircle = styled(Circle)`
-  display: none;
-
-  @media ${({ theme }) => theme.mediaQuery.medium} {
-    display: block;
   }
 `;
 
