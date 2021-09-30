@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useInView } from 'react-intersection-observer';
 
 import { XLG, XXL, LG } from "../../utils/variables";
+import usePrevious from "../../utils/hooks/usePrevious"
 
 import Logo from "../../assets/img/gsg-logo.svg";
 
@@ -64,18 +65,19 @@ const trusted_by = [
 
 const Home = () => {
 
-  const [ loaded, setLoaded ] = useState(false);
-
   // for the project tiles
   const { ref: projectsRef, inView: projectsInView, entry: projectsEntry } = useInView({
     /* Optional options */
     threshold: 0.2,
   });
 
+  //prevent misfire at beginning, by making sure the previous entry is not undefined
+  const prevProjectsEntry = usePrevious(projectsEntry);
+
   //projects come into view
   useEffect(() => {
-    console.log("DEBUG", projectsEntry);
-    if(projectsEntry && projectsInView && loaded) {
+    console.log("DEBUG", projectsEntry, prevProjectsEntry);
+    if(projectsInView && prevProjectsEntry && projectsRef) {
       projectsEntry.target.querySelectorAll(':scope > a').forEach((val, ind, arr) => {
         setTimeout(() => {
           val.classList.add("active");
@@ -100,13 +102,6 @@ const Home = () => {
         document.querySelector(".hero-section-text .hero-section-text-content").classList.add("active");
       }, 250);
     }, 500);
-
-    //hacky way when doc is ready so that observers dont fire early
-    window.addEventListener('DOMContentLoaded', (event) => {
-      console.log('DOM fully loaded and parsed');
-      setLoaded(true);
-    });
-    
 
     return () => {
     };
@@ -178,7 +173,7 @@ const Home = () => {
           </Row>
           <Row className="content-column">
             <div className="inner">
-              <h2 className="h1">Early Stage Value Investing</h2>
+              <h2 className="h1">Early Stage Investing</h2>
               <p className="h3">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -375,7 +370,8 @@ const Grid = styled(_Grid)`
         padding-left: 2rem;
 
         @media ${({ theme }) => theme.mediaQuery.medium} {
-          max-width: 25rem;
+          // max-width: 25rem;
+          padding: 0 4rem;
         }
       }
     }
