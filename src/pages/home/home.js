@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 import { useInView } from 'react-intersection-observer';
 
 import { XLG, XXL, LG } from "../../utils/variables";
@@ -159,9 +160,8 @@ const Home = () => {
             </Tile>
           </TileBlock>
         </Grid>
-        <Grid xs={1} sm={2} className="project-tiles second-group">
-          
-        <Row className="content-column">
+        {/* <Grid xs={1} sm={2} className="project-tiles second-group">
+          <Row className="content-column">
             <div className="inner">
               <h2 className="h1">Incubated Properties</h2>
               <p className="h3">
@@ -179,7 +179,7 @@ const Home = () => {
               </p>
             </div>
           </Row>
-        </Grid>
+        </Grid> */}
       </Container>
       <Container className="creating-possibilities">
         <Grid xs={1} className="intro-content">
@@ -191,7 +191,7 @@ const Home = () => {
         </Grid>
         <Grid xs={3} className="tri-blocks">
           {possibilities_blocks.map((item) => (
-            <Block>
+            <Block key={uuid()}>
               <div className="flex-container">
                 <div className="flex-item">
                   <h2>{item.title}</h2>
@@ -206,12 +206,12 @@ const Home = () => {
         <h2>Trusted By</h2>
         <Logos>
           {[...trusted_by].map((item) => (
-            <li>
+            <li key={uuid()}>
               <img src={item} alt="" />
             </li>
           ))}
           {[...trusted_by, ...trusted_by, ...trusted_by].map((item) => (
-            <li className="mobile-only">
+            <li className="mobile-only" key={uuid()}>
               <img src={item} alt="" />
             </li>
           ))}
@@ -496,12 +496,6 @@ const Block = styled.div`
     justify-content: space-between;
 
     .flex-item {
-      // &:first-child {
-      //   flex: 1 0 auto;
-      //   height: 100%;
-      //   max-height: 4rem;
-      // }
-
       img {
         height: 4rem;
         width: auto;
@@ -543,7 +537,7 @@ const Tile = styled.div`
   }
 
   @media ${({ theme }) => theme.mediaQuery.large} {
-    padding-top: min(90vh, 100%);
+    padding-top: min(90vh, 120%);
   }
 
   &:hover {
