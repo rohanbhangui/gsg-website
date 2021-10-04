@@ -15,7 +15,7 @@ import FosteringGrowth from "../../assets/img/fostering-growth.svg";
 import UntapPotential from "../../assets/img/untap-potential.svg";
 
 //project-tiles
-import InvestmentTile from "../../assets/img/investment-tile.png";
+import InvestmentTile from "../../assets/img/koia-masterImage.png";
 import IncubationTile from "../../assets/img/incubation-tile.png";
 import ArrowGo from "../../assets/img/arrow-go.svg";
 
@@ -251,10 +251,6 @@ const Container = styled.section`
         padding: 0;
       }
 
-      > h1 {
-        color: white;
-      }
-
       > p {
         color: #3c3c3c;
       }
@@ -289,7 +285,6 @@ const Container = styled.section`
     h2 {
       text-align: center;
       margin-bottom: 1.5rem;
-      color: white;
     }
   }
 `;
@@ -480,7 +475,7 @@ const Hero = styled.img`
 
 const Block = styled.div`
   padding: 2rem;
-  background: #f2f2f2;
+  background: #fff;
   border-radius: 2rem;
   // min-height: 20rem;
   min-width: 20rem;
@@ -618,6 +613,8 @@ const Logos = styled.ul`
       width: 100%;
       height: 100%;
       object-fit: contain;
+      filter: grayscale(1);
+      opacity: 0.75;
     }
   }
 `;

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import styled, { css } from "styled-components";
+import { useEffect } from "react";
+import styled from "styled-components";
 
 import { XXL } from "../../utils/variables";
 import { Grid as _Grid } from "../../assets/styles/grid";
@@ -7,36 +7,7 @@ import { Grid as _Grid } from "../../assets/styles/grid";
 import Button from "../../components/button";
 
 const PropertiesLayout = ({ properties, children }) => {
-  const [currentItemIndex, setCurrentItemIndex] = useState(0);
-
-  const scrollToPropertyBackground = (e) => {
-    const elements = [...document.querySelectorAll(".item-block")];
-
-    for (let i = 0; i < elements.length; i++) {
-      const element = elements[i];
-      const elementBounds = element.getBoundingClientRect();
-      const elementUpperBound = elementBounds.top + window.scrollY;
-      const elementLowerBound = elementBounds.bottom + window.scrollY;
-
-      const windowCenterScrollMarker = window.scrollY + window.innerHeight / 2;
-
-      if (
-        windowCenterScrollMarker >= elementUpperBound &&
-        windowCenterScrollMarker <= elementLowerBound
-      ) {
-        setCurrentItemIndex(i);
-        break;
-      }
-    }
-  };
-
-  const scroll = (e) => {
-    scrollToPropertyBackground(e);
-  };
-
   useEffect(() => {
-    window.addEventListener("scroll", scroll);
-
     //remove overflow hidden
     document.querySelector("main").classList.add("overflow-open");
 
@@ -51,7 +22,6 @@ const PropertiesLayout = ({ properties, children }) => {
     document.querySelector("html").classList.add("smooth-scroll");
 
     return () => {
-      window.removeEventListener("scroll", scroll);
       document.querySelector("html").classList.remove("smooth-scroll");
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -72,32 +42,24 @@ const PropertiesLayout = ({ properties, children }) => {
         </Grid>
       </Container>
       <Container className="properties">
-        <Grid xs={1} md={2} className="properties-grid">
-          <div>
-            <FloatingImageContainer>
-              <FloatingImage img={properties[currentItemIndex].masterImage} />
-            </FloatingImageContainer>
-          </div>
-          <div>
-            {properties.map((property) => (
-              <Block key={property.id} className="item-block">
-                <Marker id={property.id} />
-                <BlockImage className="mobile" img={property.masterImage} />
-                <div className="content">
-                  <img src={property.logo} alt="" className="logo" />
-                  <h2>{property.title}</h2>
-                  <h3>{property.subtitle}</h3>
-                  <p>{property.description}</p>
-                  {property.link.url && (
-                    <Button
-                      linkto={property.link.url}
-                      label={property.link.label}
-                    />
-                  )}
-                </div>
-              </Block>
+        <Grid xs={1} className="properties-grid">
+          {properties.map((property) => (
+            <Block key={property.id} className="item-block" background={property.masterImage}>
+              <Marker id={property.id} />
+              <div className="content">
+                <img src={property.logo} alt="" className="logo" />
+                <h2>{property.title}</h2>
+                <h3>{property.subtitle}</h3>
+                <p>{property.description}</p>
+                {property.link.url && (
+                  <Button
+                    linkto={property.link.url}
+                    label={property.link.label}
+                  />
+                )}
+              </div>
+            </Block>
             ))}
-          </div>
         </Grid>
       </Container>
     </>
@@ -110,10 +72,6 @@ const Container = styled.section`
   margin: 4rem auto 4rem;
   padding: 1rem;
   position: relative;
-
-  @media ${({ theme }) => theme.mediaQuery.medium} {
-    margin: 4rem auto 16rem;
-  }
 
   &.bigTitle {
     text-align: center;
@@ -145,11 +103,7 @@ const Container = styled.section`
 
 const Grid = styled(_Grid)`
   &.properties-grid {
-    display: block;
-
-    @media ${({ theme }) => theme.mediaQuery.medium} {
-      display: grid;
-    }
+    display: grid;
   }
 `;
 
@@ -179,91 +133,40 @@ const PropertyImage = styled.img`
   object-fit: contain;
 `;
 
-const FloatingImageContainer = styled.div`
-  position: sticky;
-  top: 25vh;
-
-  @media ${({ theme }) => theme.mediaQuery.xlarge} {
-    top: 15vh;
-  }
-`;
-
-const PropertyImageStyles = css`
-  width: 100%;
-  height: 30vh;
-  border-radius: 3rem;
-  margin: 3rem 0 0;
-  position: relative;
-  background: url(${({ img }) => img});
-  background-size: cover;
-  background-position: center center;
-  transition: 0.3s all ease;
-
-  @media ${({ theme }) => theme.mediaQuery.medium} {
-    height: 40vh;
-    border-radius: 3rem;
-    margin: 2rem 0 0;
-  }
-
-  @media ${({ theme }) => theme.mediaQuery.large} {
-    height: 50vh;
-    border-radius: 3rem;
-  }
-
-  @media ${({ theme }) => theme.mediaQuery.xlarge} {
-    height: 65vh;
-    border-radius: 3rem;
-    margin: 2rem 0 0;
-  }
-`;
-
-const FloatingImage = styled.div`
-  ${PropertyImageStyles}
-
-  display: none;
-
-  @media ${({ theme }) => theme.mediaQuery.medium} {
-    display: block;
-  }
-`;
-
-const BlockImage = styled.div`
-  ${PropertyImageStyles}
-
-  @media ${({ theme }) => theme.mediaQuery.medium} {
-    display: none;
-  }
-`;
-
 const Block = styled.div`
   padding: 0.5rem;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   flex-wrap: wrap;
   position: relative;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${({ background }) => background});
+  background-size: cover;
+  background-position: center center;
+  border-radius: 3rem;
+  color: white;
+  min-height: 38vh;
 
-  @media ${({ theme }) => theme.mediaQuery.medium} {
-    min-height: 45vh;
-    border-radius: 3rem;
+  @media ${({ theme }) => theme.mediaQuery.medium} { 
     flex-wrap: nowrap;
     padding: 3rem;
+    min-height: 45vh;
   }
 
   @media ${({ theme }) => theme.mediaQuery.large} {
     min-height: 55vh;
-    border-radius: 3rem;
   }
 
   @media ${({ theme }) => theme.mediaQuery.xlarge} {
     min-height: 65vh;
-    border-radius: 3rem;
   }
 
   .content {
     padding: 2rem;
+    width: 100%;
 
     @media ${({ theme }) => theme.mediaQuery.medium} {
       padding: 0;
+      max-width: 25rem;
     }
 
     .logo {
