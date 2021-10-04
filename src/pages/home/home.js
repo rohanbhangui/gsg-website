@@ -16,7 +16,7 @@ import UntapPotential from "../../assets/img/untap-potential.svg";
 
 //project-tiles
 import InvestmentTile from "../../assets/img/koia-masterImage.png";
-import IncubationTile from "../../assets/img/incubation-tile.png";
+import IncubationTile from "../../assets/img/tcl-masterImage.png";
 import ArrowGo from "../../assets/img/arrow-go.svg";
 
 //trusted by
@@ -143,7 +143,7 @@ const Home = () => {
             <Tile background={IncubationTile}>
               <div className="content">
                 <div className="inner">
-                  <h2>Incubated Properties</h2>
+                  <h2>Properties</h2>
                   <img src={ArrowGo} alt="" />
                 </div>
               </div>
@@ -160,26 +160,6 @@ const Home = () => {
             </Tile>
           </TileBlock>
         </Grid>
-        {/* <Grid xs={1} sm={2} className="project-tiles second-group">
-          <Row className="content-column">
-            <div className="inner">
-              <h2 className="h1">Incubated Properties</h2>
-              <p className="h3">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-            </div>
-          </Row>
-          <Row className="content-column">
-            <div className="inner">
-              <h2 className="h1">Early Stage Investing</h2>
-              <p className="h3">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-            </div>
-          </Row>
-        </Grid> */}
       </Container>
       <Container className="creating-possibilities">
         <Grid xs={1} className="intro-content">
@@ -518,7 +498,7 @@ const TileBlock = styled(Link)`
 `;
 
 const Tile = styled.div`
-  ${({ background }) => background && `background: url(${background});`}
+  ${({ background }) => background && `background: linear-gradient(to bottom, rgba(0, 0, 0, 0.33), rgba(0, 0, 0, 0.33)), url(${background});`}
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;

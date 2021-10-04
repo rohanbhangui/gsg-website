@@ -55,6 +55,7 @@ const PropertiesLayout = ({ properties, children }) => {
                   <Button
                     linkto={property.link.url}
                     label={property.link.label}
+                    className="outline-invert"
                   />
                 )}
               </div>
@@ -148,7 +149,7 @@ const Block = styled.div`
 
   @media ${({ theme }) => theme.mediaQuery.medium} { 
     flex-wrap: nowrap;
-    padding: 3rem;
+    padding: 4rem;
     min-height: 45vh;
   }
 
