@@ -22,7 +22,7 @@ const properties = [
     title: "Koia",
     subtitle: "Lorem Ipesum",
     logo: Koia,
-    description: `Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`,
+    description: `Grey Space Group Co-Invested in Koia, a plant-based protein drink, with Chris Paul, the NBA superstar who lives a plant-based lifestyle.`,
     link: {
       url: "https://drinkkoia.com/",
       label: "Learn More",

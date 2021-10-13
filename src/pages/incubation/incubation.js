@@ -14,7 +14,7 @@ const properties = [
     title: "The Crew League",
     subtitle: "Lorem Ipesum",
     logo: TCL,
-    description: `Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`,
+    description: `GSG Incubated a first-of-its-kind, unscripted competition series where celebrities and their "crews" face off against each other for bragging rights and a grand prize. `,
     link: {
       url: "https://thecrewleague.com/",
       label: "Learn More",
@@ -26,7 +26,7 @@ const properties = [
     title: "National Players Club",
     subtitle: "Lorem Ipesum",
     logo: NPC,
-    description: `Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`,
+    description: `GSG incubated a new-age chess competition where we took the antiquated game of chess that has grown immensely in 2020 (2.8 million new players on Chess.com & sales up 87%) and created a never-seen-before unsubdued spin that connects with Gen-Z & millennial consumers in a relevant way.`,
     link: {
       url: "https://national-players-club.myshopify.com/",
       label: "Learn More",
