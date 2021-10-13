@@ -9,15 +9,14 @@ import usePrevious from "../../utils/hooks/usePrevious"
 
 import Logo from "../../assets/img/gsg-logo.svg";
 
-//createing possibilities tri panel
-import CreatingValue from "../../assets/img/creating-value.svg";
-import FosteringGrowth from "../../assets/img/fostering-growth.svg";
-import UntapPotential from "../../assets/img/untap-potential.svg";
-
 //project-tiles
-import InvestmentTile from "../../assets/img/koia-masterImage.png";
+import InvestmentTile from "../../assets/img/investments-tile-2.png";
 import IncubationTile from "../../assets/img/tcl-masterImage.png";
 import ArrowGo from "../../assets/img/arrow-go.svg";
+
+//venn diagram
+import DarkCircle from "../../assets/img/dark-circle.svg";
+import LightCircle from "../../assets/img/light-circle.svg";
 
 //trusted by
 import BeatsLogo from "../../assets/img/beats-logo.png";
@@ -32,24 +31,6 @@ import BoxyCharmLogo from "../../assets/img/boxy-charm-logo.png";
 import MisguidedLogo from "../../assets/img/misguided-logo.svg";
 
 import { Grid as _Grid } from "../../assets/styles/grid";
-
-const possibilities_blocks = [
-  {
-    img: UntapPotential,
-    title: "Untapping Potential",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    img: CreatingValue,
-    title: "Creating Value",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    img: FosteringGrowth,
-    title: "Fostering Growth",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-];
 
 const trusted_by = [
   NikeLogo,
@@ -66,6 +47,12 @@ const trusted_by = [
 
 const Home = () => {
 
+  // for the venn diagram
+  const { ref: vennDiagramRef, inView: vennDiagramInView, entry: vennDiagramEntry } = useInView({
+    /* Optional options */
+    threshold: 0.2,
+  });
+
   // for the project tiles
   const { ref: projectsRef, inView: projectsInView, entry: projectsEntry } = useInView({
     /* Optional options */
@@ -74,6 +61,7 @@ const Home = () => {
 
   //prevent misfire at beginning, by making sure the previous entry is not undefined
   const prevProjectsEntry = usePrevious(projectsEntry);
+  const prevVennDiagramEntry = usePrevious(vennDiagramEntry);
 
   //projects come into view
   useEffect(() => {
@@ -86,6 +74,24 @@ const Home = () => {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [projectsInView])
+
+  //venn diagram comes into view
+  useEffect(() => {
+    if(vennDiagramInView && prevVennDiagramEntry && vennDiagramRef) {
+      vennDiagramEntry.target.querySelector(":scope .logo").classList.add("active");
+
+      console.log("DEBUG", vennDiagramEntry.target.querySelectorAll('.venn-circle'))
+
+      vennDiagramEntry.target.querySelectorAll('.venn-circle').forEach((val, ind, arr) => {
+        val.classList.add("active");
+      });
+
+      vennDiagramEntry.target.querySelectorAll('.inner').forEach((val, ind, arr) => {
+        val.classList.add("active");
+      });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [prevVennDiagramEntry])
 
 
   useEffect(() => {
@@ -163,13 +169,12 @@ const Home = () => {
       </Container>
       <Container className="creating-possibilities">
         <Grid xs={1} className="intro-content">
-          <h1>Creating Possibilities</h1>
+          <h1>What is Grey Space?</h1>
           <p className="h3">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            /ɡrā/spās/ noun: Grey Space, like whitespace, sits at the intersection of “what exists” and “what can exist”; while whitespace looks solely at untapped opportunity, Grey Space adds color to that opportunity through a unique cultural perspective that marries tried and true marketing principles, talent, and integrated strategy. 
           </p>
         </Grid>
-        <Grid xs={3} className="tri-blocks">
+        {/* <Grid xs={3} className="tri-blocks">
           {possibilities_blocks.map((item) => (
             <Block key={uuid()}>
               <div className="flex-container">
@@ -180,8 +185,33 @@ const Home = () => {
               </div>
             </Block>
           ))}
-        </Grid>
+        </Grid> */}
       </Container>
+      <VennDiagram ref={vennDiagramRef}>
+        <Grid xs={1} sm={2}>
+          <img className="logo" src={Logo} alt="" />
+          <LightSide>
+            <VennContent className="left">
+              <div className="inner">
+                <p className="h2">Celebrity &amp; Influencer Access</p>
+                <p className="h2">Strategic Partnerships</p>
+                <p className="h2">EQ (Network &amp; resources)</p>
+              </div>
+            </VennContent>
+            <img className="venn-circle" src={LightCircle} alt="" />
+          </LightSide>
+          <DarkSide>
+            <VennContent className="right">
+              <div className="inner">
+                <p className="h2">Distribution Partnerships</p>
+                <p className="h2">Integrated Campaigns</p>
+                <p className="h2">Investments</p>
+              </div>
+            </VennContent>
+            <img className="venn-circle" src={DarkCircle} alt="" />
+          </DarkSide>
+        </Grid>
+      </VennDiagram>
       <Container className="trusted-by">
         <h2 className="h3">Trusted By</h2>
         <Logos>
@@ -454,36 +484,6 @@ const Hero = styled.img`
   }
 `;
 
-const Block = styled.div`
-  padding: 2rem;
-  background: #fff;
-  border-radius: 2rem;
-  // min-height: 20rem;
-  min-width: 20rem;
-
-  @media ${({ theme }) => theme.mediaQuery.medium} {
-    min-width: auto;
-  }
-
-  .flex-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    .flex-item {
-      img {
-        height: 4rem;
-        width: auto;
-      }
-
-      p {
-        opacity: 0.5;
-      }
-    }
-  }
-`;
-
 const TileBlock = styled(Link)`
   text-decoration: none;
 
@@ -501,6 +501,7 @@ const TileBlock = styled(Link)`
 const Tile = styled.div`
   ${({ background }) => background && `background: linear-gradient(to bottom, rgba(0, 0, 0, 0.33), rgba(0, 0, 0, 0.33)), url(${background});`}
   background-size: cover;
+  background-position: center center;
   background-repeat: no-repeat;
   width: 100%;
   position: relative;
@@ -599,5 +600,187 @@ const Logos = styled.ul`
     }
   }
 `;
+
+const VennDiagram = styled.div`
+  max-width: ${XLG}px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 0rem;
+  position: relative;
+  @media ${({ theme }) => theme.mediaQuery.medium} {
+    padding-bottom: 8rem;
+  }
+  .logo {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 20;
+    max-width: 7rem;
+    width: 100%;
+    height: auto;
+    transition: opacity 1s cubic-bezier(.77, 0, .175, 1),transform 1s cubic-bezier(.77, 0, .175, 1);
+    opacity: 0;
+    top: 0;
+    &.active {
+      top: 45%;
+      opacity: 1;
+      @media ${({ theme }) => theme.mediaQuery.small} {
+        top: 54%;
+      }
+    }
+
+    @media ${({ theme }) => theme.mediaQuery.xlarge} {
+      max-width: 10rem;
+    }
+  }
+`
+
+const VennContent = styled.div`
+  z-index: 15;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  max-width: 20rem;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  @media ${({ theme }) => theme.mediaQuery.small} {
+    max-width: 15rem;
+  }
+  @media ${({ theme }) => theme.mediaQuery.large} {
+    max-width: 20rem;
+  }
+  
+  &.left {
+    left: 50%;
+    transform: translateX(-50%);
+    top: -3rem;
+    @media ${({ theme }) => theme.mediaQuery.small} {
+      left: 40%;
+      top: 0;
+    }
+  }
+  &.right {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 3rem;
+    @media ${({ theme }) => theme.mediaQuery.small} {
+      left: 60%;
+      top: 0;
+    }
+  }
+`
+
+const LightSide = styled.div`
+  position: relative;
+  z-index: 10;
+  
+  @media ${({ theme }) => theme.mediaQuery.small} {
+    top: 10%;
+  }
+  
+  img.icon {
+    height: 100%;
+    width: auto;
+    margin-bottom: 1rem;
+    max-height: 5rem;
+    @media ${({ theme }) => theme.mediaQuery.large} {
+      max-height: none;
+    }
+  }
+  .inner {
+    transition: opacity 1s 0.8s cubic-bezier(.77, 0, .175, 1),transform 1s 0.8s cubic-bezier(.77, 0, .175, 1);
+    opacity: 0;
+    transform: translateY(3rem);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+
+    &.active {
+      opacity: 1;
+      transform: translateY(0rem);
+    }
+    p {
+      opacity: 1;
+    }
+  }
+  .venn-circle {
+    width: 140%;
+    height: auto;
+    mix-blend-mode: screen;
+    position: relative;
+    left: 50%;
+    transform: translateX(-100%);
+    max-width: 40rem;
+    opacity: 0;
+    transition: opacity 1s 0.3s cubic-bezier(.77, 0, .175, 1),transform 1s 0.3s cubic-bezier(.77, 0, .175, 1);
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      max-width: none;
+    }
+    &.active {
+      transform: translateX(-50%);
+      opacity: 1;
+    }
+  }
+`
+
+const DarkSide = styled.div`
+  position: relative;
+  top: -20%;
+  
+  @media ${({ theme }) => theme.mediaQuery.small} {
+    top: 0%;
+  }
+  
+
+  img.icon {
+    height: 100%;
+    width: auto;
+    margin-bottom: 1rem;
+    max-height: 5rem;
+    @media ${({ theme }) => theme.mediaQuery.large} {
+      max-height: none;
+    }
+  }
+  .inner {
+    color: white;
+    transition: opacity 1s 1.1s cubic-bezier(.77, 0, .175, 1),transform 1s 1.1s cubic-bezier(.77, 0, .175, 1);
+    opacity: 0;
+    transform: translateY(3rem);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    
+    &.active {
+      opacity: 1;
+      transform: translateY(0rem);
+    }
+    p {
+      opacity: 1;
+    }
+  }
+  .venn-circle {
+    width: 140%;
+    height: auto;
+    mix-blend-mode: multiply;
+    position: relative;
+    left: 50%;
+    transform: translateX(0%);
+    max-width: 40rem;
+    opacity: 0;
+    transition: opacity 1s 0.6s cubic-bezier(.77, 0, .175, 1),transform 1s 0.6s cubic-bezier(.77, 0, .175, 1);
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      max-width: none;
+    }
+    &.active {
+      transform: translateX(-50%);
+      opacity: 1;
+    }
+  }
+`
 
 export default Home;
