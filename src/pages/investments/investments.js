@@ -4,13 +4,15 @@ import Freck from "../../assets/img/freck.png";
 import RowingBlazers from "../../assets/img/rowing-blazers.png";
 import Wilde from "../../assets/img/wilde.png";
 import Generaize from "../../assets/img/generaize.svg";
+import Generaize2 from "../../assets/img/generaize-alt.svg";
+
 
 // hero images
-import WILDE_HERO from "../../assets/img/wilde-masterImage.png";
+import WILDE_HERO from "../../assets/img/wilde-masterImage2.jpg";
 import ROWINGBLAZERS_HERO from "../../assets/img/rowingBlazers-masterImage.png";
 import KOIA_HERO from "../../assets/img/koia-masterImage.png";
 import FRECK_HERO from "../../assets/img/freck-masterImage.png";
-import GENERAIZE_HERO from "../../assets/img/generaize-masterImage.png";
+import GENERAIZE_HERO from "../../assets/img/generaize-masterImage2.jpg";
 
 import PropertiesLayout from "../../components/propertiesLayout";
 
@@ -68,6 +70,7 @@ const properties = [
     title: "Generaize",
     subtitle: "Lorem Ipesum",
     logo: Generaize,
+    logo_alt: Generaize2,
     description: `Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`,
     link: {
       url: "https://www.generaize.com/",
@@ -81,6 +84,10 @@ const Investments = () => {
   return (
     <PropertiesLayout properties={properties}>
       <h1 className="big">Investments</h1>
+      <p className="h3">
+        Because we’re obsessively curious, we identify opportunities where others are afraid to look. These opportunities drive tangible business metrics and generate significant ROI.
+      </p>
+      <br />
       <p className="h3">
         Grey Space Group takes an individualized approach and curates organic
         GTM strategies, marketing campaigns, product distribution, and talent /

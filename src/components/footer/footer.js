@@ -12,39 +12,16 @@ export const socials = [
     icon: "logo-twitter",
   },
   {
-    label: "Facebook",
-    url: "https://facebook.com/GreySpaceGroup/",
-    icon: "logo-facebook",
-  },
-  {
     label: "Instagram",
     url: "https://www.instagram.com/greyspacegroup/?hl=en",
     icon: "logo-instagram",
   },
   {
-    label: "Youtube",
-    url: "https://youtube.com",
-    icon: "logo-youtube",
+    label: "Linkedin",
+    url: "https://www.linkedin.com/company/grey-space-group/",
+    icon: "logo-linkedin",
   },
 ];
-
-// const slim_contact = [
-//   {
-//     label: "business@greyspacegroup.com",
-//     url: "mailto:business@greyspacegroup.com",
-//     icon: "logo-instagram",
-//   },
-//   {
-//     label: " | ",
-//     url: "",
-//     icon: "",
-//   },
-//   {
-//     label: "Instagram",
-//     url: "https://www.instagram.com/greyspacegroup/?hl=en",
-//     icon: "logo-instagram",
-//   },
-// ];
 
 const Footer = ({ id }) => {
   const location = useLocation();
@@ -67,7 +44,7 @@ const Footer = ({ id }) => {
               {socials.map(({ label, url, icon }) => (
                 <li key={uuid()}>
                   {url && (
-                    <Link href={url} className="h2">
+                    <Link href={url} className="h2" target="_blank" rel="noopener noreferrer">
                       <ion-icon name={icon}></ion-icon>
                     </Link>
                   )}

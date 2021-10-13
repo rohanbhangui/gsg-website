@@ -183,7 +183,7 @@ const Home = () => {
         </Grid>
       </Container>
       <Container className="trusted-by">
-        <h2>Trusted By</h2>
+        <h2 className="h3">Trusted By</h2>
         <Logos>
           {[...trusted_by].map((item) => (
             <li key={uuid()}>
@@ -262,9 +262,10 @@ const Container = styled.section`
       margin-top: 4rem;
     }
 
-    h2 {
+    h2.h3 {
       text-align: center;
       margin-bottom: 1.5rem;
+      font-weight: bold;
     }
   }
 `;
@@ -570,8 +571,8 @@ const Logos = styled.ul`
   
   li {
     display: inline-block;
-    width: 7rem;
-    height: 5rem;
+    width: 5.5rem;
+    height: 3.5rem;
     padding: 0.5rem;
     
     &.filler {

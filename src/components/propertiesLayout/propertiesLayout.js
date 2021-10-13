@@ -35,7 +35,7 @@ const PropertiesLayout = ({ properties, children }) => {
           <FlexContainer>
             {properties.map((property) => (
               <a key={property.id} href={`#${property.id}`}>
-                <PropertyImage src={property.logo} />
+                <PropertyImage src={property.logo_alt || property.logo} />
               </a>
             ))}
           </FlexContainer>
@@ -54,6 +54,8 @@ const PropertiesLayout = ({ properties, children }) => {
                 {property.link.url && (
                   <Button
                     linkto={property.link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     label={property.link.label}
                     className="outline-invert"
                   />

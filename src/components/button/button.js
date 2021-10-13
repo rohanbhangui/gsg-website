@@ -3,11 +3,11 @@ import styled, { css } from "styled-components";
 
 import { Link as _Link } from "react-router-dom";
 
-const Button = ({ linkto, onClick, className = "default", label }) => {
+const Button = ({ linkto, onClick, className = "default", label, ...props }) => {
   if (linkto) {
     if (/(http(s?)):\/\//i.test(linkto)) {
       return (
-        <ExternalLink className={className} href={linkto}>
+        <ExternalLink className={className} href={linkto} {...props}>
           {label}
         </ExternalLink>
       );
