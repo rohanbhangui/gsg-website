@@ -65,20 +65,23 @@ const properties = [
     },
     masterImage: WILDE_HERO,
   },
-  {
-    id: "generaize",
-    title: "Generaize",
-    subtitle: "Lorem Ipesum",
-    logo: Generaize,
-    logo_alt: Generaize2,
-    description: `Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`,
-    link: {
-      url: "https://www.generaize.com/",
-      label: "Learn More",
-    },
-    masterImage: GENERAIZE_HERO,
-  },
 ];
+
+// const extra = [
+//   {
+//     id: "generaize",
+//     title: "Generaize",
+//     subtitle: "Lorem Ipesum",
+//     logo: Generaize,
+//     logo_alt: Generaize2,
+//     description: `Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`,
+//     link: {
+//       url: "https://www.generaize.com/",
+//       label: "Learn More",
+//     },
+//     masterImage: GENERAIZE_HERO,
+//   },
+// ]
 
 const Investments = () => {
   return (
