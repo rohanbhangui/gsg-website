@@ -3,8 +3,8 @@ import Koia from "../../assets/img/koia.png";
 import Freck from "../../assets/img/freck.png";
 import RowingBlazers from "../../assets/img/rowing-blazers.png";
 import Wilde from "../../assets/img/wilde.png";
-import Generaize from "../../assets/img/generaize.svg";
-import Generaize2 from "../../assets/img/generaize-alt.svg";
+// import Generaize from "../../assets/img/generaize.svg";
+// import Generaize2 from "../../assets/img/generaize-alt.svg";
 
 
 // hero images
@@ -12,7 +12,7 @@ import WILDE_HERO from "../../assets/img/wilde-masterImage2.jpg";
 import ROWINGBLAZERS_HERO from "../../assets/img/rowingBlazers-masterImage.png";
 import KOIA_HERO from "../../assets/img/koia-masterImage.png";
 import FRECK_HERO from "../../assets/img/freck-masterImage.png";
-import GENERAIZE_HERO from "../../assets/img/generaize-masterImage2.jpg";
+// import GENERAIZE_HERO from "../../assets/img/generaize-masterImage2.jpg";
 
 import PropertiesLayout from "../../components/propertiesLayout";
 
