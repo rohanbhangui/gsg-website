@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState} from "react";
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import { v4 as uuid } from "uuid";
@@ -32,7 +32,7 @@ import MisguidedLogo from "../../assets/img/misguided-logo.svg";
 
 import { Grid as _Grid } from "../../assets/styles/grid";
 
-const trusted_by = [
+const trusted_by_images = [
   NikeLogo,
   BoxyCharmLogo,
   NBALogo,
@@ -46,6 +46,8 @@ const trusted_by = [
 ];
 
 const Home = () => {
+
+  const [ trustedBy, setTrustedBy ] = useState([])
 
   // for the venn diagram
   const { ref: vennDiagramRef, inView: vennDiagramInView, entry: vennDiagramEntry } = useInView({
@@ -109,11 +111,38 @@ const Home = () => {
       }, 250);
     }, 500);
 
+    //for the trusted by logos
+
+    for(const i of trusted_by_images) {
+      const imgObj = new Image();
+    
+      const img = {}
+    
+      imgObj.onload = function() {
+        img.width = this.width
+        img.height = this.height
+        img.img = i
+
+        setTrustedBy(prev => {
+          return [
+            ...prev,
+            img
+          ]
+        })
+      }
+    
+      imgObj.src = i
+    }
+
     return () => {
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    console.log("DEBUG TRUSTEDBY", trustedBy)
+  }, [trustedBy])
 
   return (
     <>
@@ -269,15 +298,10 @@ const Home = () => {
       <Container className="trusted-by">
         <h2 className="h3">Trusted By</h2>
         <Logos>
-          {[...trusted_by].map((item) => (
-            <li key={uuid()}>
-              <img src={item} alt="" />
-            </li>
-          ))}
-          {[...trusted_by, ...trusted_by, ...trusted_by].map((item) => (
-            <li className="mobile-only" key={uuid()}>
-              <img src={item} alt="" />
-            </li>
+          {[...trustedBy, ...trustedBy, ...trustedBy].map((item) => (
+            <LogoLi key={uuid()} height={item.height} width={item.width}>
+              <img src={item.img} alt="" />
+            </LogoLi>
           ))}
         </Logos>
       </Container>
@@ -340,6 +364,30 @@ const Container = styled.section`
   &.trusted-by {
     max-width: none;
     margin-top: 0rem;
+    position: relative;
+    overflow: hidden;
+
+    &:before {
+      top: 0;
+      left: 0;
+      content: '';
+      z-index: 10;
+      position: absolute;
+      width: 4rem;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(240,240,240,1) 27%, rgba(240,240,240,0) 100%);
+    }
+  
+    &:after {
+      top: 0;
+      right: 0;
+      content: '';
+      z-index: 10;
+      position: absolute;
+      width: 4rem;
+      height: 100%;
+      background: linear-gradient(270deg, rgba(240,240,240,1) 27%, rgba(240,240,240,0) 100%);
+    }
 
     @media ${({ theme }) => theme.mediaQuery.medium} {
       max-width: ${LG}px;
@@ -614,46 +662,51 @@ const Logos = styled.ul`
   flex-wrap: nowrap;
   animation: marquee 40s linear infinite;
 
-  @media ${({ theme }) => theme.mediaQuery.medium} {
-    animation none;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
   &:hover {
     animation-play-state: paused;
   }
-  
-  li {
-    display: inline-block;
-    width: 5.5rem;
-    height: 3.5rem;
-    padding: 0.5rem;
-    
-    &.filler {
-      height: 0;
-      display: none;
-
-      @media ${({ theme }) => theme.mediaQuery.medium} {
-        display: inline-block;
-      }
-    }
-
-    &.mobile-only {
-      @media ${({ theme }) => theme.mediaQuery.medium} {
-        display: none;
-      }
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: grayscale(1);
-      opacity: 0.75;
-    }
-  }
 `;
+
+const LogoLi = styled.li`
+  padding: 0rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  img {
+    filter: grayscale(1);
+    opacity: 0.75;
+    height: 4rem;
+    width: auto;
+    padding: 0.5rem;
+    object-fit: contain;
+
+    ${({ height, width }) => height > width && height/width > 2 && `
+      height: 4.75rem;
+      width: auto;
+    `}
+
+    ${({ height, width }) => height < width && `
+      height: auto;
+      width: 5.5rem;
+    `}
+
+    ${({ height, width }) => height < width && width/height > 2.5 && `
+      height: auto;
+      width: 5rem;
+    `}
+
+    ${({ height, width }) => height < width && width/height > 4 && `
+      height: auto;
+      width: 7rem;
+    `}
+    
+    ${({ height, width }) => height / width <= 1.1 && height / width >= 0.9 && `
+      height: 3.75rem;
+      width: auto;
+    `}
+  }
+`
 
 const VennDiagram = styled.div`
   max-width: ${XLG}px;

@@ -33,7 +33,9 @@ const _Image = ({ src, height }) => {
 const ImageContainer = styled.div`
   position: relative;
   width: 100%;
-  height: img {
+  height: 100%;
+
+  img {
     position: absolute;
     width: 100%;
     height: 100%;
