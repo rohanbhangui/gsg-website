@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import { useInView } from 'react-intersection-observer';
@@ -193,9 +193,36 @@ const Home = () => {
           <LightSide>
             <VennContent className="left">
               <div className="inner">
-                <p className="h2">Celebrity &amp; Influencer Access</p>
-                <p className="h2">Strategic Partnerships</p>
-                <p className="h2">EQ (Network &amp; resources)</p>
+                <p className="h3" style={{
+                  left: "50%",
+                  top: "70%"
+                }}>
+                  Celebrity &amp; Influencer Access
+                </p>
+                <p className="h3" style={{
+                  left: "60%",
+                  top: "30%"
+                }}>
+                  Strategic Partnerships
+                </p>
+                <p className="h3" style={{
+                  left: "25%",
+                  top: "49%"
+                }}>
+                  EQ (Network &amp; resources)
+                </p>
+                <p className="h3" style={{
+                  left: "85%",
+                  top: "49%"
+                }}>
+                  Guidance
+                </p>
+                <p className="h3" style={{
+                  left: "20%",
+                  top: "30%"
+                }}>
+                  Expertise
+                </p>
               </div>
             </VennContent>
             <img className="venn-circle" src={LightCircle} alt="" />
@@ -203,9 +230,36 @@ const Home = () => {
           <DarkSide>
             <VennContent className="right">
               <div className="inner">
-                <p className="h2">Distribution Partnerships</p>
-                <p className="h2">Integrated Campaigns</p>
-                <p className="h2">Investments</p>
+                <p className="h3" style={{
+                  left: "10%",
+                  top: "30%"
+                }}>
+                  Distribution Partnerships
+                </p>
+                <p className="h3" style={{
+                  left: "60%",
+                  top: "47%"
+                }}>
+                  Integrated Campaigns
+                </p>
+                <p className="h3" style={{
+                  left: "25%",
+                  top: "55%"
+                }}>
+                  Investments
+                </p>
+                <p className="h3" style={{
+                  left: "85%",
+                  top: "32%"
+                }}>
+                  Culture
+                </p>
+                <p className="h3" style={{
+                  left: "60%",
+                  top: "70%"
+                }}>
+                  Community
+                </p>
               </div>
             </VennContent>
             <img className="venn-circle" src={DarkCircle} alt="" />
@@ -631,7 +685,7 @@ const VennDiagram = styled.div`
     }
 
     @media ${({ theme }) => theme.mediaQuery.xlarge} {
-      max-width: 10rem;
+      max-width: 8rem;
     }
   }
 `
@@ -657,18 +711,86 @@ const VennContent = styled.div`
     left: 50%;
     transform: translateX(-50%);
     top: -3rem;
+
     @media ${({ theme }) => theme.mediaQuery.small} {
       left: 40%;
       top: 0;
     }
+
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      left: 50%;
+      top: 0;
+    }
   }
+
   &.right {
     left: 50%;
     transform: translateX(-50%);
     top: 3rem;
+
     @media ${({ theme }) => theme.mediaQuery.small} {
       left: 60%;
       top: 0;
+    }
+
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      left: 50%;
+      top: 0;
+    }
+  }
+`
+
+const SidesStyles = css`
+  .inner {
+    opacity: 0;
+    transform: translateY(3rem);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    &.active {
+      opacity: 1;
+      transform: translateY(0rem);
+    }
+    
+    p {
+      opacity: 1;
+      position: absolute;
+      max-width: 10rem;
+      transform: translateX(-50%) translateY(-50%);
+      font-size: 1.3rem;
+      font-weight: 600;
+
+      @media ${({ theme }) => theme.mediaQuery.small} {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .venn-circle {
+    width: 110%;
+    height: auto;
+    position: relative;
+    left: 50%;
+    max-width: 40rem;
+    opacity: 0;
+
+    @media ${({ theme }) => theme.mediaQuery.small} {
+      max-width: none;
+      width: 140%;
+    }
+
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      max-width: none;
+      width: 110%;
+    }
+
+    &.active {
+      opacity: 1;
     }
   }
 `
@@ -681,48 +803,27 @@ const LightSide = styled.div`
     top: 10%;
   }
   
-  img.icon {
-    height: 100%;
-    width: auto;
-    margin-bottom: 1rem;
-    max-height: 5rem;
-    @media ${({ theme }) => theme.mediaQuery.large} {
-      max-height: none;
-    }
-  }
+  ${SidesStyles}
+
   .inner {
     transition: opacity 1s 0.8s cubic-bezier(.77, 0, .175, 1),transform 1s 0.8s cubic-bezier(.77, 0, .175, 1);
-    opacity: 0;
-    transform: translateY(3rem);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
+  }
+
+  .venn-circle {
+    mix-blend-mode: screen;
+    transition: opacity 1s 0.3s cubic-bezier(.77, 0, .175, 1),transform 1s 0.3s cubic-bezier(.77, 0, .175, 1);
+    transform: translateX(-100%);
 
     &.active {
-      opacity: 1;
-      transform: translateY(0rem);
-    }
-    p {
-      opacity: 1;
-    }
-  }
-  .venn-circle {
-    width: 140%;
-    height: auto;
-    mix-blend-mode: screen;
-    position: relative;
-    left: 50%;
-    transform: translateX(-100%);
-    max-width: 40rem;
-    opacity: 0;
-    transition: opacity 1s 0.3s cubic-bezier(.77, 0, .175, 1),transform 1s 0.3s cubic-bezier(.77, 0, .175, 1);
-    @media ${({ theme }) => theme.mediaQuery.medium} {
-      max-width: none;
-    }
-    &.active {
       transform: translateX(-50%);
-      opacity: 1;
+
+      @media ${({ theme }) => theme.mediaQuery.small} {
+        transform: translateX(-45%);
+      }
+
+      @media ${({ theme }) => theme.mediaQuery.medium} {
+        transform: translateX(-40%);
+      }
     }
   }
 `
@@ -734,51 +835,29 @@ const DarkSide = styled.div`
   @media ${({ theme }) => theme.mediaQuery.small} {
     top: 0%;
   }
-  
 
-  img.icon {
-    height: 100%;
-    width: auto;
-    margin-bottom: 1rem;
-    max-height: 5rem;
-    @media ${({ theme }) => theme.mediaQuery.large} {
-      max-height: none;
-    }
-  }
+  ${SidesStyles}
+  
   .inner {
     color: white;
     transition: opacity 1s 1.1s cubic-bezier(.77, 0, .175, 1),transform 1s 1.1s cubic-bezier(.77, 0, .175, 1);
-    opacity: 0;
-    transform: translateY(3rem);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-    
-    &.active {
-      opacity: 1;
-      transform: translateY(0rem);
-    }
-    p {
-      opacity: 1;
-    }
   }
+
   .venn-circle {
-    width: 140%;
-    height: auto;
     mix-blend-mode: multiply;
-    position: relative;
-    left: 50%;
-    transform: translateX(0%);
-    max-width: 40rem;
-    opacity: 0;
     transition: opacity 1s 0.6s cubic-bezier(.77, 0, .175, 1),transform 1s 0.6s cubic-bezier(.77, 0, .175, 1);
-    @media ${({ theme }) => theme.mediaQuery.medium} {
-      max-width: none;
-    }
+    transform: translateX(0%);
+
     &.active {
       transform: translateX(-50%);
-      opacity: 1;
+
+      @media ${({ theme }) => theme.mediaQuery.small} {
+        transform: translateX(-55%);
+      }
+
+      @media ${({ theme }) => theme.mediaQuery.medium} {
+        transform: translateX(-60%);
+      }
     }
   }
 `
