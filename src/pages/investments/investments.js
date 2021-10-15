@@ -20,7 +20,7 @@ const properties = [
   {
     id: "koia",
     title: "Koia",
-    subtitle: "Lorem Ipesum",
+    subtitle: "Healthy, delicious, convenient plant-based nutrition",
     logo: Koia,
     description: `Grey Space Group Co-Invested in Koia, a plant-based protein drink, with Chris Paul, the NBA superstar who lives a plant-based lifestyle.`,
     link: {
@@ -31,10 +31,10 @@ const properties = [
   },
   {
     id: "freck",
-    title: "Freck",
-    subtitle: "Lorem Ipesum",
+    title: "Freck Beauty",
+    subtitle: "Freck Beauty is an attitude.",
     logo: Freck,
-    description: `Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`,
+    description: `Freck Beauty debuted its beauty mark on an industry traditionally inclined to cover them up, and has been changing the game ever since. From clean skincare solutions to bold makeup, Freck has organically become a cult-favorite among press, celebrities, influencers, MUAs, retailers, millennials and Gen Z.`,
     link: {
       url: "https://freckbeauty.com/",
       label: "Learn More",
@@ -44,9 +44,9 @@ const properties = [
   {
     id: "rowing-blazers",
     title: "Rowing Blazers",
-    subtitle: "Lorem Ipesum",
+    subtitle: "Clothing with a sense of humour, hint of irony",
     logo: RowingBlazers,
-    description: `Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`,
+    description: `Rowing Blazers is an American clothing brand and design lab for the classics founded by Jack Carlson. They are dedicated to authenticity, quality, and craftsmanship; and simultaneously to irreverence, inclusivity, sustainability, empowerment, and fun.`,
     link: {
       url: "https://rowingblazers.com/",
       label: "Learn More",
@@ -56,9 +56,9 @@ const properties = [
   {
     id: "wilde-chips",
     title: "Wilde Chips",
-    subtitle: "Lorem Ipesum",
+    subtitle: "Impossible snack, relentless hustle",
     logo: Wilde,
-    description: `Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`,
+    description: `Wilde Brands could only ever have a wild founder, enter Jason Wright. He fell in love with chips early in his childhood, with a household mantra of “an open bag is an empty bag”. When he realized his favorite snack would not support his quest for a stronger and active lifestyle, he turned to making his own snacks, but nothing gave him the satisfaction like a good old fashioned potato chip.`,
     link: {
       url: "https://www.wildebrands.com/",
       label: "Learn More",

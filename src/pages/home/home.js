@@ -53,6 +53,7 @@ const Home = () => {
   const { ref: vennDiagramRef, inView: vennDiagramInView, entry: vennDiagramEntry } = useInView({
     /* Optional options */
     threshold: 0.2,
+    rootMargin: '-100px 0px',
   });
 
   // for the project tiles
@@ -80,9 +81,8 @@ const Home = () => {
   //venn diagram comes into view
   useEffect(() => {
     if(vennDiagramInView && prevVennDiagramEntry && vennDiagramRef) {
+      console.log("FIRED")
       vennDiagramEntry.target.querySelector(":scope .logo").classList.add("active");
-
-      console.log("DEBUG", vennDiagramEntry.target.querySelectorAll('.venn-circle'))
 
       vennDiagramEntry.target.querySelectorAll('.venn-circle').forEach((val, ind, arr) => {
         val.classList.add("active");
@@ -96,7 +96,7 @@ const Home = () => {
       });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [prevVennDiagramEntry])
+  }, [vennDiagramEntry])
 
 
   useEffect(() => {
@@ -206,18 +206,6 @@ const Home = () => {
             /ɡrā/spās/ noun: Grey Space, like whitespace, sits at the intersection of “what exists” and “what can exist”; while whitespace looks solely at untapped opportunity, Grey Space adds color to that opportunity through a unique cultural perspective that marries tried and true marketing principles, talent, and integrated strategy. 
           </p>
         </Grid>
-        {/* <Grid xs={3} className="tri-blocks">
-          {possibilities_blocks.map((item) => (
-            <Block key={uuid()}>
-              <div className="flex-container">
-                <div className="flex-item">
-                  <h2>{item.title}</h2>
-                  <p>{item.text}</p>
-                </div>
-              </div>
-            </Block>
-          ))}
-        </Grid> */}
       </Container>
       <VennDiagram ref={vennDiagramRef}>
         <Grid xs={1} sm={2}>

@@ -142,7 +142,7 @@ const Block = styled.div`
   align-items: flex-end;
   flex-wrap: wrap;
   position: relative;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${({ background }) => background});
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.66)), url(${({ background }) => background});
   background-size: cover;
   background-position: center center;
   border-radius: 3rem;
@@ -189,10 +189,11 @@ const Block = styled.div`
     }
 
     h3 {
-      opacity: 0.5;
       margin-top: 0rem;
       font-weight: 600;
       margin-bottom: 1.5rem;
+      mix-blend-mode: screen;
+      color: rgba(255, 255, 255, 0.5);
     }
 
     p {
