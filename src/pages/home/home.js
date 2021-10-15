@@ -88,8 +88,11 @@ const Home = () => {
         val.classList.add("active");
       });
 
-      vennDiagramEntry.target.querySelectorAll('.inner').forEach((val, ind, arr) => {
-        val.classList.add("active");
+      vennDiagramEntry.target.querySelectorAll('.inner p').forEach((val, ind, arr) => {
+        
+        setTimeout(() => {
+          val.classList.add("active");
+        }, ind*100)
       });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -708,15 +711,17 @@ const LogoLi = styled.li`
   }
 `
 
-const VennDiagram = styled.div`
+const VennDiagram = styled.section`
   max-width: ${XLG}px;
   width: 100%;
   margin: 0 auto;
   padding-bottom: 0rem;
   position: relative;
-  @media ${({ theme }) => theme.mediaQuery.medium} {
+
+  @media ${({ theme }) => theme.mediaQuery.small} {
     padding-bottom: 8rem;
   }
+
   .logo {
     position: absolute;
     left: 50%;
@@ -795,8 +800,8 @@ const VennContent = styled.div`
 
 const SidesStyles = css`
   .inner {
-    opacity: 0;
-    transform: translateY(3rem);
+    opacity: 1;
+    transform: translateY(0rem);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -804,19 +809,21 @@ const SidesStyles = css`
     position: relative;
     height: 100%;
     width: 100%;
-
-    &.active {
-      opacity: 1;
-      transform: translateY(0rem);
-    }
     
     p {
-      opacity: 1;
       position: absolute;
       max-width: 10rem;
-      transform: translateX(-50%) translateY(-50%);
       font-size: 1.3rem;
       font-weight: 600;
+      transition: opacity 1s 0.8s cubic-bezier(.77, 0, .175, 1),transform 1s 0.8s cubic-bezier(.77, 0, .175, 1);
+      
+      opacity: 0;
+      transform: translateX(-50%) translateY(-120%);
+
+      &.active {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-50%);
+      }
 
       @media ${({ theme }) => theme.mediaQuery.small} {
         font-size: 1rem;
