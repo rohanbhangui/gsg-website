@@ -243,7 +243,7 @@ const Home = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
+
   return (
     <>
       <Container>
@@ -310,8 +310,8 @@ const Home = () => {
           <LightSide>
             <VennContent className="left">
               <div className="inner">
-                {leftContent.map(({ label, id, animation, left, top}) => (
-                  <VennItem key={id} animation={animation} className="h3" style={{
+                {leftContent.map(({ label, id, animation, left, top}, index) => (
+                  <VennItem key={id} animation={animation} delay={index*250} className="h3" style={{
                     left,
                     top
                   }}>
@@ -325,8 +325,8 @@ const Home = () => {
           <DarkSide>
             <VennContent className="right">
               <div className="inner">
-                {rightContent.map(({ label, id, animation, left, top}) => (
-                  <VennItem key={id} animation={animation} className="h3" style={{
+                {rightContent.map(({ label, id, animation, left, top}, index) => (
+                  <VennItem key={id} animation={animation} delay={index*250} className="h3" style={{
                     left,
                     top
                   }}>
@@ -901,6 +901,7 @@ const VennItem = styled.p`
       animation-duration: 20s;
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out;
+      animation-delay: ${({ delay }) => `${delay}ms`};
     }
 
     @media ${({ theme }) => theme.mediaQuery.small} {
