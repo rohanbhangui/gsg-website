@@ -2,7 +2,9 @@
 import Koia from "../../assets/img/koia.png";
 import Freck from "../../assets/img/freck.png";
 import RowingBlazers from "../../assets/img/rowing-blazers.png";
+import RowingBlazers2 from "../../assets/img/rowing-blazers-alt.png";
 import Wilde from "../../assets/img/wilde.png";
+import Wilde2 from "../../assets/img/wilde-alt.png";
 // import Generaize from "../../assets/img/generaize.svg";
 // import Generaize2 from "../../assets/img/generaize-alt.svg";
 
@@ -20,9 +22,9 @@ const properties = [
   {
     id: "koia",
     title: "Koia",
-    subtitle: "Healthy, delicious, convenient plant-based nutrition",
+    subtitle: "Delicious & Nutritious!",
     logo: Koia,
-    description: `Grey Space Group Co-Invested in Koia, a plant-based protein drink, with Chris Paul, the NBA superstar who lives a plant-based lifestyle.`,
+    description: `Deliver easy access to healthy, delicious, convenient plant-based nutrition. Koia only uses high-quality ingredients to deliver a balance of complete plant protein, plant-based fats, and fiber for sustained satiation and energy at any time of the day. All Koia products are 100-percent plant-based, low (or no!) sugar, dairy-free, soy-free, gluten-free, vegan and Non-GMO Project verified. `,
     link: {
       url: "https://drinkkoia.com/",
       label: "Learn More",
@@ -34,7 +36,7 @@ const properties = [
     title: "Freck Beauty",
     subtitle: "Freck Beauty is an attitude.",
     logo: Freck,
-    description: `Freck Beauty debuted its beauty mark on an industry traditionally inclined to cover them up, and has been changing the game ever since. From clean skincare solutions to bold makeup, Freck has organically become a cult-favorite among press, celebrities, influencers, MUAs, retailers, millennials and Gen Z.`,
+    description: `Freck is a bold, clean beauty brand for anyone that cares about ingredients, respects the process, and doesn’t care about the rules!`,
     link: {
       url: "https://freckbeauty.com/",
       label: "Learn More",
@@ -46,6 +48,7 @@ const properties = [
     title: "Rowing Blazers",
     subtitle: "Clothing with a sense of humour, hint of irony",
     logo: RowingBlazers,
+    logo_alt: RowingBlazers2,
     description: `Rowing Blazers is an American clothing brand and design lab for the classics founded by Jack Carlson. They are dedicated to authenticity, quality, and craftsmanship; and simultaneously to irreverence, inclusivity, sustainability, empowerment, and fun.`,
     link: {
       url: "https://rowingblazers.com/",
@@ -56,9 +59,10 @@ const properties = [
   {
     id: "wilde-chips",
     title: "Wilde Chips",
-    subtitle: "Impossible snack, relentless hustle",
+    subtitle: "Fortune Favors The Wilde!",
     logo: Wilde,
-    description: `Wilde Brands could only ever have a wild founder, enter Jason Wright. He fell in love with chips early in his childhood, with a household mantra of “an open bag is an empty bag”. When he realized his favorite snack would not support his quest for a stronger and active lifestyle, he turned to making his own snacks, but nothing gave him the satisfaction like a good old fashioned potato chip.`,
+    logo_alt: Wilde2,
+    description: `There’s nothing weaker and less nutritious than a potato, and yet somehow it’s America’s favorite snack food. Wilde had a problem with that. So they roundhouse kicked the spud out and created a Kick-Ass Protein Chip: hugely delicious, powered with Smart Ingredients and crispy as a Karate chop from your sensei’s sensei.`,
     link: {
       url: "https://www.wildebrands.com/",
       label: "Learn More",

@@ -1,5 +1,5 @@
 import { useEffect, useState} from "react";
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import { useInView } from 'react-intersection-observer';
@@ -8,6 +8,7 @@ import { XLG, XXL, LG } from "../../utils/variables";
 import usePrevious from "../../utils/hooks/usePrevious"
 
 import Logo from "../../assets/img/gsg-logo.svg";
+import LogoMini from "../../assets/img/gsg-logo-logomark.svg";
 
 //project-tiles
 import InvestmentTile from "../../assets/img/investments-tile-2.png";
@@ -45,6 +46,100 @@ const trusted_by_images = [
   FashionnovaLogo,
 ];
 
+const calcRandom = () => {
+  //between 3 -> 7
+  return Math.floor(Math.random() * 2) + 4;
+}
+
+const floatingAnimation = () => {
+  return keyframes`
+    0% { transform: translateX(-50%) translateY(-50%) }
+    16% { transform: translateX(-${calcRandom()*10}%) translateY(-${calcRandom()*10}%) }
+    33% { transform: translateX(-${calcRandom()*10}%) translateY(-${calcRandom()*10}%) }
+    49% { transform: translateX(-${calcRandom()*10}%) translateY(-${calcRandom()*10}%) }
+    66% { transform: translateX(-${calcRandom()*10}%) translateY(-${calcRandom()*10}%) }
+    75% { transform: translateX(-${calcRandom()*10}%) translateY(-${calcRandom()*10}%) }
+    87% { transform: translateX(-${calcRandom()*10}%) translateY(-${calcRandom()*10}%) }
+    100% { transform: translateX(-50%) translateY(-50%) }
+  `
+}
+
+const leftContent = [
+  {
+    id: uuid(),
+    label: "Celebrity & Influencer Access",
+    animation: floatingAnimation(),
+    left: "50%",
+    top: "70%"
+  },
+  {
+    id: uuid(),
+    label: "Strategic Partnerships",
+    animation: floatingAnimation(),
+    left: "60%",
+    top: "30%"
+  },
+  {
+    id: uuid(),
+    label: "EQ (Network & resources)",
+    animation: floatingAnimation(),
+    left: "25%",
+    top: "49%"
+  },
+  {
+    id: uuid(),
+    label: "Guidance",
+    animation: floatingAnimation(),
+    left: "85%",
+    top: "49%"
+  },
+  {
+    id: uuid(),
+    label: "Expertise",
+    animation: floatingAnimation(),
+    left: "20%",
+    top: "30%"
+  }
+]
+
+const rightContent = [
+  {
+    id: uuid(),
+    label: "Distribution Partnerships",
+    animation: floatingAnimation(),
+    left: "25%",
+    top: "30%"
+  },
+  {
+    id: uuid(),
+    label: "Integrated Campaigns",
+    animation: floatingAnimation(),
+    left: "60%",
+    top: "47%"
+  },
+  {
+    id: uuid(),
+    label: "Investments",
+    animation: floatingAnimation(),
+    left: "25%",
+    top: "55%"
+  },
+  {
+    id: uuid(),
+    label: "Culture",
+    animation: floatingAnimation(),
+    left: "85%",
+    top: "32%"
+  },
+  {
+    id: uuid(),
+    label: "Community",
+    animation: floatingAnimation(),
+    left: "60%",
+    top: "70%"
+  }
+]
+
 const Home = () => {
 
   const [ trustedBy, setTrustedBy ] = useState([])
@@ -60,11 +155,12 @@ const Home = () => {
   const { ref: projectsRef, inView: projectsInView, entry: projectsEntry } = useInView({
     /* Optional options */
     threshold: 0.2,
+    rootMargin: '-100px 0px',
   });
 
   //prevent misfire at beginning, by making sure the previous entry is not undefined
   const prevProjectsEntry = usePrevious(projectsEntry);
-  const prevVennDiagramEntry = usePrevious(vennDiagramEntry);
+  // const prevVennDiagramEntry = usePrevious(vennDiagramEntry);
 
   //projects come into view
   useEffect(() => {
@@ -76,12 +172,11 @@ const Home = () => {
       });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [projectsInView])
+  }, [projectsEntry])
 
   //venn diagram comes into view
   useEffect(() => {
-    if(vennDiagramInView && prevVennDiagramEntry && vennDiagramRef) {
-      console.log("FIRED")
+    if(vennDiagramInView && vennDiagramRef) {
       vennDiagramEntry.target.querySelector(":scope .logo").classList.add("active");
 
       vennDiagramEntry.target.querySelectorAll('.venn-circle').forEach((val, ind, arr) => {
@@ -94,6 +189,12 @@ const Home = () => {
           val.classList.add("active");
         }, ind*100)
       });
+
+      setTimeout(() => {
+        vennDiagramEntry.target.querySelectorAll('.inner p.active').forEach((val, ind, arr) => {
+          val.classList.add("animate");
+        });
+      }, 2000);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [vennDiagramEntry])
@@ -142,11 +243,7 @@ const Home = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    console.log("DEBUG TRUSTEDBY", trustedBy)
-  }, [trustedBy])
-
+  
   return (
     <>
       <Container>
@@ -161,7 +258,7 @@ const Home = () => {
               <h1>A culture focused venture studio for a social world.</h1>
               <Content className="hero-section-text-content">
                 <p className="h3">
-                  We have the ability to see patterns, develop new solutions and
+                  We have the ability to see patterns, develop solutions and
                   build new paradigms that allow us to turn ideas and
                   partnerships into reality.
                 </p>
@@ -209,40 +306,18 @@ const Home = () => {
       </Container>
       <VennDiagram ref={vennDiagramRef}>
         <Grid xs={1} sm={2}>
-          <img className="logo" src={Logo} alt="" />
+          <img className="logo" src={LogoMini} alt="" />
           <LightSide>
             <VennContent className="left">
               <div className="inner">
-                <p className="h3" style={{
-                  left: "50%",
-                  top: "70%"
-                }}>
-                  Celebrity &amp; Influencer Access
-                </p>
-                <p className="h3" style={{
-                  left: "60%",
-                  top: "30%"
-                }}>
-                  Strategic Partnerships
-                </p>
-                <p className="h3" style={{
-                  left: "25%",
-                  top: "49%"
-                }}>
-                  EQ (Network &amp; resources)
-                </p>
-                <p className="h3" style={{
-                  left: "85%",
-                  top: "49%"
-                }}>
-                  Guidance
-                </p>
-                <p className="h3" style={{
-                  left: "20%",
-                  top: "30%"
-                }}>
-                  Expertise
-                </p>
+                {leftContent.map(({ label, id, animation, left, top}) => (
+                  <VennItem key={id} animation={animation} className="h3" style={{
+                    left,
+                    top
+                  }}>
+                    {label}
+                  </VennItem>
+                ))}
               </div>
             </VennContent>
             <img className="venn-circle" src={LightCircle} alt="" />
@@ -250,36 +325,14 @@ const Home = () => {
           <DarkSide>
             <VennContent className="right">
               <div className="inner">
-                <p className="h3" style={{
-                  left: "10%",
-                  top: "30%"
-                }}>
-                  Distribution Partnerships
-                </p>
-                <p className="h3" style={{
-                  left: "60%",
-                  top: "47%"
-                }}>
-                  Integrated Campaigns
-                </p>
-                <p className="h3" style={{
-                  left: "25%",
-                  top: "55%"
-                }}>
-                  Investments
-                </p>
-                <p className="h3" style={{
-                  left: "85%",
-                  top: "32%"
-                }}>
-                  Culture
-                </p>
-                <p className="h3" style={{
-                  left: "60%",
-                  top: "70%"
-                }}>
-                  Community
-                </p>
+                {rightContent.map(({ label, id, animation, left, top}) => (
+                  <VennItem key={id} animation={animation} className="h3" style={{
+                    left,
+                    top
+                  }}>
+                    {label}
+                  </VennItem>
+                ))}
               </div>
             </VennContent>
             <img className="venn-circle" src={DarkCircle} alt="" />
@@ -343,8 +396,12 @@ const Container = styled.section`
   }
 
   &.projects {
-    margin-top: 5rem;
+    margin-top: 2rem;
     max-width: ${XXL}px;
+
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      margin-top: 5rem;
+    }
 
     h1 {
       text-align: center;
@@ -387,7 +444,7 @@ const Container = styled.section`
 
     h2.h3 {
       text-align: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       font-weight: bold;
     }
   }
@@ -423,11 +480,11 @@ const Grid = styled(_Grid)`
   &.tri-blocks,
   &.project-tiles {
     grid-gap: 0.6rem;
-    margin-top: 4rem;
   }
 
   &.tri-blocks {
     overflow: auto;
+    margin-top: 4rem;
 
     padding: 0 1rem;
 
@@ -673,27 +730,27 @@ const LogoLi = styled.li`
     object-fit: contain;
 
     ${({ height, width }) => height > width && height/width > 2 && `
-      height: 4.75rem;
+      height: 3.75rem;
       width: auto;
     `}
 
     ${({ height, width }) => height < width && `
       height: auto;
-      width: 5.5rem;
+      width: 4rem;
     `}
 
     ${({ height, width }) => height < width && width/height > 2.5 && `
       height: auto;
-      width: 5rem;
+      width: 4rem;
     `}
 
     ${({ height, width }) => height < width && width/height > 4 && `
       height: auto;
-      width: 7rem;
+      width: 5.5rem;
     `}
     
     ${({ height, width }) => height / width <= 1.1 && height / width >= 0.9 && `
-      height: 3.75rem;
+      height: 2.75rem;
       width: auto;
     `}
   }
@@ -731,7 +788,7 @@ const VennDiagram = styled.section`
     }
 
     @media ${({ theme }) => theme.mediaQuery.xlarge} {
-      max-width: 8rem;
+      max-width: 6rem;
     }
   }
 `
@@ -742,7 +799,7 @@ const VennContent = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  max-width: 20rem;
+  max-width: 30rem;
   width: 100%;
   top: 0;
   bottom: 0;
@@ -797,26 +854,6 @@ const SidesStyles = css`
     position: relative;
     height: 100%;
     width: 100%;
-    
-    p {
-      position: absolute;
-      max-width: 10rem;
-      font-size: 1.3rem;
-      font-weight: 600;
-      transition: opacity 1s 0.8s cubic-bezier(.77, 0, .175, 1),transform 1s 0.8s cubic-bezier(.77, 0, .175, 1);
-      
-      opacity: 0;
-      transform: translateX(-50%) translateY(-120%);
-
-      &.active {
-        opacity: 1;
-        transform: translateX(-50%) translateY(-50%);
-      }
-
-      @media ${({ theme }) => theme.mediaQuery.small} {
-        font-size: 1rem;
-      }
-    }
   }
 
   .venn-circle {
@@ -839,6 +876,35 @@ const SidesStyles = css`
 
     &.active {
       opacity: 1;
+    }
+  }
+`
+
+const VennItem = styled.p`
+  &.h3 {
+    position: absolute;
+    max-width: 10rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    transition: opacity 1s 0.8s cubic-bezier(.77, 0, .175, 1),transform 1s 0.8s cubic-bezier(.77, 0, .175, 1);
+
+    opacity: 0;
+    transform: translateX(-50%) translateY(-120%);
+
+    &.active {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    &.active.animate {
+      animation-name: ${({ animation }) => animation};
+      animation-duration: 20s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+    }
+
+    @media ${({ theme }) => theme.mediaQuery.small} {
+      font-size: 1rem;
     }
   }
 `

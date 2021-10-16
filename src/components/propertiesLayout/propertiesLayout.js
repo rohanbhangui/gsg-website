@@ -111,11 +111,10 @@ const Grid = styled(_Grid)`
 `;
 
 const FlexContainer = styled.div`
-  display: flex;
   margin-top: 1.5rem;
-  align-items: center;
   overflow-y: auto;
   width: 100%;
+  white-space: nowrap;
 
   @media ${({ theme }) => theme.mediaQuery.small} {
     justify-content: center;
@@ -123,6 +122,8 @@ const FlexContainer = styled.div`
 
   a {
     margin: 0 1rem;
+    display: inline-block;
+    vertical-align: middle;
   }
 `;
 

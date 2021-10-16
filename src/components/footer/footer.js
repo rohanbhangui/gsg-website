@@ -7,11 +7,6 @@ import { XLG } from "../../utils/variables";
 
 export const socials = [
   {
-    label: "Twitter",
-    url: "https://twitter.com/jordanstern3?lang=en",
-    icon: "logo-twitter",
-  },
-  {
     label: "Instagram",
     url: "https://www.instagram.com/greyspacegroup/?hl=en",
     icon: "logo-instagram",
