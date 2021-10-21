@@ -70,35 +70,55 @@ const leftContent = [
     label: "Celebrity & Influencer Access",
     animation: floatingAnimation(),
     left: "50%",
-    top: "70%"
+    top: "70%",
+    desktop: {
+      left: "60%",
+      top: "80%"
+    }
   },
   {
     id: uuid(),
     label: "Strategic Partnerships",
     animation: floatingAnimation(),
     left: "60%",
-    top: "30%"
+    top: "30%",
+    desktop: {
+      left: "70%",
+      top: "20%"
+    }
   },
   {
     id: uuid(),
     label: "EQ (Network & resources)",
     animation: floatingAnimation(),
     left: "25%",
-    top: "49%"
+    top: "49%",
+    desktop: {
+      left: "25%",
+      top: "49%"
+    }
   },
   {
     id: uuid(),
     label: "Guidance",
     animation: floatingAnimation(),
     left: "85%",
-    top: "49%"
+    top: "49%",
+    desktop: {
+      left: "85%",
+      top: "59%"
+    }
   },
   {
     id: uuid(),
     label: "Expertise",
     animation: floatingAnimation(),
     left: "20%",
-    top: "30%"
+    top: "30%",
+    desktop: {
+      left: "20%",
+      top: "30%"
+    }
   }
 ]
 
@@ -108,35 +128,55 @@ const rightContent = [
     label: "Distribution Partnerships",
     animation: floatingAnimation(),
     left: "25%",
-    top: "30%"
+    top: "30%",
+    desktop: {
+      left: "25%",
+      top: "20%"
+    }
   },
   {
     id: uuid(),
     label: "Integrated Campaigns",
     animation: floatingAnimation(),
     left: "60%",
-    top: "47%"
+    top: "47%",
+    desktop: {
+      left: "30%",
+      top: "70%",
+    }
   },
   {
     id: uuid(),
     label: "Investments",
     animation: floatingAnimation(),
     left: "25%",
-    top: "55%"
+    top: "55%",
+    desktop: {
+      left: "25%",
+      top: "40%",
+    }
   },
   {
     id: uuid(),
     label: "Culture",
     animation: floatingAnimation(),
     left: "85%",
-    top: "32%"
+    top: "32%",
+    desktop: {
+      left: "85%",
+      top: "32%",
+    }
   },
   {
     id: uuid(),
     label: "Community",
     animation: floatingAnimation(),
     left: "60%",
-    top: "70%"
+    top: "70%",
+    desktop: {
+      left: "70%",
+      top: "55%",
+    }
   }
 ]
 
@@ -310,11 +350,8 @@ const Home = () => {
           <LightSide>
             <VennContent className="left">
               <div className="inner">
-                {leftContent.map(({ label, id, animation, left, top}, index) => (
-                  <VennItem key={id} animation={animation} delay={index*250} className="h3" style={{
-                    left,
-                    top
-                  }}>
+                {leftContent.map(({ label, id, animation, left, top, desktop}, index) => (
+                  <VennItem key={id} animation={animation} delay={index*250} className="h3" left={left} top={top} desktop={desktop}>
                     {label}
                   </VennItem>
                 ))}
@@ -325,11 +362,8 @@ const Home = () => {
           <DarkSide>
             <VennContent className="right">
               <div className="inner">
-                {rightContent.map(({ label, id, animation, left, top}, index) => (
-                  <VennItem key={id} animation={animation} delay={index*250} className="h3" style={{
-                    left,
-                    top
-                  }}>
+                {rightContent.map(({ label, id, animation, left, top, desktop}, index) => (
+                  <VennItem key={id} animation={animation} delay={index*250} className="h3" left={left} top={top} desktop={desktop}>
                     {label}
                   </VennItem>
                 ))}
@@ -882,6 +916,8 @@ const SidesStyles = css`
 
 const VennItem = styled.p`
   &.h3 {
+    top: ${({ top }) => top};
+    left: ${({ left }) => left};
     position: absolute;
     max-width: 10rem;
     font-size: 1.3rem;
@@ -896,16 +932,18 @@ const VennItem = styled.p`
       transform: translateX(-50%) translateY(-50%);
     }
 
-    &.active.animate {
+    /* &.active.animate {
       animation-name: ${({ animation }) => animation};
       animation-duration: 20s;
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out;
       animation-delay: ${({ delay }) => `${delay}ms`};
-    }
+    } */
 
     @media ${({ theme }) => theme.mediaQuery.small} {
-      font-size: 1rem;
+      font-size: 1.3rem;
+      top: ${({ desktop }) => desktop && desktop.top};
+      left: ${({ desktop }) => desktop && desktop.left};
     }
   }
 `
