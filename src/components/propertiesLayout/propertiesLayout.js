@@ -72,7 +72,7 @@ const PropertiesLayout = ({ properties, children }) => {
 const Container = styled.section`
   max-width: ${XXL}px;
   width: 100%;
-  margin: 4rem auto 4rem;
+  margin: 1rem auto 4rem;
   padding: 1rem;
   position: relative;
 
@@ -121,7 +121,7 @@ const FlexContainer = styled.div`
   }
 
   a {
-    margin: 0 1rem;
+    margin: 0 0.2rem;
     display: inline-block;
     vertical-align: middle;
   }

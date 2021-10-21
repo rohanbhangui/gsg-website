@@ -59,7 +59,7 @@ const Footer = ({ id }) => {
 
 const FooterContainer = styled.footer`
   width: 100%;
-  margin: 8rem auto 0;
+  margin: 1rem auto 0;
   padding: 1rem;
   position: relative;
   text-align: center;

@@ -12,7 +12,7 @@ const properties = [
   {
     id: "the-crew-league",
     title: "The Crew League",
-    subtitle: "Basketball like you've never seen before.",
+    subtitle: "Your artist's favourite league.",
     logo: TCL,
     description: `GSG Incubated a first-of-its-kind, unscripted competition series where celebrities and their "crews" face off against each other for bragging rights and a grand prize. `,
     link: {

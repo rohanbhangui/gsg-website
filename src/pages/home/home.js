@@ -286,7 +286,7 @@ const Home = () => {
 
   return (
     <>
-      <Container>
+      <Container className="intro">
         <Grid>
           <Row className="hero-section-img">
             <Hero className="hero-logo" src={Logo} alt="" />
@@ -338,7 +338,7 @@ const Home = () => {
       </Container>
       <Container className="creating-possibilities">
         <Grid xs={1} className="intro-content">
-          <h1>What is Grey Space?</h1>
+          <h1>What is the Grey Space?</h1>
           <p className="h3">
             /ɡrā/spās/ noun: Grey Space, like whitespace, sits at the intersection of “what exists” and “what can exist”; while whitespace looks solely at untapped opportunity, Grey Space adds color to that opportunity through a unique cultural perspective that marries tried and true marketing principles, talent, and integrated strategy. 
           </p>
@@ -396,6 +396,14 @@ const Container = styled.section`
 
   @media ${({ theme }) => theme.mediaQuery.medium} {
     margin-bottom: 0;
+  }
+
+  &.intro {
+    margin: 1rem auto 4rem;
+    
+    @media ${({ theme }) => theme.mediaQuery.medium} {
+      margin: 1rem auto 4rem;
+    }
   }
 
   &.pre-venn {
@@ -625,6 +633,7 @@ const Row = styled.div`
 
   &.hero-section-img {
     order: 1;
+    margin-bottom: 2rem;
 
     @media ${({ theme }) => theme.mediaQuery.small} {
       order: 2;
@@ -899,13 +908,15 @@ const SidesStyles = css`
     opacity: 0;
 
     @media ${({ theme }) => theme.mediaQuery.small} {
-      max-width: none;
       width: 140%;
     }
 
     @media ${({ theme }) => theme.mediaQuery.medium} {
-      max-width: none;
       width: 110%;
+    }
+
+    @media ${({ theme }) => theme.mediaQuery.xlarge} {
+      width: 100%;
     }
 
     &.active {
