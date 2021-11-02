@@ -69,10 +69,10 @@ const leftContent = [
     id: uuid(),
     label: "Celebrity & Influencer Access",
     animation: floatingAnimation(),
-    left: "50%",
+    left: "70%",
     top: "70%",
     desktop: {
-      left: "60%",
+      left: "40%",
       top: "80%"
     }
   },
@@ -80,7 +80,7 @@ const leftContent = [
     id: uuid(),
     label: "Strategic Partnerships",
     animation: floatingAnimation(),
-    left: "60%",
+    left: "70%",
     top: "30%",
     desktop: {
       left: "70%",
@@ -106,7 +106,7 @@ const leftContent = [
     top: "49%",
     desktop: {
       left: "85%",
-      top: "59%"
+      top: "70%"
     }
   },
   {
@@ -114,10 +114,21 @@ const leftContent = [
     label: "Expertise",
     animation: floatingAnimation(),
     left: "20%",
-    top: "30%",
+    top: "70%",
     desktop: {
       left: "20%",
       top: "30%"
+    }
+  },
+  {
+    id: uuid(),
+    label: "Talent & Intellectual Capital",
+    animation: floatingAnimation(),
+    left: "20%",
+    top: "30%",
+    desktop: {
+      left: "85%",
+      top: "50%"
     }
   }
 ]
@@ -130,7 +141,7 @@ const rightContent = [
     left: "25%",
     top: "30%",
     desktop: {
-      left: "25%",
+      left: "20%",
       top: "20%"
     }
   },
@@ -138,11 +149,11 @@ const rightContent = [
     id: uuid(),
     label: "Integrated Campaigns",
     animation: floatingAnimation(),
-    left: "60%",
-    top: "47%",
+    left: "65%",
+    top: "42%",
     desktop: {
-      left: "30%",
-      top: "70%",
+      left: "15%",
+      top: "75%",
     }
   },
   {
@@ -161,21 +172,32 @@ const rightContent = [
     label: "Culture",
     animation: floatingAnimation(),
     left: "85%",
-    top: "32%",
+    top: "25%",
     desktop: {
-      left: "85%",
-      top: "32%",
+      left: "70%",
+      top: "20%",
     }
   },
   {
     id: uuid(),
     label: "Community",
     animation: floatingAnimation(),
-    left: "60%",
-    top: "70%",
+    left: "75%",
+    top: "60%",
     desktop: {
-      left: "70%",
-      top: "55%",
+      left: "50%",
+      top: "60%",
+    }
+  },
+  {
+    id: uuid(),
+    label: "Growth Capital",
+    animation: floatingAnimation(),
+    left: "40%",
+    top: "80%",
+    desktop: {
+      left: "85%",
+      top: "45%",
     }
   }
 ]
