@@ -69,10 +69,10 @@ const leftContent = [
     id: uuid(),
     label: "Celebrity & Influencer Access",
     animation: floatingAnimation(),
-    left: "70%",
-    top: "70%",
+    left: "76%",
+    top: "64%",
     desktop: {
-      left: "40%",
+      left: "55%",
       top: "80%"
     }
   },
@@ -92,10 +92,10 @@ const leftContent = [
     label: "EQ (Network & resources)",
     animation: floatingAnimation(),
     left: "25%",
-    top: "49%",
+    top: "59%",
     desktop: {
       left: "25%",
-      top: "49%"
+      top: "40%"
     }
   },
   {
@@ -120,17 +120,17 @@ const rightContent = [
     top: "30%",
     desktop: {
       left: "20%",
-      top: "20%"
+      top: "25%"
     }
   },
   {
     id: uuid(),
     label: "Integrated Campaigns",
     animation: floatingAnimation(),
-    left: "65%",
-    top: "42%",
+    left: "78%",
+    top: "37%",
     desktop: {
-      left: "15%",
+      left: "40%",
       top: "75%",
     }
   },
@@ -139,21 +139,21 @@ const rightContent = [
     label: "Culture",
     animation: floatingAnimation(),
     left: "75%",
-    top: "60%",
+    top: "70%",
     desktop: {
-      left: "50%",
-      top: "60%",
+      left: "30%",
+      top: "55%",
     }
   },
   {
     id: uuid(),
     label: "Growth Capital",
     animation: floatingAnimation(),
-    left: "40%",
-    top: "80%",
+    left: "30%",
+    top: "60%",
     desktop: {
       left: "85%",
-      top: "45%",
+      top: "37%",
     }
   }
 ]
@@ -908,8 +908,8 @@ const VennItem = styled.p`
     top: ${({ top }) => top};
     left: ${({ left }) => left};
     position: absolute;
-    max-width: 10rem;
-    font-size: 1.3rem;
+    max-width: 12rem;
+    font-size: 1.5rem;
     font-weight: 600;
     transition: opacity 1s 0.8s cubic-bezier(.77, 0, .175, 1),transform 1s 0.8s cubic-bezier(.77, 0, .175, 1);
 
@@ -930,6 +930,7 @@ const VennItem = styled.p`
     } */
 
     @media ${({ theme }) => theme.mediaQuery.small} {
+      max-width: 15rem;
       font-size: 1.3rem;
       top: ${({ desktop }) => desktop && desktop.top};
       left: ${({ desktop }) => desktop && desktop.left};
