@@ -73,7 +73,7 @@ const leftContent = [
     top: "64%",
     desktop: {
       left: "55%",
-      top: "80%"
+      top: "75%"
     }
   },
   {
@@ -81,7 +81,7 @@ const leftContent = [
     label: "Strategic Partnerships",
     animation: floatingAnimation(),
     left: "70%",
-    top: "30%",
+    top: "40%",
     desktop: {
       left: "70%",
       top: "20%"
@@ -102,7 +102,7 @@ const leftContent = [
     id: uuid(),
     label: "Talent & Intellectual Capital",
     animation: floatingAnimation(),
-    left: "20%",
+    left: "25%",
     top: "30%",
     desktop: {
       left: "85%",
@@ -116,8 +116,8 @@ const rightContent = [
     id: uuid(),
     label: "Distribution Partnerships",
     animation: floatingAnimation(),
-    left: "25%",
-    top: "30%",
+    left: "30%",
+    top: "60%",
     desktop: {
       left: "20%",
       top: "25%"
@@ -141,19 +141,19 @@ const rightContent = [
     left: "75%",
     top: "70%",
     desktop: {
-      left: "30%",
-      top: "55%",
+      left: "25%",
+      top: "50%",
     }
   },
   {
     id: uuid(),
     label: "Growth Capital",
     animation: floatingAnimation(),
-    left: "30%",
-    top: "60%",
+    left: "25%",
+    top: "30%",
     desktop: {
       left: "85%",
-      top: "37%",
+      top: "40%",
     }
   }
 ]
@@ -824,6 +824,9 @@ const VennContent = styled.div`
   width: 100%;
   top: 0;
   bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
   @media ${({ theme }) => theme.mediaQuery.small} {
     max-width: 15rem;
   }
@@ -832,8 +835,6 @@ const VennContent = styled.div`
   }
   
   &.left {
-    left: 50%;
-    transform: translateX(-50%);
     top: -3rem;
 
     @media ${({ theme }) => theme.mediaQuery.small} {
@@ -848,8 +849,6 @@ const VennContent = styled.div`
   }
 
   &.right {
-    left: 50%;
-    transform: translateX(-50%);
     top: 3rem;
 
     @media ${({ theme }) => theme.mediaQuery.small} {
@@ -934,6 +933,10 @@ const VennItem = styled.p`
       font-size: 1.3rem;
       top: ${({ desktop }) => desktop && desktop.top};
       left: ${({ desktop }) => desktop && desktop.left};
+    }
+
+    @media ${({ theme }) => theme.mediaQuery.large} {
+      font-size: 1.6rem;
     }
   }
 `
