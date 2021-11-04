@@ -1,4 +1,4 @@
-import { SM, MD, LG, XLG, XXL } from "./variables"
+import { SM, MD, LG, XLG, XXL } from "./variables";
 
 const Theme = {
   mediaQuery: {
@@ -13,6 +13,6 @@ const Theme = {
   colors: {
     primary: "#ccc",
   },
-}
+};
 
-export default Theme
+export default Theme;

@@ -1,121 +1,78 @@
-import { useEffect, useState } from "react";
-import styled, { css } from "styled-components";
+import { useEffect } from "react";
+import styled from "styled-components";
 
 import { XXL } from "../../utils/variables";
-import {Grid as _Grid} from "../../assets/styles/grid";
+import { Grid as _Grid } from "../../assets/styles/grid";
 
 import Button from "../../components/button";
 
-const PropertiesLayout = ({
-  properties,
-  children
-}) => {
-  const [ currentItemIndex, setCurrentItemIndex ] = useState(0);
-
-  const scrollBackground = (e) => {
-    const html = document.querySelector(".background");
-    let offset = 20*window.scrollY/html.offsetHeight*0.66;
-    if(offset < 0) offset = 0;
-    html.style.setProperty('--background-position', `-${offset}vh`);
-  }
-
-  const scrollToPropertyBackground = (e) => {
-    const elements = [...document.querySelectorAll(".item-block")];
-
-    for(let i = 0; i < elements.length; i ++) {
-      const element = elements[i];
-      const elementBounds = element.getBoundingClientRect();
-      const elementUpperBound = elementBounds.top + window.scrollY;
-      const elementLowerBound = elementBounds.bottom + window.scrollY;
-
-      const windowCenterScrollMarker = window.scrollY + window.innerHeight / 2;
-
-      if(windowCenterScrollMarker >= elementUpperBound && windowCenterScrollMarker <= elementLowerBound) {
-        setCurrentItemIndex(i);
-        break;
-      }
-    }
-  }
-
-  const scroll = (e) => {
-    scrollBackground(e);
-    scrollToPropertyBackground(e);
-  }
-
+const PropertiesLayout = ({ properties, children }) => {
   useEffect(() => {
-    window.addEventListener('scroll', scroll);
-
-    const html = document.querySelector(".background");
-    html.style.setProperty('--background-position', `0vh`);
-    
     //remove overflow hidden
     document.querySelector("main").classList.add("overflow-open");
 
     // to preload images
-    properties.map(item => item.masterImage).forEach((picture) => {
-      const img = new Image();
-      img.src = picture;
-    });
+    properties
+      .map((item) => item.masterImage)
+      .forEach((picture) => {
+        const img = new Image();
+        img.src = picture;
+      });
 
     document.querySelector("html").classList.add("smooth-scroll");
 
     return () => {
-      window.removeEventListener('scroll', scroll);
       document.querySelector("html").classList.remove("smooth-scroll");
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <Container className="bigTitle">
         <Grid xs={1}>
-          <div className="content">
-            { children }
-          </div>
+          <div className="content">{children}</div>
           <FlexContainer>
-            { properties.map(property => (
+            {properties.map((property) => (
               <a key={property.id} href={`#${property.id}`}>
-                <PropertyImage src={property.logo} />
+                <PropertyImage src={property.logo_alt || property.logo} />
               </a>
             ))}
           </FlexContainer>
         </Grid>
       </Container>
       <Container className="properties">
-        <Grid xs={1} md={2} className="properties-grid">
-          <div>
-            <FloatingImageContainer>
-              <FloatingImage img={properties[currentItemIndex].masterImage} />
-            </FloatingImageContainer>
-          </div>
-          <div>
-            { properties.map(property => (
-              <Block key={property.id} className="item-block">
-                <Marker id={property.id} />
-                <BlockImage className="mobile" img={property.masterImage} />
-                <div className="content">
-                  <img src={property.logo} alt="" className="logo" />
-                  <h2>{property.title}</h2>
-                  <h3>{property.subtitle}</h3>
-                  <p>{property.description}</p>
-                  { property.link.url && (
-                    <Button linkto={property.link.url} label={property.link.label} />
-                  )}
-                </div>
-              </Block>
+        <Grid xs={1} className="properties-grid">
+          {properties.map((property) => (
+            <Block key={property.id} className="item-block" background={property.masterImage}>
+              <Marker id={property.id} />
+              <div className="content">
+                <img src={property.logo} alt="" className="logo" />
+                <h2>{property.title}</h2>
+                <h3>{property.subtitle}</h3>
+                <p>{property.description}</p>
+                {property.link.url && (
+                  <Button
+                    linkto={property.link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    label={property.link.label}
+                    className="outline-invert"
+                  />
+                )}
+              </div>
+            </Block>
             ))}
-          </div>
         </Grid>
       </Container>
     </>
-  )
-}
+  );
+};
 
 const Container = styled.section`
   max-width: ${XXL}px;
   width: 100%;
-  margin: 4rem auto 4rem;
+  margin: 1rem auto 4rem;
   padding: 1rem;
   position: relative;
 
@@ -125,16 +82,16 @@ const Container = styled.section`
 
     .content {
       padding: 1rem;
-      
+
       h1 {
         margin-bottom: 1.5rem;
       }
-  
+
       p {
         width: 100%;
         margin: 0 auto;
         color: rgba(0, 0, 0, 0.5);
-  
+
         @media ${({ theme }) => theme.mediaQuery.medium} {
           width: 70%;
         }
@@ -145,33 +102,30 @@ const Container = styled.section`
   &.properties {
     padding: 0.5rem;
   }
-`
+`;
 
 const Grid = styled(_Grid)`
   &.properties-grid {
-    display: block;
-
-    @media ${({ theme }) => theme.mediaQuery.medium} {
-      display: grid;
-    }
+    display: grid;
   }
-`
+`;
 
 const FlexContainer = styled.div`
-  display: flex;
   margin-top: 1.5rem;
-  align-items: center;
   overflow-y: auto;
   width: 100%;
+  white-space: nowrap;
 
   @media ${({ theme }) => theme.mediaQuery.small} {
     justify-content: center;
   }
 
   a {
-    margin: 0 1rem;
+    margin: 0 0.2rem;
+    display: inline-block;
+    vertical-align: middle;
   }
-`
+`;
 
 const PropertyImage = styled.img`
   max-width: 8rem;
@@ -181,93 +135,42 @@ const PropertyImage = styled.img`
   padding: 0.5rem;
   cursor: pointer;
   object-fit: contain;
-`
-
-const FloatingImageContainer = styled.div`
-  position: sticky;
-  top: 25vh;
-
-  @media ${({ theme }) => theme.mediaQuery.xlarge} {
-    top: 15vh;
-  }
-`
-
-const PropertyImageStyles = css`
-  width: 100%;
-  height: 30vh;
-  border-radius: 3rem;
-  margin: 3rem 0 0;
-  position: relative;
-  background: url(${({ img }) => img});
-  background-size: cover;
-  background-position: center center;
-  transition: 0.3s all ease;
-
-  @media ${({ theme }) => theme.mediaQuery.medium} {
-    height: 40vh;
-    border-radius: 3rem;
-    margin: 2rem 0 0;
-  }
-
-  @media ${({ theme }) => theme.mediaQuery.large} {
-    height: 50vh;
-    border-radius: 3rem;
-  }
-
-  @media ${({ theme }) => theme.mediaQuery.xlarge} {
-    height: 65vh;
-    border-radius: 3rem;
-    margin: 2rem 0 0;
-  }
-`
-
-const FloatingImage = styled.div`
-  ${PropertyImageStyles}
-  
-  display: none;
-
-  @media ${({ theme }) => theme.mediaQuery.medium} {
-    display: block;
-  }
-`
-
-const BlockImage = styled.div`
-  ${PropertyImageStyles}
-
-  @media ${({ theme }) => theme.mediaQuery.medium} {
-    display: none;
-  }
-`
+`;
 
 const Block = styled.div`
   padding: 0.5rem;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   flex-wrap: wrap;
   position: relative;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.66)), url(${({ background }) => background});
+  background-size: cover;
+  background-position: center center;
+  border-radius: 3rem;
+  color: white;
+  min-height: 38vh;
 
-  @media ${({ theme }) => theme.mediaQuery.medium} {
-    min-height: 45vh;
-    border-radius: 3rem;
+  @media ${({ theme }) => theme.mediaQuery.medium} { 
     flex-wrap: nowrap;
-    padding: 3rem;
+    padding: 4rem;
+    min-height: 45vh;
   }
 
   @media ${({ theme }) => theme.mediaQuery.large} {
     min-height: 55vh;
-    border-radius: 3rem;
   }
 
   @media ${({ theme }) => theme.mediaQuery.xlarge} {
     min-height: 65vh;
-    border-radius: 3rem;
   }
 
   .content {
     padding: 2rem;
+    width: 100%;
 
     @media ${({ theme }) => theme.mediaQuery.medium} {
       padding: 0;
+      max-width: 25rem;
     }
 
     .logo {
@@ -285,27 +188,28 @@ const Block = styled.div`
     h2 {
       margin-top: 1rem;
     }
-  
+
     h3 {
-      opacity: 0.5;
       margin-top: 0rem;
       font-weight: 600;
       margin-bottom: 1.5rem;
+      mix-blend-mode: screen;
+      color: rgba(255, 255, 255, 0.5);
     }
 
     p {
       white-space: pre-line;
     }
   }
-`
+`;
 
 const Marker = styled.div`
   position: absolute;
   top: 0;
-  
+
   @media ${({ theme }) => theme.mediaQuery.medium} {
     top: -15vh;
   }
-`
+`;
 
-export default PropertiesLayout
+export default PropertiesLayout;

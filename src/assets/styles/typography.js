@@ -12,7 +12,8 @@ const Typography = css`
     }
   }
 
-  h1, .h1 {
+  h1,
+  .h1 {
     font-weight: 800;
     font-size: 2.5rem;
     line-height: 1.1;
@@ -36,21 +37,24 @@ const Typography = css`
     }
   }
 
-  h2, .h2 {
+  h2,
+  .h2 {
     text-transform: capitalize;
     font-size: 1.5rem;
     line-height: 1.2;
     letter-spacing: -0.02rem;
   }
 
-  h3, .h3 {
+  h3,
+  .h3 {
     font-weight: 500;
     margin-top: 0.75rem;
     line-height: 1.5rem;
     font-size: 1rem;
   }
 
-  h4, .h4 {
+  h4,
+  .h4 {
     font-weight: 600;
     margin-top: 0.75rem;
     line-height: 1rem;

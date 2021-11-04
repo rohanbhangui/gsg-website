@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import Typography from './typography';
+import { createGlobalStyle } from "styled-components";
+import Typography from "./typography";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -26,9 +26,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: linear-gradient(to bottom, rgba(136, 136, 136, 0), rgba(0, 0, 0, 0.73));
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: #f0f0f0;
   }
 
   #root {
@@ -47,5 +45,5 @@ const GlobalStyle = createGlobalStyle`
     100% {transform: translateX(-50%);}
   }
 `;
- 
+
 export default GlobalStyle;
