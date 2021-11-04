@@ -100,28 +100,6 @@ const leftContent = [
   },
   {
     id: uuid(),
-    label: "Guidance",
-    animation: floatingAnimation(),
-    left: "85%",
-    top: "49%",
-    desktop: {
-      left: "85%",
-      top: "70%"
-    }
-  },
-  {
-    id: uuid(),
-    label: "Expertise",
-    animation: floatingAnimation(),
-    left: "20%",
-    top: "70%",
-    desktop: {
-      left: "20%",
-      top: "30%"
-    }
-  },
-  {
-    id: uuid(),
     label: "Talent & Intellectual Capital",
     animation: floatingAnimation(),
     left: "20%",
@@ -158,29 +136,7 @@ const rightContent = [
   },
   {
     id: uuid(),
-    label: "Investments",
-    animation: floatingAnimation(),
-    left: "25%",
-    top: "55%",
-    desktop: {
-      left: "25%",
-      top: "40%",
-    }
-  },
-  {
-    id: uuid(),
     label: "Culture",
-    animation: floatingAnimation(),
-    left: "85%",
-    top: "25%",
-    desktop: {
-      left: "70%",
-      top: "20%",
-    }
-  },
-  {
-    id: uuid(),
-    label: "Community",
     animation: floatingAnimation(),
     left: "75%",
     top: "60%",
