@@ -189,7 +189,7 @@ const NavLinkStyles = css`
 
   @media ${({ theme }) => theme.mediaQuery.medium} {
     color: black;
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   &:visited,
