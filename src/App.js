@@ -14,29 +14,34 @@ import ScrollToTop from "./components/scrollToTop";
 
 const App = () => {
   return (
-    <>
-      <Main>
-        <GlobalStyle />
-        <Router>
-          <ScrollToTop />
-          <Header />
-          <Switch>
-            <Route path="/properties">
-              <Incubation />
-            </Route>
-            <Route path="/investments">
-              <Investments />
-            </Route>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-          </Switch>
-          <Footer id="contact" />
-        </Router>
-      </Main>
-    </>
+    <Main>
+      <GlobalStyle />
+      <Router>
+        <ScrollToTop />
+        <Header />
+        <eRouter />
+        <Footer id="contact" />
+      </Router>
+    </Main>
   );
 };
+
+// for the sitemap
+export const eRouter = () => {
+  return (
+    <Switch>
+      <Route path="/properties">
+        <Incubation />
+      </Route>
+      <Route path="/investments">
+        <Investments />
+      </Route>
+      <Route path="/" exact>
+        <Home />
+      </Route>
+    </Switch>
+  )
+}
 
 const Main = styled.main`
   overflow-x: hidden;

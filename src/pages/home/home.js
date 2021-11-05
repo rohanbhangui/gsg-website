@@ -89,7 +89,7 @@ const leftContent = [
   },
   {
     id: uuid(),
-    label: "EQ (Network & resources)",
+    label: "EQ (Network & Resources)",
     animation: floatingAnimation(),
     left: "25%",
     top: "59%",
