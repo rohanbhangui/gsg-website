@@ -20,23 +20,30 @@ const App = () => {
         <Router>
           <ScrollToTop />
           <Header />
-          <Switch>
-            <Route path="/properties">
-              <Incubation />
-            </Route>
-            <Route path="/investments">
-              <Investments />
-            </Route>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-          </Switch>
+          <eRouter />
           <Footer id="contact" />
         </Router>
       </Main>
     </>
   );
 };
+
+// for the sitemap
+export const eRouter = () => {
+  return (
+    <Switch>
+      <Route path="/properties">
+        <Incubation />
+      </Route>
+      <Route path="/investments">
+        <Investments />
+      </Route>
+      <Route path="/" exact>
+        <Home />
+      </Route>
+    </Switch>
+  )
+}
 
 const Main = styled.main`
   overflow-x: hidden;
