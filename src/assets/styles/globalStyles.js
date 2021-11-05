@@ -38,6 +38,11 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Manrope', sans-serif;
   }
 
+  /* reset index.css */
+  a {
+    margin: 0;
+  }
+
   ${Typography}
 
   @-webkit-keyframes marquee {
