@@ -24,7 +24,7 @@ const properties = [
     title: "Koia",
     subtitle: "Delicious & Nutritious!",
     logo: Koia,
-    description: `Deliver easy access to healthy, delicious, convenient plant-based nutrition. Koia only uses high-quality ingredients to deliver a balance of complete plant protein, plant-based fats, and fiber for sustained satiation and energy at any time of the day. All Koia products are 100-percent plant-based, low (or no!) sugar, dairy-free, soy-free, gluten-free, vegan and Non-GMO Project verified. `,
+    description: `Deliver easy access to healthy, delicious, convenient plant-based nutrition. Koia uses only high-quality ingredients to deliver a balance of complete plant protein, plant-based fats, and fiber for sustained satiation and energy at any time of the day. All Koia products are 100-percent plant-based, low (or no!) sugar, dairy-free, soy-free, gluten-free, vegan and Non-GMO Project verified. `,
     link: {
       url: "https://drinkkoia.com/",
       label: "Learn More",

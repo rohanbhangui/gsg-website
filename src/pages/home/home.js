@@ -283,7 +283,7 @@ const Home = () => {
                 <p className="h3">
                   Our goal is to generate long term value for brands and
                   investors by investing in and adding value to early as well as
-                  growth stage CPG, Lifestyle &amp; Tech companies.
+                  growth stage CPG, Lifestyle, and Consumer facing tech companies.
                 </p>
               </Content>
             </Grid>
@@ -352,7 +352,7 @@ const Home = () => {
         </Grid>
       </VennDiagram>
       <Container className="trusted-by">
-        <h2 className="h3">Trusted By</h2>
+        <h2>Trusted By</h2>
         <Logos>
           {[...trustedBy, ...trustedBy, ...trustedBy].map((item) => (
             <LogoLi key={uuid()} height={item.height} width={item.width}>
@@ -462,7 +462,7 @@ const Container = styled.section`
       margin-top: 4rem;
     }
 
-    h2.h3 {
+    h2 {
       text-align: center;
       margin-bottom: 1rem;
       font-weight: bold;
@@ -729,7 +729,7 @@ const Logos = styled.ul`
   justify-content: space-around;
   align-items: center;
   flex-wrap: nowrap;
-  animation: marquee 40s linear infinite;
+  animation: marquee 15s linear infinite;
 
   &:hover {
     animation-play-state: paused;
@@ -751,27 +751,27 @@ const LogoLi = styled.li`
     object-fit: contain;
 
     ${({ height, width }) => height > width && height/width > 2 && `
-      height: 3.75rem;
+      height: 4.25rem;
       width: auto;
     `}
 
     ${({ height, width }) => height < width && `
       height: auto;
-      width: 4rem;
+      width: 4.5rem;
     `}
 
     ${({ height, width }) => height < width && width/height > 2.5 && `
       height: auto;
-      width: 4rem;
+      width: 4.5rem;
     `}
 
     ${({ height, width }) => height < width && width/height > 4 && `
       height: auto;
-      width: 5.5rem;
+      width: 6rem;
     `}
     
     ${({ height, width }) => height / width <= 1.1 && height / width >= 0.9 && `
-      height: 2.75rem;
+      height: 3.25rem;
       width: auto;
     `}
   }
