@@ -201,8 +201,7 @@ const Home = () => {
         val.classList.add("active");
       });
 
-      vennDiagramEntry.target.querySelectorAll('.inner p').forEach((val, ind, arr) => {
-        
+      vennDiagramEntry.target.querySelectorAll('.inner p').forEach((val, ind, arr) => { 
         setTimeout(() => {
           val.classList.add("active");
         }, ind*100)

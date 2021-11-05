@@ -3,10 +3,12 @@ import PropertiesLayout from "../../components/propertiesLayout";
 // property logos
 import TCL from "../../assets/img/tcl.png";
 import NPC from "../../assets/img/npc.png";
+import OGM from "../../assets/img/ogm.png";
 
 // hero images
 import TCL_HERO from "../../assets/img/tcl-masterImage.png";
 import NPC_HERO from "../../assets/img/npc-masterImage.png";
+import OGM_HERO from "../../assets/img/ogm-masterImage.jpeg";
 
 const properties = [
   {
@@ -32,6 +34,18 @@ const properties = [
       label: "Learn More",
     },
     masterImage: NPC_HERO,
+  },
+  {
+    id: "our-generation-music",
+    title: "Our Generation Music",
+    subtitle: "Generational revolution against the antiquated media platforms of old",
+    logo: OGM,
+    description: `OGM is the destination of Gen-Z & Millennials for all things trending in music, culture, sneakers, fashion, and entertainment news. Our mission is to expand into a new-age multimedia platform that offers “Our Generation” (Gen-Z & Millennials) a trusted name for music, entertainment, & pop culture happenings.`,
+    link: {
+      url: "https://ourgenerationmusic.com/",
+      label: "Learn More",
+    },
+    masterImage: OGM_HERO,
   },
 ];
 

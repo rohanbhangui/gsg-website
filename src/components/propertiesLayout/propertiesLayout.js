@@ -35,7 +35,7 @@ const PropertiesLayout = ({ properties, children }) => {
           <FlexContainer>
             {properties.map((property) => (
               <a key={property.id} href={`#${property.id}`}>
-                <PropertyImage src={property.logo_alt || property.logo} />
+                <PropertyImage id={`${property.id}-img`} src={property.logo_alt || property.logo} />
               </a>
             ))}
           </FlexContainer>
@@ -47,7 +47,7 @@ const PropertiesLayout = ({ properties, children }) => {
             <Block key={property.id} className="item-block" background={property.masterImage}>
               <Marker id={property.id} />
               <div className="content">
-                <img src={property.logo} alt="" className="logo" />
+                <img src={property.logo} alt="" className="logo" id={`${property.id}-img`} />
                 <h2>{property.title}</h2>
                 <h3>{property.subtitle}</h3>
                 <p>{property.description}</p>
@@ -135,6 +135,10 @@ const PropertyImage = styled.img`
   padding: 0.5rem;
   cursor: pointer;
   object-fit: contain;
+
+  &#our-generation-music-img {
+    max-height: 5.5rem;
+  }
 `;
 
 const Block = styled.div`
@@ -182,6 +186,14 @@ const Block = styled.div`
 
       @media ${({ theme }) => theme.mediaQuery.medium} {
         height: 3rem;
+      }
+
+      &#our-generation-music-img {
+        max-height: 5.5rem;
+
+        @media ${({ theme }) => theme.mediaQuery.medium} {
+          height: 3.75rem;
+        }
       }
     }
 
