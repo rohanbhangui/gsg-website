@@ -751,27 +751,27 @@ const LogoLi = styled.li`
     object-fit: contain;
 
     ${({ height, width }) => height > width && height/width > 2 && `
-      height: 4.25rem;
+      height: 4.75rem;
       width: auto;
     `}
 
     ${({ height, width }) => height < width && `
       height: auto;
-      width: 4.5rem;
+      width: 6rem;
     `}
 
     ${({ height, width }) => height < width && width/height > 2.5 && `
       height: auto;
-      width: 4.5rem;
+      width: 5.5rem;
     `}
 
     ${({ height, width }) => height < width && width/height > 4 && `
       height: auto;
-      width: 6rem;
+      width: 7rem;
     `}
     
     ${({ height, width }) => height / width <= 1.1 && height / width >= 0.9 && `
-      height: 3.25rem;
+      height: 4rem;
       width: auto;
     `}
   }
