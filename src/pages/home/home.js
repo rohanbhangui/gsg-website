@@ -334,7 +334,7 @@ const Home = () => {
                 ))}
               </div>
             </VennContent>
-            <img className="venn-circle" src={LightCircle} alt="" />
+            <img className="venn-circle" width="320" height="320" src={LightCircle} alt="" />
           </LightSide>
           <DarkSide>
             <VennContent className="right">
@@ -346,7 +346,7 @@ const Home = () => {
                 ))}
               </div>
             </VennContent>
-            <img className="venn-circle" src={DarkCircle} alt="" />
+            <img className="venn-circle" width="320" height="320" src={DarkCircle} alt="" />
           </DarkSide>
         </Grid>
       </VennDiagram>
