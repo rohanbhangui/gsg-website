@@ -14,17 +14,15 @@ import ScrollToTop from "./components/scrollToTop";
 
 const App = () => {
   return (
-    <>
-      <Main>
-        <GlobalStyle />
-        <Router>
-          <ScrollToTop />
-          <Header />
-          <eRouter />
-          <Footer id="contact" />
-        </Router>
-      </Main>
-    </>
+    <Main>
+      <GlobalStyle />
+      <Router>
+        <ScrollToTop />
+        <Header />
+        <eRouter />
+        <Footer id="contact" />
+      </Router>
+    </Main>
   );
 };
 
