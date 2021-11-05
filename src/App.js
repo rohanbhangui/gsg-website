@@ -12,20 +12,6 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import ScrollToTop from "./components/scrollToTop";
 
-const App = () => {
-  return (
-    <Main>
-      <GlobalStyle />
-      <Router>
-        <ScrollToTop />
-        <Header />
-        <eRouter />
-        <Footer id="contact" />
-      </Router>
-    </Main>
-  );
-};
-
 // for the sitemap
 export const eRouter = () => {
   return (
@@ -42,6 +28,20 @@ export const eRouter = () => {
     </Switch>
   )
 }
+
+const App = () => {
+  return (
+    <Main>
+      <GlobalStyle />
+      <Router>
+        <ScrollToTop />
+        <Header />
+        {eRouter()}
+        <Footer id="contact" />
+      </Router>
+    </Main>
+  );
+};
 
 const Main = styled.main`
   overflow-x: hidden;
