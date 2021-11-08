@@ -57,7 +57,7 @@ const PropertiesLayout = ({ properties, children }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     label={property.link.label}
-                    className="outline-invert"
+                    type="outline-invert"
                   />
                 )}
               </div>

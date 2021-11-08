@@ -7,6 +7,7 @@ import GlobalStyle from "./assets/styles/globalStyles";
 import Home from "./pages/home";
 import Incubation from "./pages/incubation";
 import Investments from "./pages/investments";
+import NotFound from "./pages/notfound";
 
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -16,14 +17,17 @@ import ScrollToTop from "./components/scrollToTop";
 export const eRouter = () => {
   return (
     <Switch>
+      <Route path="/" exact>
+        <Home />
+      </Route>
       <Route path="/properties">
         <Incubation />
       </Route>
       <Route path="/investments">
         <Investments />
       </Route>
-      <Route path="/" exact>
-        <Home />
+      <Route path="*">
+        <NotFound />
       </Route>
     </Switch>
   )
