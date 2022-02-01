@@ -56,7 +56,7 @@ const properties = [
     subtitle: "A dynamic exploration of the life and lasting legacy of wunderkind rapper Juice WRLD",
     logo: HBO,
     logo_alt: HBO2,
-    description: `Grey Space Group on behalf of the Juice WRLD estate sold the rights to Juice WRLD's life documentary to HBO. The documentary depicts Juice WRLD's path to superstardom and streaming supremacy by the time he was 18 courtesy of his breakout hit, "Lucid Dreams." Tragically, Juice WRLD's promising career was cut short by his untimely passing three years later. Featuring a wealth of never-before-seen footage, unreleased music, and industry interviews, alongside a sampling of the late artist's signature freestyles, the film details Juice WRLD's meteoric rise to fame.`,
+    description: `On behalf of the Juice WRLD estate, Grey Space Group sold the rights to Juice WRLD's life documentary to HBO. The documentary depicts Juice WRLD's path to superstardom and streaming supremacy by the time he was 18 courtesy of his breakout hit, "Lucid Dreams." Tragically, Juice WRLD's promising career was cut short by his untimely passing three years later. Featuring a wealth of never-before-seen footage, unreleased music, and industry interviews, alongside a sampling of the late artist's signature freestyles, the film details Juice WRLD's meteoric rise to fame.`,
     link: {
       url: "https://ourgenerationmusic.com/",
       label: "Learn More",
