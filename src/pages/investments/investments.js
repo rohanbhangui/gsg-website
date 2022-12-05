@@ -5,6 +5,8 @@ import RowingBlazers from "../../assets/img/rowing-blazers.png";
 import RowingBlazers2 from "../../assets/img/rowing-blazers-alt.png";
 import Wilde from "../../assets/img/wilde.png";
 import Wilde2 from "../../assets/img/wilde-alt.png";
+import IvyCity from "../../assets/img/ivycity.png";
+import IvyCity2 from "../../assets/img/ivycity.png";
 // import Generaize from "../../assets/img/generaize.svg";
 // import Generaize2 from "../../assets/img/generaize-alt.svg";
 
@@ -14,6 +16,7 @@ import WILDE_HERO from "../../assets/img/wilde-masterImage2.jpg";
 import ROWINGBLAZERS_HERO from "../../assets/img/rowingBlazers-masterImage.png";
 import KOIA_HERO from "../../assets/img/koia-masterImage.png";
 import FRECK_HERO from "../../assets/img/freck-masterImage.png";
+import IVYCITY_HERO from "../../assets/img/ivyCity-masterImage.png";
 // import GENERAIZE_HERO from "../../assets/img/generaize-masterImage2.jpg";
 
 import PropertiesLayout from "../../components/propertiesLayout";
@@ -32,11 +35,37 @@ const properties = [
     masterImage: KOIA_HERO,
   },
   {
+    id: "wilde-chips",
+    title: "Wilde Chips",
+    subtitle: "Fortune Favors The Wilde!",
+    logo: Wilde,
+    logo_alt: Wilde2,
+    description: `There's nothing weaker and less nutritious than a potato, and yet somehow it's America's favorite snack food. Wilde had a problem with that. So they roundhouse kicked the spud out and created a Kick-Ass Protein Chip: hugely delicious, powered with Smart Ingredients and crispy as a Karate chop from your sensei's sensei.`,
+    link: {
+      url: "https://www.wildebrands.com/",
+      label: "Learn More",
+    },
+    masterImage: WILDE_HERO,
+  },
+  {
+    id: "ivy-city",
+    title: "Ivy City Co.",
+    subtitle: "Original Dresses for all Ages and Stages",
+    logo: IvyCity,
+    logo_alt: IvyCity2,
+    description: `Ivy City Co® is empowering a community with confidence through dresses for all ages and stages (baby-5x) women-owned + women-operated. Ivy City Co® is your #1 Mommy and Me dress brand. Our goal for Ivy City Co. is to continue offering stand-out pieces that are timeless, feminine, and unique that instill confidence. The moment you put on your first Ivy City Co. dress you join a community, a place of instant friendship and encouragement!`,
+    link: {
+      url: "https://ivycityco.com/",
+      label: "Learn More",
+    },
+    masterImage: IVYCITY_HERO,
+  },
+  {
     id: "freck",
     title: "Freck Beauty",
     subtitle: "Freck Beauty is an attitude.",
     logo: Freck,
-    description: `Freck is a bold, clean beauty brand for anyone that cares about ingredients, respects the process, and doesn’t care about the rules!`,
+    description: `Freck is a bold, clean beauty brand for anyone that cares about ingredients, respects the process, and doesn't care about the rules!`,
     link: {
       url: "https://freckbeauty.com/",
       label: "Learn More",
@@ -55,19 +84,6 @@ const properties = [
       label: "Learn More",
     },
     masterImage: ROWINGBLAZERS_HERO,
-  },
-  {
-    id: "wilde-chips",
-    title: "Wilde Chips",
-    subtitle: "Fortune Favors The Wilde!",
-    logo: Wilde,
-    logo_alt: Wilde2,
-    description: `There’s nothing weaker and less nutritious than a potato, and yet somehow it’s America’s favorite snack food. Wilde had a problem with that. So they roundhouse kicked the spud out and created a Kick-Ass Protein Chip: hugely delicious, powered with Smart Ingredients and crispy as a Karate chop from your sensei’s sensei.`,
-    link: {
-      url: "https://www.wildebrands.com/",
-      label: "Learn More",
-    },
-    masterImage: WILDE_HERO,
   },
 ];
 
@@ -92,7 +108,7 @@ const Investments = () => {
     <PropertiesLayout properties={properties}>
       <h1 className="big">Investments</h1>
       <p className="h3">
-        Because we’re obsessively curious, we identify opportunities where others are afraid to look. These opportunities drive tangible business metrics and generate significant ROI.
+        Because we're obsessively curious, we identify opportunities where others are afraid to look. These opportunities drive tangible business metrics and generate significant ROI.
       </p>
       <br />
       <p className="h3">
