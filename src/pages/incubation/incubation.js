@@ -21,7 +21,7 @@ const properties = [
     logo: TCL,
     description: `GSG Incubated a first-of-its-kind, unscripted competition series where celebrities and their "crews" face off against each other for bragging rights and a grand prize. `,
     link: {
-      url: "https://thecrewleague.com/",
+      url: "https://thecrewleague.be/",
       label: "Learn More",
     },
     masterImage: TCL_HERO,
