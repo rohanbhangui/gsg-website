@@ -7,6 +7,8 @@ import Wilde from "../../assets/img/wilde.png";
 import Wilde2 from "../../assets/img/wilde-alt.png";
 import IvyCity from "../../assets/img/ivycity.png";
 import IvyCity2 from "../../assets/img/ivycity.png";
+import GoodWipes from "../../assets/img/goodwipes-2.webp";
+import GoodWipes2 from "../../assets/img/goodwipes.webp";
 // import Generaize from "../../assets/img/generaize.svg";
 // import Generaize2 from "../../assets/img/generaize-alt.svg";
 
@@ -17,6 +19,7 @@ import ROWINGBLAZERS_HERO from "../../assets/img/rowingBlazers-masterImage.png";
 import KOIA_HERO from "../../assets/img/koia-masterImage.png";
 import FRECK_HERO from "../../assets/img/freck-masterImage.png";
 import IVYCITY_HERO from "../../assets/img/ivyCity-masterImage.png";
+import GOODWIPES_HERO from "../../assets/img/goodWipes-masterImage.webp";
 // import GENERAIZE_HERO from "../../assets/img/generaize-masterImage2.jpg";
 
 import PropertiesLayout from "../../components/propertiesLayout";
@@ -59,6 +62,19 @@ const properties = [
       label: "Learn More",
     },
     masterImage: IVYCITY_HERO,
+  },
+  {
+    id: "good-wipes",
+    title: "Good Wipes",
+    subtitle: "Do more. Feel Good. Live Clean.",
+    logo: GoodWipes,
+    logo_alt: GoodWipes2,
+    description: `Goodwipes makes portable wet wipes for active people. Body Wipes for When You Can't Shower and The Best Butt Wipes. Do more. Feel Good. Live Clean.`,
+    link: {
+      url: "https://goodwipes.com/",
+      label: "Learn More",
+    },
+    masterImage: GOODWIPES_HERO,
   },
   {
     id: "freck",
