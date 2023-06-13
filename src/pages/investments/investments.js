@@ -69,7 +69,7 @@ const properties = [
     subtitle: "Do more. Feel Good. Live Clean.",
     logo: GoodWipes,
     logo_alt: GoodWipes2,
-    description: `Goodwipes makes portable wet wipes for active people. Body Wipes for When You Can't Shower and The Best Butt Wipes. Do more. Feel Good. Live Clean.`,
+    description: `Goodwipes is changing the way people think about hygiene by bringing substance and style to antiquated personal care routines, infusing premium ingredients and eco-friendly materials to its flushable wipes and personal care products. Goodwipes empower you to Feel Good, so that you can Do Good!`,
     link: {
       url: "https://goodwipes.com/",
       label: "Learn More",
