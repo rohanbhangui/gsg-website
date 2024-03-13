@@ -275,11 +275,10 @@ const Home = () => {
               <h1>A culture focused venture studio for a social world.</h1>
               <Content className="hero-section-text-content">
                 <p className="h3">
-                  We turn ideas and partnerships into reality for brands. We achieve this by identifying patterns, developing solutions, and building innovative frameworks.
-
+                We turn ideas and partnerships into reality for brands. We achieve this by identifying patterns, developing solutions, and building innovative frameworks.
                 </p>
                 <p className="h3">
-                  Our focus is on long-term value creation through investments in early stage CPG, lifestyle, and consumer facing brands.
+                Our focus is on long-term value creation through incubation and investments in early stage consumer: CPG, lifestyle, media, entertainment and sports.
                 </p>
               </Content>
             </Grid>
