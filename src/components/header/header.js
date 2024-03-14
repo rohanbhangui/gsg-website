@@ -52,13 +52,13 @@ const Header = () => {
 export const HeaderHeight = "4rem";
 
 const HeaderContainer = styled.header`
-  height: ${HeaderHeight};
+  height: calc(${HeaderHeight}*0.75);
   z-index: 100;
   position: relative;
-  margin: 0.5rem 0;
 
   @media ${({ theme }) => theme.mediaQuery.medium} {
     margin: 0;
+    height: ${HeaderHeight};
   }
 
   ${({ mobileopen, theme }) =>
@@ -131,7 +131,7 @@ const HeaderContainer = styled.header`
         `
         color: white;
         position: fixed;
-        top: 1.4rem;
+        top: 0.5rem;
         right: 0.5rem;
       `}
     }

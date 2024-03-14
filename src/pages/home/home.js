@@ -278,7 +278,7 @@ const Home = () => {
                 We turn ideas and partnerships into reality for brands. We achieve this by identifying patterns, developing solutions, and building innovative frameworks.
                 </p>
                 <p className="h3">
-                Our focus is on long-term value creation through incubation and investments in early stage consumer: CPG, lifestyle, media, entertainment and sports.
+                Our focus is on long-term value creation through incubation and investments in early stage consumer: CPG, lifestyle, media, entertainment and sports brands.
                 </p>
               </Content>
             </Grid>
@@ -372,7 +372,7 @@ const Container = styled.section`
   }
 
   &.intro {
-    margin: 1rem auto 4rem;
+    margin: 0rem auto 4rem;
     
     @media ${({ theme }) => theme.mediaQuery.medium} {
       margin: 1rem auto 4rem;
