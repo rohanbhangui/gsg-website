@@ -9,6 +9,8 @@ import IvyCity from "../../assets/img/ivycity.png";
 import IvyCity2 from "../../assets/img/ivycity.png";
 import GoodWipes from "../../assets/img/goodwipes-2.webp";
 import GoodWipes2 from "../../assets/img/goodwipes.webp";
+import Kosterina from "../../assets/img/kosterina-2.png";
+import Kosterina2 from "../../assets/img/kosterina.png";
 // import Generaize from "../../assets/img/generaize.svg";
 // import Generaize2 from "../../assets/img/generaize-alt.svg";
 
@@ -20,6 +22,7 @@ import KOIA_HERO from "../../assets/img/koia-masterImage.png";
 import FRECK_HERO from "../../assets/img/freck-masterImage.png";
 import IVYCITY_HERO from "../../assets/img/ivyCity-masterImage.png";
 import GOODWIPES_HERO from "../../assets/img/goodWipes-masterImage.webp";
+import KOSTERINA_HERO from "../../assets/img/kosterina-masterImage.webp";
 // import GENERAIZE_HERO from "../../assets/img/generaize-masterImage2.jpg";
 
 import PropertiesLayout from "../../components/propertiesLayout";
@@ -75,6 +78,19 @@ const properties = [
       label: "Learn More",
     },
     masterImage: GOODWIPES_HERO,
+  },
+  {
+    id: "kosterina",
+    title: "Kosterina",
+    subtitle: "Do more. Feel Good. Live Clean.",
+    logo: Kosterina,
+    logo_alt: Kosterina2,
+    description: `Kosterina is a wellness brand centered around the extraordinary benefits of high-antioxidant superfoods and the clean, Mediterranean lifestyle. Their hero product and ingredient is their ultra high-antioxidant extra virgin olive oil (“EVOO”) from Greece, a super ingredient that works from both the inside and outside to provide significant health and flavor benefits.`,
+    link: {
+      url: "https://www.kosterina.com/",
+      label: "Learn More",
+    },
+    masterImage: KOSTERINA_HERO,
   },
   {
     id: "freck",
